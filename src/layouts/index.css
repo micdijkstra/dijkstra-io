@@ -1,16 +1,18 @@
 @font-face {
-  font-family: 'AnarchyBook';
-  font-style: normal;
-  font-weight: 300;
+  font-family: Anarchy-Book;
   src: url('../fonts/Anarchy-Book.eot'); /* IE9 Compat Modes */
   src: url('../fonts/Anarchy-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../fonts/Anarchy-Book.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/Anarchy-Book.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Anarchy-Book.woff') format('woff'); /* Pretty Modern Browsers */
+  font-weight: 300;
+  font-style: normal;
 }
 
 html {
   box-sizing: border-box;
   font-family: Anarchy-Book;
+  font-weight: 300;
+  font-style: normal;
   font-size: 16px;
   min-height: 100%;
 }
@@ -31,7 +33,9 @@ h5,
 h6,
 p,
 li {
+  font-weight: inherit;
   font-size: inherit;
+  font-style: inherit;
   margin: 0;
   padding: 0;
 }

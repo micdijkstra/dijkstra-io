@@ -12,7 +12,7 @@ const AboutPage = () => (
     <CloseHeader>
       <CloseLink to="/">close</CloseLink>
     </CloseHeader>
-    <PageTitle>i<br />love<br />www</PageTitle>
+    <PageTitle>love<br />to<br />code</PageTitle>
   </PageAbout>
 )
 
