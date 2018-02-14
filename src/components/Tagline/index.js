@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Tagline = styled.div`
+const Wrapper = styled.div`
   float: right;
   margin-top: ${props => props.theme.spacing.md};
 `;
@@ -20,8 +20,8 @@ const GroupSecondary = Group.extend`
 const Line = styled.div`
 `;
 
-const Header = () => (
-  <Tagline>
+const Tagline = () => (
+  <Wrapper>
     <Group>
       <Line>a</Line>
       <Line>young</Line>
@@ -31,7 +31,7 @@ const Header = () => (
       <Line>software</Line>
       <Line>developer</Line>
     </GroupSecondary>
-  </Tagline>
+  </Wrapper>
 )
 
-export default Header
+export default Tagline

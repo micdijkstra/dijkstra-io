@@ -7,4 +7,14 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-export default Container
+const Row = styled.div`
+  @media (min-width: ${props => props.theme.screen.sm}) {
+    display: flex;
+
+    > div {
+      width: 50%;
+    }
+  }
+`;
+
+export { Container, Row }

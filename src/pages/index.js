@@ -3,26 +3,21 @@ import Link from 'gatsby-link'
 import Img from "gatsby-image"
 import styled from 'styled-components'
 
-import Header from '../components/Header'
+import Tagline from '../components/Tagline'
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
-import Container from '../components/Container'
+import { Container } from '../components/Container'
 import { Page } from '../components/Page'
+import { Cards, Card } from '../components/Card'
 
 import getRandom from '../utils/getRandom'
 
-const PageIndex = Page.extend`
+const IndexPage = Page.extend`
   background-color: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.onDark};
-`;
-
-const Images = styled.div`
-  position: relative;
 `
 
-const Item = styled.div`
-  position: relative;
-
+const IndexCard = Card.extend`
   &:nth-of-type(2) {
     margin-top: -22%;
     margin-bottom: -45%;
@@ -42,40 +37,6 @@ const Item = styled.div`
   }
 `
 
-class Group extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      order: [0,1,2,3]
-    }
-  }
-
-  render() {
-    const children = React.Children.map(this.props.children, (child,index) => {
-      return React.cloneElement(child, {
-        zIndex: this.state.order.indexOf(index),
-        index: index,
-        onMouseEnter: () => {
-          let order = this.state.order.slice(0) // Clone the array
-          const i = this.state.order.indexOf(index) // Get the current index
-          order.splice(i, 1) // Remove from array
-          order.push(index) // Add to end of array
-          this.setState({ order: order })
-        }
-      })
-    })
-
-    return <Images>{children}</Images>
-  }
-}
-
-const GroupItem = (props) => (
-  <Item style={{zIndex: props.zIndex}} {...props}>
-    {props.children}
-  </Item>
-)
-
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -87,34 +48,34 @@ class Index extends React.Component {
 
     return(
       <div style={transition && transition.style}>
-        <PageIndex>
+        <IndexPage>
           <Container>
-            <Header />
+            <Tagline />
           </Container>
 
           <Container>
-            <Group>
-              <GroupItem>
+            <Cards>
+              <IndexCard>
                 <Logo />
-              </GroupItem>
+              </IndexCard>
               {getRandom(data.allFile.edges, 3).map((img, index) => {
                 return (
-                  <GroupItem key={index}>
+                  <IndexCard key={index}>
                     <Img sizes={img.node.childImageSharp.sizes} />
-                  </GroupItem>
+                  </IndexCard>
                 )
               })}
-            </Group>
+            </Cards>
             <Nav />
           </Container>
-        </PageIndex>
+        </IndexPage>
       </div>
     )
   }
 }
 
 export const query = graphql`
-  query ImagesQuery {
+  query IndexImagesQuery {
    allFile(filter: {sourceInstanceName: {eq: "images"}}) {
       edges {
         node {
