@@ -3,8 +3,7 @@
   font-style: normal;
   font-weight: 300;
   src: url('../fonts/Anarchy-Book.eot'); /* IE9 Compat Modes */
-  src: local('AnarchyBook'), local('Anarchy-Book'),
-       url('../fonts/Anarchy-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  src: url('../fonts/Anarchy-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../fonts/Anarchy-Book.woff2') format('woff2'), /* Super Modern Browsers */
        url('../fonts/Anarchy-Book.woff') format('woff'), /* Modern Browsers */
 }
