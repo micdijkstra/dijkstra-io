@@ -69,6 +69,10 @@ class Contact extends React.Component {
 
           <CopyContainer>
             <Row>
+              <ReadingText>
+                <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
+                <p>Please use the form below to get in touch.</p>
+              </ReadingText>
               <div>
                 <Aside>
                   <div>Socials</div>
@@ -79,10 +83,6 @@ class Contact extends React.Component {
                   <div>Twitter</div>
                 </AsideSecondary>
               </div>
-              <ReadingText>
-                <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
-                <p>Please use the form below to get in touch.</p>
-              </ReadingText>
             </Row>
           </CopyContainer>
         </ContactPage>

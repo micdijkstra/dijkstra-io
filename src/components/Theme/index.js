@@ -18,9 +18,16 @@ const Theme = {
 
   text: {
     sm: '20px',
-    md: '30px',
-    lg: '60px',
-    xl: '180px'
+    md: '20px',
+    lg: '30px',
+    xl: '100px',
+
+    md: {
+      sm: '20px',
+      md: '30px',
+      lg: '60px',
+      xl: '220px'
+    }
   },
 
   line: {
@@ -31,6 +38,7 @@ const Theme = {
   },
 
   spacing: {
+    xs: '5px',
     sm: '15px',
     md: '30px',
     lg: '60px',

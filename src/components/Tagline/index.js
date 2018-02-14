@@ -5,7 +5,6 @@ import { Aside, AsideSecondary } from '../Aside'
 
 const Wrapper = styled.div`
   float: right;
-  margin-top: ${props => props.theme.spacing.md};
 
   > div:nth-of-type(2) {
     margin-top: ${props => props.theme.spacing.lg};

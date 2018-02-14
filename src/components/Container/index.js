@@ -8,8 +8,15 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  > div {
+    width: 100%;
+  }
+
   @media (min-width: ${props => props.theme.screen.sm}) {
-    display: flex;
+    flex-direction: row-reverse;
 
     > div {
       width: 50%;

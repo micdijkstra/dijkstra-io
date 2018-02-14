@@ -40,6 +40,12 @@ const CopyContainer = Container.extend`
   padding: ${props => props.theme.spacing.lg} 0;
 `
 
+const AboutRow = Row.extend`
+  @media (min-width: ${props => props.theme.screen.sm}) {
+    flex-direction: row;
+  }
+`
+
 class About extends React.Component {
   render() {
     const { transition, data } = this.props
@@ -67,12 +73,12 @@ class About extends React.Component {
           </Container>
 
           <CopyContainer>
-            <Row>
+            <AboutRow>
               <Tagline />
               <ReadingText>
                 <p>Michael Dijkstra works with most web and mobile technologies, specializing in Ruby on Rails web applications, Swift iOS applications and front-end website development using HTML, CSS/Sass and modern JavaScript frameworks such as React.</p>
               </ReadingText>
-            </Row>
+            </AboutRow>
           </CopyContainer>
         </AboutPage>
       </div>

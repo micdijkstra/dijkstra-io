@@ -37,6 +37,10 @@ const IndexCard = Card.extend`
   }
 `
 
+const HeaderContainer = Container.extend`
+  padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing.md} ${props => props.theme.spacing.lg};
+`
+
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -49,9 +53,9 @@ class Index extends React.Component {
     return(
       <div style={transition && transition.style}>
         <IndexPage>
-          <Container>
+          <HeaderContainer>
             <Tagline />
-          </Container>
+          </HeaderContainer>
 
           <Container>
             <Cards>

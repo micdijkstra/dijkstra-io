@@ -16,8 +16,18 @@ const Page = styled.div`
 const PageTitle = styled.div`
   font-size: ${props => props.theme.text.xl};
   line-height: ${props => props.theme.line.xs};
-  padding: ${props => props.theme.spacing.lg};
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.xs};
   text-align: center;
+  hyphens: auto;
+  overflow: hidden;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+
+  @media (min-width: ${props => props.theme.screen.sm}) {
+    font-size: ${props => props.theme.text.md.xl};
+    padding: ${props => props.theme.spacing.lg};
+  }
 `
 const PageLink = styled(Link)`
   color: white;
@@ -53,6 +63,10 @@ const CloseHeader = styled.div`
 const CloseLink = PageLink.extend`
   color: ${props => props.theme.colors.dark};
   font-size: ${props => props.theme.text.md};
+
+  @media (min-width: ${props => props.theme.screen.sm}) {
+    font-size: ${props => props.theme.text.md.md};
+  }
 `
 
 export { Page, PageTitle, PageLink, CloseHeader, CloseLink }

@@ -5,8 +5,13 @@ import { PageLink } from '../Page'
 
 const Wrapper = styled.div`
   font-size: ${props => props.theme.text.lg};
-  margin: ${props => props.theme.spacing.xl} 0;
-  margin-left: 25%;
+  margin: ${props => props.theme.spacing.lg} 0 0 25%;
+
+  @media (min-width: ${props => props.theme.screen.sm}) {
+    font-size: ${props => props.theme.text.md.lg};
+    margin: ${props => props.theme.spacing.xl} 0;
+    margin-left: 25%;
+  }
 `
 
 const NavList = styled.ol`

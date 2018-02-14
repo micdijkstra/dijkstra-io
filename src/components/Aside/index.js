@@ -5,6 +5,7 @@ const Group = styled.div`
   font-size: ${props => props.theme.text.sm};
   line-height: ${props => props.theme.line.sm};
   float: left;
+  margin-bottom: ${props => props.theme.spacing.md};
 `;
 
 const GroupSecondary = Group.extend`
