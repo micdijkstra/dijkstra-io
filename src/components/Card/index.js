@@ -30,7 +30,7 @@ class Cards extends React.Component {
       })
     })
 
-    return <div style={{position: 'relative'}}>{children}</div>
+    return <div style={{position: 'relative'}} {...this.props}>{children}</div>
   }
 }
 

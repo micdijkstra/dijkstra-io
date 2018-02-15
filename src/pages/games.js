@@ -51,7 +51,7 @@ const GamesPage = () => (
     </CloseHeader>
     <GameContainer>
       <NoGame>Load this page on your computer to play games!</NoGame>
-      <Game src="https://thirty-xxx.github.io/wolf3d/"></Game>
+      <Game src="https://wolf3d.dijkstra.io"></Game>
       <PageTitle>games<br />games<br />games</PageTitle>
     </GameContainer>
     <Container>

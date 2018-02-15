@@ -1,6 +1,8 @@
 import React from 'react'
 import Img from "gatsby-image"
 import styled from 'styled-components'
+import sparkScroll from 'react-spark-scroll-gsap';
+const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true});
 
 import { Container, Row } from '../components/Container'
 import Tagline from '../components/Tagline'
@@ -37,8 +39,12 @@ const ContactCard = Card.extend`
   }
 `
 
-const CopyContainer = Container.extend`
-  padding: ${props => props.theme.spacing.lg} 0;
+const ContactContainer = Container.extend`
+  overflow: visible;
+`
+
+const Line = styled.div`
+  line-height: ${props => props.theme.line.md};
 `
 
 class Contact extends React.Component {
@@ -52,39 +58,64 @@ class Contact extends React.Component {
             <CloseLink to="/">close</CloseLink>
           </CloseHeader>
 
-          <Container>
-            <Cards order={[3,0,2,1]}>
-              <ContactCard>
-                <PageTitle>hello<br />from<br />edmonton</PageTitle>
-              </ContactCard>
-              {getRandom(data.allFile.edges, 3).map((img, index) => {
-                return (
-                  <ContactCard key={index}>
-                    <Img sizes={img.node.childImageSharp.sizes} />
-                  </ContactCard>
-                )
-              })}
-            </Cards>
-          </Container>
+          <SparkProxy.div proxyId="parallax">
+            <ContactContainer>
+              <Cards order={[3,0,2,1]}>
+                <ContactCard>
+                  <SparkScroll.div
+                    proxy="parallax"
+                    timeline={{
+                      topBottom: {transform: 'translate3d(0px,0px,0px)'},
+                      bottomTop: {transform: 'translate3d(0px,-120px,0px)'}
+                    }}
+                  >
+                    <PageTitle>hello<br />from<br />yeg</PageTitle>
+                  </SparkScroll.div>
+                </ContactCard>
+                {getRandom(data.allFile.edges, 3).map((img, index) => {
+                  return (
+                    <ContactCard key={index}>
+                      <SparkScroll.div
+                        proxy="parallax"
+                        timeline={{
+                          topBottom: { transform: 'translate3d(0px,0px,0px)' },
+                          bottomTop: { transform: 'translate3d(' + (index % 2 == 0 ? ' ' : '-') + index+1 * 15 + 'vw,-120px,0px)' }
+                        }}
+                      >
+                        <Img sizes={img.node.childImageSharp.sizes} />
+                      </SparkScroll.div>
+                    </ContactCard>
+                  )
+                })}
+              </Cards>
+            </ContactContainer>
 
-          <CopyContainer>
-            <Row>
-              <ReadingText>
-                <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
-                <p>Please use the form below to get in touch.</p>
-              </ReadingText>
-              <div>
-                <Aside>
-                  <div>Socials</div>
-                </Aside>
-                <AsideSecondary>
-                  <div>GitHub</div>
-                  <div>Instagram</div>
-                  <div>Twitter</div>
-                </AsideSecondary>
-              </div>
-            </Row>
-          </CopyContainer>
+            <Container>
+              <SparkScroll.div
+                timeline={{
+                  topBottom: { opacity: 0 },
+                  bottomBottom: { opacity: 1 }
+                }}
+              >
+                <Row>
+                  <ReadingText>
+                    <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
+                    <p>Please use the form below to get in touch.</p>
+                  </ReadingText>
+                  <div>
+                    <Aside>
+                      <Line>Socials</Line>
+                    </Aside>
+                    <AsideSecondary>
+                      <Line>GitHub</Line>
+                      <Line>Instagram</Line>
+                      <Line>Twitter</Line>
+                    </AsideSecondary>
+                  </div>
+                </Row>
+              </SparkScroll.div>
+            </Container>
+          </SparkProxy.div>
         </ContactPage>
       </div>
     )

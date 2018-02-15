@@ -27,6 +27,9 @@ const PageTitle = styled.div`
   @media (min-width: ${props => props.theme.screen.sm}) {
     font-size: ${props => props.theme.text.md.xl};
     padding: ${props => props.theme.spacing.lg};
+    word-break: normal;
+    hyphens: none;
+    overflow: visible;
   }
 `
 const PageLink = styled(Link)`
