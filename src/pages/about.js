@@ -1,8 +1,8 @@
 import React from 'react'
 import Img from "gatsby-image"
 import styled from 'styled-components'
-import sparkScroll from 'react-spark-scroll-gsap';
-const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true});
+import sparkScroll from 'react-spark-scroll-gsap'
+const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
 import { Container, Row } from '../components/Container'
 import Tagline from '../components/Tagline'
@@ -16,10 +16,6 @@ const AboutPage = Page.extend`
   background-color: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onDark};
 `;
-
-const AboutContainer = Container.extend`
-  overflow: visible;
-`
 
 const AboutCard = Card.extend`
   &:nth-of-type(2) {
@@ -60,7 +56,7 @@ class About extends React.Component {
           </CloseHeader>
 
           <SparkProxy.div proxyId="parallax">
-            <AboutContainer>
+            <Container>
               <Cards order={[3,2,0,1]}>
                 <AboutCard>
                   <SparkScroll.div
@@ -89,7 +85,7 @@ class About extends React.Component {
                   )
                 })}
               </Cards>
-            </AboutContainer>
+            </Container>
 
             <Container>
               <SparkScroll.div

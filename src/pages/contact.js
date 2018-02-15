@@ -39,10 +39,6 @@ const ContactCard = Card.extend`
   }
 `
 
-const ContactContainer = Container.extend`
-  overflow: visible;
-`
-
 const Line = styled.div`
   line-height: ${props => props.theme.line.md};
 `
@@ -59,7 +55,7 @@ class Contact extends React.Component {
           </CloseHeader>
 
           <SparkProxy.div proxyId="parallax">
-            <ContactContainer>
+            <Container>
               <Cards order={[3,0,2,1]}>
                 <ContactCard>
                   <SparkScroll.div
@@ -88,7 +84,7 @@ class Contact extends React.Component {
                   )
                 })}
               </Cards>
-            </ContactContainer>
+            </Container>
 
             <Container>
               <SparkScroll.div

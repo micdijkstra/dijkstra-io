@@ -8,7 +8,11 @@ const Wrapper = styled.div`
 
   > div:nth-of-type(2) {
     margin-top: ${props => props.theme.spacing.lg};
-    margin-left: ${props => props.theme.spacing.md};
+    margin-left: ${props => props.theme.spacing.sm};
+
+    @media (min-width: ${props => props.theme.screen.sm}) {
+      margin-left: ${props => props.theme.spacing.md};
+    }
   }
 `;
 
@@ -70,25 +74,22 @@ class Tagline extends React.Component {
             </Line>
             <Line>
               <Item style={{opacity: alt  ? 0 : 1 }}>sarcastic</Item>
-              <AltItem style={{opacity: alt  ? 1 : 0 }}>sadistic</AltItem>
+              <AltItem style={{opacity: alt  ? 1 : 0 }}>hard-working</AltItem>
             </Line>
             <Line>
-              <Item style={{opacity: alt  ? 0 : 1 }}>but</Item>
-              <AltItem style={{opacity: alt  ? 1 : 0 }}>and</AltItem>
+              <Item>but</Item>
             </Line>
           </Aside>
           <AsideSecondary>
             <SecondaryLine>
               <Item style={{opacity: alt  ? 0 : 1 }}>hard-working</Item>
-              <SecondaryAltItem style={{opacity: alt  ? 1 : 0 }}>hardly</SecondaryAltItem>
+              <SecondaryAltItem style={{opacity: alt  ? 1 : 0 }}>sarcastic</SecondaryAltItem>
             </SecondaryLine>
             <SecondaryLine>
-              <Item style={{opacity: alt  ? 0 : 1 }}>software</Item>
-              <SecondaryAltItem style={{opacity: alt  ? 1 : 0 }}>working</SecondaryAltItem>
+              <Item>software</Item>
             </SecondaryLine>
             <SecondaryLine>
-              <Item style={{opacity: alt  ? 0 : 1 }}>developer</Item>
-              <SecondaryAltItem style={{position: 'absolute', left: 0, width: '200%', opacity: alt  ? 1 : 0 }}>gamer</SecondaryAltItem>
+              <Item>developer</Item>
             </SecondaryLine>
           </AsideSecondary>
         </Wrapper>

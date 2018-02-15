@@ -16,11 +16,13 @@ const Wrapper = styled.div`
   z-index: 1500;
 `
 
-const Modal = () => (
+const Modal = ({ children }) => (
   <Wrapper>
     <CloseHeader>
       <CloseLink to="/">close</CloseLink>
     </CloseHeader>
+
+    {children()}
   </Wrapper>
 )
 

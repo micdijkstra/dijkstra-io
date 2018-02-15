@@ -9,6 +9,7 @@
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-react-helmet": "^2.0.3",
     "gatsby-plugin-sharp": "^1.6.28",
+    "gatsby-source-contentful": "^1.3.38",
     "gatsby-source-filesystem": "^1.5.19",
     "gatsby-transformer-sharp": "^1.6.19",
     "normalize.css": "^8.0.0",

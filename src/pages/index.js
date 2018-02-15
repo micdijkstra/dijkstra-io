@@ -19,10 +19,6 @@ const IndexPage = Page.extend`
   color: ${props => props.theme.colors.onDark};
 `
 
-const IndexContainer = Container.extend`
-  overflow: visible;
-`
-
 const IndexCard = Card.extend`
   &:nth-of-type(2) {
     margin-top: -22%;
@@ -54,6 +50,16 @@ const HeaderContainer = Container.extend`
   padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing.md} ${props => props.theme.spacing.lg};
 `
 
+const Attribution = styled.div`
+  padding-top: ${props => props.theme.spacing.xl};
+  padding-right: ${props => props.theme.spacing.sm};
+  text-align: right;
+
+  img {
+    width: 100px;
+  }
+`
+
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -71,7 +77,7 @@ class Index extends React.Component {
           </HeaderContainer>
 
           <SparkProxy.div proxyId="parallax">
-            <IndexContainer>
+            <Container>
               <Cards order={[0,1,2,3,4]} style={{position: 'relative', minHeight: '100vh'}}>
                 <IndexCard>
                   <SparkScroll.div
@@ -110,7 +116,13 @@ class Index extends React.Component {
                   </SparkScroll.div>
                 </IndexCard>
               </Cards>
-            </IndexContainer>
+            </Container>
+
+            <Attribution>
+              <a href="https://www.contentful.com/" target="_blank">
+                <img src="https://images.contentful.com/fo9twyrwpveg/7Htleo27dKYua8gio8UEUy/0797152a2d2f8e41db49ecbf1ccffdaa/PoweredByContentful_DarkBackground_MonochromeLogo.svg" alt="Powered by Contentful" />
+              </a>
+            </Attribution>
           </SparkProxy.div>
         </IndexPage>
       </div>

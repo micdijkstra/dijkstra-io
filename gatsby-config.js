@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Dijkstra.io',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -11,6 +11,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/data/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `h6fiq5wsn77o`,
+        accessToken: `2ea387c535c3208b71cc52c5abb4a8cd51573110eef6bfa5b95506989951e758`,
       },
     },
   ],
