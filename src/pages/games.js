@@ -56,7 +56,6 @@ const GamesPage = () => (
     </GameContainer>
     <Container>
       <Row>
-        <div />
         <div>
           <Aside>
             <div>&nbsp;</div>
