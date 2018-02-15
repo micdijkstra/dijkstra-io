@@ -7,6 +7,7 @@
 + Contentful: https://hunterchang.com/gatsby-with-contentful-cms/
 + Stack: https://www.halfelectronic.com/post/setting-up-gatsby-js-contentful-and-netlify/
 + Modal: https://www.gatsbyjs.org/blog/gatsbygram-case-study/
++ Page Transitions: https://github.com/gatsbyjs/gatsby/tree/master/examples/using-page-transitions
 
 ### Netlify
 

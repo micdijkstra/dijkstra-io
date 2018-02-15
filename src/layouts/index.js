@@ -2,12 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 
 import Theme from '../components/Theme'
 import Modal from '../components/Modal'
 
 import 'normalize.css'
 import './index.css'
+
+const Wrapper = styled.div`
+  overflow: hidden;
+`
 
 class DefaultLayout extends React.Component {
   static propTypes = {
@@ -54,7 +59,7 @@ class DefaultLayout extends React.Component {
 
     return(
       <ThemeProvider theme={Theme}>
-        <div>
+        <Wrapper>
           <Helmet
             title="Michael Dijkstra is a young Australian software developer"
             meta={[
@@ -72,7 +77,7 @@ class DefaultLayout extends React.Component {
               {this.props.children}
             </Modal>
           )}
-        </div>
+        </Wrapper>
       </ThemeProvider>
     )
   }
