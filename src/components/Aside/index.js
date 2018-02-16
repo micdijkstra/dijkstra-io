@@ -6,10 +6,12 @@ const Group = styled.div`
   line-height: ${props => props.theme.line.sm};
   float: left;
   margin-bottom: ${props => props.theme.spacing.md};
+  text-align: right;
 `;
 
 const GroupSecondary = Group.extend`
   margin-left: ${props => props.theme.spacing.md};
+  text-align: left;
 `;
 
 const Aside = ({ children }) => (
@@ -24,4 +26,10 @@ const AsideSecondary = ({ children }) => (
   </GroupSecondary>
 )
 
-export { Aside, AsideSecondary }
+
+const AsideLine = styled.div`
+  line-height: ${props => props.theme.line.md};
+`
+
+
+export { Aside, AsideSecondary, AsideLine }

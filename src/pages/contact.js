@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import Img from "gatsby-image"
 import styled from 'styled-components'
 import sparkScroll from 'react-spark-scroll-gsap';
@@ -8,7 +9,7 @@ import { Container, Row } from '../components/Container'
 import Tagline from '../components/Tagline'
 import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
 import { Cards, Card } from '../components/Card'
-import { Aside, AsideSecondary } from '../components/Aside'
+import { Aside, AsideSecondary, AsideLine } from '../components/Aside'
 import { ReadingText } from '../components/Text'
 
 import getRandom from '../utils/getRandom'
@@ -39,16 +40,15 @@ const ContactCard = Card.extend`
   }
 `
 
-const Line = styled.div`
-  line-height: ${props => props.theme.line.md};
-`
-
 class Contact extends React.Component {
   render() {
     const { transition, data } = this.props
 
     return(
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>Contact :: Michael Dijkstra</title>
+        </Helmet>
         <ContactPage>
           <CloseHeader>
             <CloseLink to="/">close</CloseLink>
@@ -100,12 +100,12 @@ class Contact extends React.Component {
                   </ReadingText>
                   <div>
                     <Aside>
-                      <Line>Socials</Line>
+                      <AsideLine>Socials</AsideLine>
                     </Aside>
                     <AsideSecondary>
-                      <Line>GitHub</Line>
-                      <Line>Instagram</Line>
-                      <Line>Twitter</Line>
+                      <AsideLine>GitHub</AsideLine>
+                      <AsideLine>Instagram</AsideLine>
+                      <AsideLine>Twitter</AsideLine>
                     </AsideSecondary>
                   </div>
                 </Row>

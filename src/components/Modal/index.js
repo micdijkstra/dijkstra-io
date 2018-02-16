@@ -16,10 +16,14 @@ const Wrapper = styled.div`
   z-index: 1500;
 `
 
+const ModalCloseLink = CloseLink.extend`
+  color: ${props => props.theme.colors.primary};
+`
+
 const Modal = ({ children }) => (
   <Wrapper>
     <CloseHeader>
-      <CloseLink to="/">close</CloseLink>
+      <ModalCloseLink to="/">close</ModalCloseLink>
     </CloseHeader>
 
     {children()}

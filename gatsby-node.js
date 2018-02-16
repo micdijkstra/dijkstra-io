@@ -10,8 +10,10 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           allContentfulProject (limit:1000) {
             edges {
               node {
-                id
                 slug
+                color
+                link
+                linkText
               }
             }
           }
@@ -21,14 +23,23 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           reject(result.errors)
         }
 
-        result.data.allContentfulProject.edges.forEach((edge) => {
+        const projects = result.data.allContentfulProject.edges
+        index = 0
+        projects.forEach((edge) => {
+          const next = (index === projects.length - 1) ? projects[0] : projects[index + 1]
+          const previous = (index === 0) ? projects[projects.length - 1] : projects[index - 1]
+
           createPage ({
             path: edge.node.slug,
             component: projectTemplate,
             context: {
-              slug: edge.node.slug
+              slug: edge.node.slug,
+              previous: previous.node,
+              next: next.node,
             }
           })
+
+          index++
         })
 
         return

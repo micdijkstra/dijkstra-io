@@ -11,7 +11,7 @@ const Theme = {
     secondary: 'rgb(35, 31, 22)',
     tertiary: 'rgb(126, 15, 26)',
     quaternary: 'rgb(252, 12, 27)',
-    modal: 'rgba(194, 255, 0, 0.9)',
+    modal: 'rgba(194, 255, 0, 0.97)',
     onDark: 'white',
     onLight: 'black'
   },

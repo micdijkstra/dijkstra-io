@@ -51,6 +51,7 @@ const PageLink = styled(Link)`
     width: 0;
   }
 
+  &.hover,
   &:hover {
     &:before {
       width: 100%;
@@ -66,6 +67,8 @@ const CloseHeader = styled.div`
 const CloseLink = PageLink.extend`
   color: ${props => props.theme.colors.dark};
   font-size: ${props => props.theme.text.md};
+  position: relative;
+  z-index: 1;
 
   @media (min-width: ${props => props.theme.screen.sm}) {
     font-size: ${props => props.theme.text.md.md};

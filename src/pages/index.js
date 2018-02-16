@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Img from "gatsby-image"
 import styled from 'styled-components'
@@ -17,6 +18,7 @@ import getRandom from '../utils/getRandom'
 const IndexPage = Page.extend`
   background-color: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.onDark};
+  padding-bottom: 0;
 `
 
 const IndexCard = Card.extend`
@@ -48,11 +50,14 @@ const IndexCard = Card.extend`
 
 const HeaderContainer = Container.extend`
   padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing.md} ${props => props.theme.spacing.lg};
+  position: relative;
+  z-index: 5;
 `
 
 const Attribution = styled.div`
-  padding-top: ${props => props.theme.spacing.xl};
+  padding-bottom: ${props => props.theme.spacing.sm};
   padding-right: ${props => props.theme.spacing.sm};
+  padding-top: ${props => props.theme.spacing.xl};
   text-align: right;
 
   img {
@@ -71,6 +76,10 @@ class Index extends React.Component {
 
     return(
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>Michael Dijkstra :: Software Developer</title>
+          <meta name="description" content="Michael Dijkstra is a sarcastic but hard-working software developer from Australia." />
+        </Helmet>
         <IndexPage>
           <HeaderContainer>
             <Tagline />

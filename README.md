@@ -8,6 +8,8 @@
 + Stack: https://www.halfelectronic.com/post/setting-up-gatsby-js-contentful-and-netlify/
 + Modal: https://www.gatsbyjs.org/blog/gatsbygram-case-study/
 + Page Transitions: https://github.com/gatsbyjs/gatsby/tree/master/examples/using-page-transitions
++ This line "Always try out queries in graphiql and rely on their
+  autocomplete/type information": https://spectrum.chat/thread/a9182df6-0204-4377-95c7-36a21c5c0976
 
 ### Netlify
 

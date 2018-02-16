@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import Img from "gatsby-image"
 import styled from 'styled-components'
 import sparkScroll from 'react-spark-scroll-gsap'
@@ -50,6 +51,9 @@ class About extends React.Component {
 
     return(
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>About :: Michael Dijkstra</title>
+        </Helmet>
         <AboutPage>
           <CloseHeader>
             <CloseLink to="/">close</CloseLink>

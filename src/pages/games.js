@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
@@ -44,39 +45,44 @@ const NoGame = styled.div`
   }
 `
 
-const GamesPage = () => (
-  <PageGames>
-    <CloseHeader>
-      <CloseLink to="/">close</CloseLink>
-    </CloseHeader>
-    <GameContainer>
-      <NoGame>Load this page on your computer to play games!</NoGame>
-      <Game src="https://wolf3d.dijkstra.io"></Game>
-      <PageTitle>games<br />games<br />games</PageTitle>
-    </GameContainer>
-    <Container>
-      <Row>
-        <div>
-          <Aside>
-            <div>&nbsp;</div>
-            <div>move</div>
-            <div>run</div>
-            <div>open</div>
-            <div>fire</div>
-            <div>strafe</div>
-          </Aside>
-          <AsideSecondary>
-            <div>buttons</div>
-            <div>arrow keys</div>
-            <div>shift</div>
-            <div>space</div>
-            <div>x</div>
-            <div>z</div>
-          </AsideSecondary>
-        </div>
-      </Row>
-    </Container>
-  </PageGames>
+const GamesPage = ({ transition }) => (
+  <div style={transition && transition.style}>
+    <PageGames>
+      <Helmet>
+        <title>Games :: Michael Dijkstra</title>
+      </Helmet>
+      <CloseHeader>
+        <CloseLink to="/">close</CloseLink>
+      </CloseHeader>
+      <GameContainer>
+        <NoGame>Load this page on your computer to play games!</NoGame>
+        <Game src="https://wolf3d.dijkstra.io"></Game>
+        <PageTitle>games<br />games<br />games</PageTitle>
+      </GameContainer>
+      <Container>
+        <Row>
+          <div>
+            <Aside>
+              <div>&nbsp;</div>
+              <div>move</div>
+              <div>run</div>
+              <div>open</div>
+              <div>fire</div>
+              <div>strafe</div>
+            </Aside>
+            <AsideSecondary>
+              <div>buttons</div>
+              <div>arrow keys</div>
+              <div>shift</div>
+              <div>space</div>
+              <div>x</div>
+              <div>z</div>
+            </AsideSecondary>
+          </div>
+        </Row>
+      </Container>
+    </PageGames>
+  </div>
 )
 
 export default GamesPage
