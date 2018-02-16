@@ -10,7 +10,7 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 import { Container, Row } from '../components/Container'
 import { Cards, Card } from '../components/Card'
 import { Page, PageTitle, PageLink, CloseHeader, CloseLink } from '../components/Page'
-import { ReadingText } from '../components/text'
+import { ReadingText } from '../components/Text'
 import { Aside, AsideSecondary, AsideLine } from '../components/Aside'
 
 import getTransitionStyle from "../utils/getTransitionStyle"
@@ -137,6 +137,12 @@ const ProjectTag = styled.div`
 `
 
 const ProjectInfoTag = PageLink.extend`
+  position: relative;
+  z-index: 3;
+
+  &:before {
+    width: 100%;
+  }
 `
 
 const ProjectFrame = styled.div`
@@ -175,9 +181,13 @@ const InfoSection = Section.extend`
 `
 
 const ProjectRow = Row.extend`
-  margin-top: ${props => props.theme.spacing.md};
+  padding-top: ${props => props.theme.spacing.md};
   overflow: hidden;
-  transition: max-height 0.15s ease-in-out;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transition: opacity 0.15s ease-in-out;
+  z-index: 2;
 `
 
 class Project extends React.Component {
@@ -329,7 +339,7 @@ class Project extends React.Component {
                             <MobileFrame style={{animationDelay: `${timeout}ms`}}>
                               <iframe src={liveUrl} />
                             </MobileFrame>
-                            <ProjectTag>a.&emsp;mobile</ProjectTag>
+                            <ProjectTag>b.&emsp;mobile</ProjectTag>
                           </Section>
                         </div>
                     }
@@ -351,9 +361,16 @@ class Project extends React.Component {
 
                     <InfoSection onMouseLeave={this.hideInfo}>
                       <ProjectTag onMouseEnter={this.showInfo}>
-                        a.&emsp;<ProjectInfoTag className={showInfo ? 'hover' : ''}>Info</ProjectInfoTag>
+                        {showLiveUrl ? 'c' : 'a'}.&emsp;<ProjectInfoTag>Info</ProjectInfoTag>
                       </ProjectTag>
-                      <ProjectRow style={{ backgroundColor: color, maxHeight: (showInfo ? '10000px' : '0px') }}>
+                      <ProjectRow
+                        onMouseEnter={this.showInfo}
+                        style={{ 
+                          backgroundColor: color,
+                          opacity: (showInfo ? 1 : 0),
+                          visibility: (showInfo ? 'visible' : 'hidden'),
+                        }}
+                      >
                         <ReadingText
                           dangerouslySetInnerHTML={createMarkup(body.childMarkdownRemark.html)}
                         />
