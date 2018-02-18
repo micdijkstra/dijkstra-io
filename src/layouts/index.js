@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import styled from 'styled-components'
 
-import Theme from '../components/Theme'
+import theme from '../theme'
 import Modal from '../components/Modal'
 
 import 'normalize.css'
@@ -58,7 +58,7 @@ class DefaultLayout extends React.Component {
     const isModal = (location.pathname == "/work")
 
     return(
-      <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={theme}>
         <Wrapper>
           <Helmet
             title="Michael Dijkstra is a young Australian software developer"

@@ -1,4 +1,4 @@
-const Theme = {
+const theme = {
   screen: {
     sm: '768px',
     md: '1280px',
@@ -46,4 +46,4 @@ const Theme = {
   }
 }
 
-export default Theme
+export default theme
