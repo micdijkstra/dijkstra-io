@@ -14,6 +14,10 @@ const Wrapper = styled.div`
   overflow: hidden;
 `
 
+const isModal = (pathname) => {
+  return pathname == "/work" || pathname.split('/')[1] === "work"
+}
+
 class DefaultLayout extends React.Component {
   static propTypes = {
     children: PropTypes.func,
@@ -34,7 +38,7 @@ class DefaultLayout extends React.Component {
     // cache scroll position
     this.scrollPosition = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
 
-    if (nextProps.location.pathname == "/work") {
+    if (isModal(nextProps.location.pathname)) {
       // Setup page for modal
       this.bodyElement.style.overflow = `hidden`
     } else {
@@ -44,7 +48,7 @@ class DefaultLayout extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.location.pathname == "/work") {
+    if (isModal(this.props.location.pathname)) {
       let scrollPosition = this.scrollPosition
       // Hack to maintain scroll position when modal shows
       window.setTimeout(function() {
@@ -55,7 +59,7 @@ class DefaultLayout extends React.Component {
 
   render() {
     const { location } = this.props
-    const isModal = (location.pathname == "/work")
+    const modal = isModal(location.pathname)
 
     return(
       <ThemeProvider theme={theme}>
@@ -68,11 +72,11 @@ class DefaultLayout extends React.Component {
             ]}
           />
           {
-            isModal
+            modal
             ? this.props.children({...this.props, location: { pathname: `/` },})
             : this.props.children({...this.props})
           }
-          {isModal && (
+          {modal && (
             <Modal isOpen={true} location={location}>
               {this.props.children}
             </Modal>

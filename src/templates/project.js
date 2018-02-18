@@ -125,11 +125,12 @@ const Section = styled.div`
 
 const ProjectLink = styled.a`
   color: ${props => props.theme.colors.onDark};
-  margin-left: 50%;
+  left: 0;
   position: absolute;
+  text-align: center;
   text-decoration: none;
   top: 0;
-  transform: translateX(-50%);
+  width: 100%;
 `
 
 const ProjectTag = styled.div`
@@ -275,6 +276,7 @@ class Project extends React.Component {
       vimeoUrl,
       body,
       metaDescription,
+      tags,
     } = this.props.data.contentfulProject
     const featuredImage = images && images[0]
     const otherImages = images && images.slice(1) || []
@@ -373,7 +375,7 @@ class Project extends React.Component {
                         }}
                       >
                         <ReadingText
-                          dangerouslySetInnerHTML={createMarkup(body.childMarkdownRemark.html)}
+                          dangerouslySetInnerHTML={createMarkup(body && body.childMarkdownRemark.html)}
                         />
                         <div>
                           <AsidePrimary>
@@ -382,7 +384,11 @@ class Project extends React.Component {
                           </AsidePrimary>
                           <AsideSecondary>
                             <div>&nbsp;</div>
-                            <div>Boo</div>
+                            {tags && tags.map((tag, index) => {
+                              return(
+                                <div key={index}><PageLink to={`/work/${tag.slug}`}>{tag.title}</PageLink></div>
+                              )
+                            })}
                           </AsideSecondary>
                         </div>
                       </ProjectRow>
@@ -449,6 +455,11 @@ export const pageQuery = graphql`
         sizes(maxWidth: 1800, cropFocus: TOP) {
         ...GatsbyContentfulSizes
         }
+      }
+      tags {
+        id
+        slug
+        title
       }
     }
   }

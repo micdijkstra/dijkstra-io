@@ -29,8 +29,6 @@ const PageTitle = styled.div`
   ${media.sm`
     font-size: ${props => props.theme.text.md.xl};
     padding: ${props => props.theme.spacing.lg};
-    word-break: normal;
-    hyphens: none;
     overflow: visible;
   `}
 `
