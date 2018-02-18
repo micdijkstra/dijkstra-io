@@ -12,6 +12,7 @@ import { Cards, Card } from '../components/Card'
 import { ReadingText } from '../components/Text'
 
 import getRandom from '../utils/getRandom'
+import { media } from '../utils/style'
 
 const AboutPage = Page.extend`
   background-color: ${props => props.theme.colors.secondary};
@@ -40,9 +41,9 @@ const AboutCard = Card.extend`
 `
 
 const AboutRow = Row.extend`
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     flex-direction: row;
-  }
+  `}
 `
 
 class About extends React.Component {

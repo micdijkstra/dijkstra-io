@@ -2,15 +2,17 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
+import { media } from '../../utils/style'
+
 const Page = styled.div`
   min-height: 100vh;
   padding-left: ${props => props.theme.spacing.sm};
   padding-right: ${props => props.theme.spacing.sm};
   padding-bottom: ${props => props.theme.spacing.xl};
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     padding-bottom: ${props => props.theme.spacing.md};
-  }
+  `}
 `;
 
 const PageTitle = styled.div`
@@ -24,13 +26,13 @@ const PageTitle = styled.div`
   word-break: break-word;
   hyphens: auto;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     font-size: ${props => props.theme.text.md.xl};
     padding: ${props => props.theme.spacing.lg};
     word-break: normal;
     hyphens: none;
     overflow: visible;
-  }
+  `}
 `
 const PageLink = styled(Link)`
   color: white;
@@ -70,9 +72,9 @@ const CloseLink = PageLink.extend`
   position: relative;
   z-index: 1;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     font-size: ${props => props.theme.text.md.md};
-  }
+  `}
 `
 
 export { Page, PageTitle, PageLink, CloseHeader, CloseLink }

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import { Aside, AsideSecondary } from '../Aside'
 
+import { media } from '../../utils/style'
+
 const Wrapper = styled.div`
   float: right;
 
@@ -10,9 +12,9 @@ const Wrapper = styled.div`
     margin-top: ${props => props.theme.spacing.lg};
     margin-left: ${props => props.theme.spacing.sm};
 
-    @media (min-width: ${props => props.theme.screen.sm}) {
+    ${media.sm`
       margin-left: ${props => props.theme.spacing.md};
-    }
+    `}
   }
 `;
 

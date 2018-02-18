@@ -6,6 +6,8 @@ import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
 import { Aside, AsideSecondary } from '../components/Aside'
 import { Container, Row } from '../components/Container'
 
+import { media } from '../utils/style'
+
 const PageGames = Page.extend`
   background-color: ${props => props.theme.colors.quaternary};
   color: ${props => props.theme.colors.onDark};
@@ -26,9 +28,9 @@ const Game = styled.iframe`
   top: 50%;
   width: 640px;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     display: block;
-  }
+  `}
 `
 
 const NoGame = styled.div`
@@ -40,9 +42,9 @@ const NoGame = styled.div`
   top: 50%;
   width: 100%;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     display: none;
-  }
+  `}
 `
 
 const GamesPage = ({ transition }) => (

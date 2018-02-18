@@ -14,7 +14,7 @@ import { ReadingText } from '../components/Text'
 import { Aside, AsideSecondary, AsideLine } from '../components/Aside'
 
 import getTransitionStyle from "../utils/getTransitionStyle"
-import { fadeIn } from '../utils/style'
+import { media, fadeIn } from '../utils/style'
 
 const timeout = 250
 const transitionStyles = timeout => {
@@ -65,10 +65,10 @@ const ProjectTitle = PageTitle.extend`
   padding-bottom: 0;
   padding-top: 0;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     padding-bottom: 0;
     padding-top: 0;
-  }
+  `}
 `
 
 const Wrapper = styled.div`
@@ -297,13 +297,12 @@ class Project extends React.Component {
           <title>{title} :: Michael Dijkstra</title>
           <meta name="description" content={metaDescription} />
         </Helmet>
+
         <ProjectCloseHeader>
           <CloseLink to="/">close</CloseLink>
         </ProjectCloseHeader>
 
-        <Wrapper
-          style={transitionStyle}
-        >
+        <Wrapper style={transitionStyle}>
           <ProjectPage 
             style={{
               backgroundColor: color,

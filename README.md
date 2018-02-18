@@ -23,8 +23,17 @@
 ### React
 
 + Styled components: https://www.styled-components.com/docs/basics#extending-styles
++ https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
 + Images: https://www.gatsbyjs.org/packages/gatsby-image/
 + Parallax: https://github.com/gilbox/react-spark-scroll
+
+#### Why styled components
+
+Right as I was building this site there was a good [Twitter
+discussion](https://twitter.com/mjackson/status/964662241168539648) about CSS
+in React apps. My takeaway was overcoming the awkwardness I first encountered
+when combining my HTML and JavaScript, adding CSS to the mix makes sense here
+and now everything is a component but it can also easily be extended.
 
 
 ## Development

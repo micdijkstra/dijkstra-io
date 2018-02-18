@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 import { Container } from '../components/Container'
 
+import { media } from '../utils/style'
+
 const Background = styled.div`
   left: 0;
   height: 100%;
@@ -31,10 +33,10 @@ const WorkContainer = Container.extend`
   min-width: 80%;
   padding-right: ${props => props.theme.spacing.md};
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     min-width: 60%;
     padding-right: ${props => props.theme.spacing.xl};
-  }
+  `}
 `
 
 const WorkItems = styled.ol`
@@ -43,9 +45,9 @@ const WorkItems = styled.ol`
   line-height: ${props => props.theme.line.sm};
   list-style: none;
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     font-size: ${props => props.theme.text.md.md};
-  }
+  `}
 `
 
 const WorkItem = styled.li`
@@ -58,9 +60,9 @@ const WorkItem = styled.li`
     left: -50px;
     position: absolute;
 
-    @media (min-width: ${props => props.theme.screen.sm}) {
+    ${media.sm`
       left: -75px;
-    }
+    `}
   }
 
   :nth-child(-n+9):before {

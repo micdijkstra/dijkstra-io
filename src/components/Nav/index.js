@@ -3,12 +3,14 @@ import styled from 'styled-components'
 
 import { PageLink } from '../Page'
 
+import { media } from '../../utils/style'
+
 const Wrapper = styled.div`
   font-size: ${props => props.theme.text.lg};
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     font-size: ${props => props.theme.text.md.lg};
-  }
+  `}
 `
 
 const NavList = styled.ol`

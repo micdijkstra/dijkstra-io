@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { media } from '../../utils/style'
+
 const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
@@ -14,13 +16,13 @@ const Row = styled.div`
     width: 100%;
   }
 
-  @media (min-width: ${props => props.theme.screen.sm}) {
+  ${media.sm`
     flex-direction: row-reverse;
 
     > div {
       width: 50%;
     }
-  }
+  `}
 `;
 
 export { Container, Row }
