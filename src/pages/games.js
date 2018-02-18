@@ -2,7 +2,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
+import { Page, PageTitle } from '../components/Page'
+import Close from '../components/Close'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
 import { Container, Row } from '../components/Container'
 
@@ -53,9 +54,7 @@ const GamesPage = ({ transition }) => (
       <Helmet>
         <title>Games :: Michael Dijkstra</title>
       </Helmet>
-      <CloseHeader>
-        <CloseLink to="/">close</CloseLink>
-      </CloseHeader>
+      <Close />
       <GameContainer>
         <NoGame>Load this page on your computer to play games!</NoGame>
         <Game src="https://wolf3d.dijkstra.io"></Game>

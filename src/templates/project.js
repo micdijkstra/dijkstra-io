@@ -9,7 +9,8 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
 import { Container, Row } from '../components/Container'
 import { Cards, Card } from '../components/Card'
-import { Page, PageTitle, PageLink, CloseHeader, CloseLink } from '../components/Page'
+import { Page, PageTitle, PageLink } from '../components/Page'
+import Close from '../components/Close'
 import { ReadingText } from '../components/Text'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
 
@@ -52,7 +53,8 @@ const ProjectImg = styled(Img)`
   ${fadeIn()}
 `
 
-const ProjectCloseHeader = CloseHeader.extend`
+const ProjectCloseHeader = styled.div`
+  color: ${props => props.theme.colors.onDark};
   left: 0;
   position: fixed;
   top: 0;
@@ -299,7 +301,7 @@ class Project extends React.Component {
         </Helmet>
 
         <ProjectCloseHeader>
-          <CloseLink to="/">close</CloseLink>
+          <Close />
         </ProjectCloseHeader>
 
         <Wrapper style={transitionStyle}>
@@ -360,7 +362,7 @@ class Project extends React.Component {
 
                     <InfoSection onMouseLeave={this.hideInfo}>
                       <ProjectTag onMouseEnter={this.showInfo}>
-                        {showLiveUrl ? 'c' : 'a'}.&emsp;<ProjectInfoTag>Info</ProjectInfoTag>
+                        {showLiveUrl ? 'c' : 'a'}.&emsp;<ProjectInfoTag to="#info">Info</ProjectInfoTag>
                       </ProjectTag>
                       <ProjectRow
                         onMouseEnter={this.showInfo}

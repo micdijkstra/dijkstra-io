@@ -61,20 +61,4 @@ const PageLink = styled(Link)`
   }
 `
 
-const CloseHeader = styled.div`
-  text-align: center;
-  padding: ${props => props.theme.spacing.md};
-`
-
-const CloseLink = PageLink.extend`
-  color: ${props => props.theme.colors.dark};
-  font-size: ${props => props.theme.text.md};
-  position: relative;
-  z-index: 1;
-
-  ${media.sm`
-    font-size: ${props => props.theme.text.md.md};
-  `}
-`
-
-export { Page, PageTitle, PageLink, CloseHeader, CloseLink }
+export { Page, PageTitle, PageLink }

@@ -29,6 +29,7 @@ const BackgroundImage = Background.extend`
 `
 
 const WorkContainer = Container.extend`
+  color: ${props => props.theme.colors.primary};
   float: right;
   min-width: 80%;
   padding-right: ${props => props.theme.spacing.md};

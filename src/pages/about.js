@@ -7,7 +7,8 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
 import { Container, Row } from '../components/Container'
 import Tagline from '../components/Tagline'
-import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
+import { Page, PageTitle } from '../components/Page'
+import Close from '../components/Close'
 import { Cards, Card } from '../components/Card'
 import { ReadingText } from '../components/Text'
 
@@ -56,10 +57,7 @@ class About extends React.Component {
           <title>About :: Michael Dijkstra</title>
         </Helmet>
         <AboutPage>
-          <CloseHeader>
-            <CloseLink to="/">close</CloseLink>
-          </CloseHeader>
-
+          <Close />
           <SparkProxy.div proxyId="parallax">
             <Container>
               <Cards order={[3,2,0,1]}>

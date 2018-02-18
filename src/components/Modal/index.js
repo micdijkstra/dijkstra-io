@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { CloseHeader, CloseLink } from '../Page'
+import Close from '../Close'
+
+import theme from '../../theme'
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.modal};
-  color: ${props => props.theme.colors.dark};
+  color: ${props => props.theme.colors.primary};
   font-size: ${props => props.theme.text.md};
   height: 100%;
   left: 0;
@@ -16,15 +18,9 @@ const Wrapper = styled.div`
   z-index: 1500;
 `
 
-const ModalCloseLink = CloseLink.extend`
-  color: ${props => props.theme.colors.primary};
-`
-
 const Modal = ({ children }) => (
   <Wrapper>
-    <CloseHeader>
-      <ModalCloseLink to="/">close</ModalCloseLink>
-    </CloseHeader>
+    <Close />
 
     {children()}
   </Wrapper>
