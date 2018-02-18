@@ -61,9 +61,9 @@ class DefaultLayout extends React.Component {
       <ThemeProvider theme={theme}>
         <Wrapper>
           <Helmet
-            title="Michael Dijkstra is a young Australian software developer"
+            title="Michael Dijkstra is sarcasitc but hard-working software developer"
             meta={[
-              { name: 'description', content: 'A young Australian software developer' },
+              { name: 'description', content: 'Australian web and mobile developer' },
               { name: 'keywords', content: 'front-end, website' },
             ]}
           />
