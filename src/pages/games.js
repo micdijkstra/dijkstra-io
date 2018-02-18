@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
-import { Aside, AsideSecondary } from '../components/Aside'
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
 import { Container, Row } from '../components/Container'
 
 import { media } from '../utils/style'
@@ -64,14 +64,14 @@ const GamesPage = ({ transition }) => (
       <Container>
         <Row>
           <div>
-            <Aside>
+            <AsidePrimary>
               <div>&nbsp;</div>
               <div>move</div>
               <div>run</div>
               <div>open</div>
               <div>fire</div>
               <div>strafe</div>
-            </Aside>
+            </AsidePrimary>
             <AsideSecondary>
               <div>buttons</div>
               <div>arrow keys</div>

@@ -9,7 +9,7 @@ import { Container, Row } from '../components/Container'
 import Tagline from '../components/Tagline'
 import { Page, PageTitle, CloseHeader, CloseLink } from '../components/Page'
 import { Cards, Card } from '../components/Card'
-import { Aside, AsideSecondary, AsideLine } from '../components/Aside'
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
 import { ReadingText } from '../components/Text'
 
 import getRandom from '../utils/getRandom'
@@ -99,13 +99,13 @@ class Contact extends React.Component {
                     <p>Please use the form below to get in touch.</p>
                   </ReadingText>
                   <div>
-                    <Aside>
-                      <AsideLine>Socials</AsideLine>
-                    </Aside>
+                    <AsidePrimary>
+                      <div>Socials</div>
+                    </AsidePrimary>
                     <AsideSecondary>
-                      <AsideLine>GitHub</AsideLine>
-                      <AsideLine>Instagram</AsideLine>
-                      <AsideLine>Twitter</AsideLine>
+                      <div>GitHub</div>
+                      <div>Instagram</div>
+                      <div>Twitter</div>
                     </AsideSecondary>
                   </div>
                 </Row>

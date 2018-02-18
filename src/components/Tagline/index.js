@@ -1,37 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Aside, AsideSecondary } from '../Aside'
+import { AsidePrimary, AsideSecondary } from '../Aside'
 
 import { media } from '../../utils/style'
 
 const Wrapper = styled.div`
   float: right;
-
-  > div:nth-of-type(2) {
-    margin-top: ${props => props.theme.spacing.lg};
-    margin-left: ${props => props.theme.spacing.sm};
-
-    ${media.sm`
-      margin-left: ${props => props.theme.spacing.md};
-    `}
-  }
 `;
 
+const TaglineContent = AsideSecondary.extend`
+  margin-top: 80px;
+  margin-left: ${props => props.theme.spacing.sm};
+
+  ${media.sm`
+    margin-left: ${props => props.theme.spacing.md};
+  `}
+`
+
 const Line = styled.div`
-  line-height: ${props => props.theme.line.md};
   position: relative;
-  text-align: right;
-`
-const SecondaryLine = Line.extend`
-  text-align: left;
-
-  &:first-of-type {
-    margin-top: ${props => props.theme.line.md * 11}px;
-  }
-`
-
-const Item = styled.span`
 `
 
 const AltItem = styled.span`
@@ -70,30 +58,30 @@ class Tagline extends React.Component {
 
     return(
         <Wrapper onMouseEnter={this.showAlt} onMouseLeave={this.showDefault}>
-          <Aside>
+          <AsidePrimary>
+            <div>
+              <span>a</span>
+            </div>
             <Line>
-              <Item>a</Item>
-            </Line>
-            <Line>
-              <Item style={{opacity: alt  ? 0 : 1 }}>sarcastic</Item>
+              <span style={{opacity: alt  ? 0 : 1 }}>sarcastic</span>
               <AltItem style={{opacity: alt  ? 1 : 0 }}>hard-working</AltItem>
             </Line>
+            <div>
+              <span>but</span>
+            </div>
+          </AsidePrimary>
+          <TaglineContent>
             <Line>
-              <Item>but</Item>
-            </Line>
-          </Aside>
-          <AsideSecondary>
-            <SecondaryLine>
-              <Item style={{opacity: alt  ? 0 : 1 }}>hard-working</Item>
+              <span style={{opacity: alt  ? 0 : 1 }}>hard-working</span>
               <SecondaryAltItem style={{opacity: alt  ? 1 : 0 }}>sarcastic</SecondaryAltItem>
-            </SecondaryLine>
-            <SecondaryLine>
-              <Item>software</Item>
-            </SecondaryLine>
-            <SecondaryLine>
-              <Item>developer</Item>
-            </SecondaryLine>
-          </AsideSecondary>
+            </Line>
+            <div>
+              <span>software</span>
+            </div>
+            <div>
+              <span>developer</span>
+            </div>
+          </TaglineContent>
         </Wrapper>
     )
   }

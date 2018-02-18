@@ -11,7 +11,7 @@ import { Container, Row } from '../components/Container'
 import { Cards, Card } from '../components/Card'
 import { Page, PageTitle, PageLink, CloseHeader, CloseLink } from '../components/Page'
 import { ReadingText } from '../components/Text'
-import { Aside, AsideSecondary, AsideLine } from '../components/Aside'
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
 
 import getTransitionStyle from "../utils/getTransitionStyle"
 import { media, fadeIn } from '../utils/style'
@@ -374,13 +374,13 @@ class Project extends React.Component {
                           dangerouslySetInnerHTML={createMarkup(body.childMarkdownRemark.html)}
                         />
                         <div>
-                          <Aside>
-                            <AsideLine>Technologies</AsideLine>
-                            <AsideLine>used</AsideLine>
-                          </Aside>
+                          <AsidePrimary>
+                            <div>Technologies</div>
+                            <div>used</div>
+                          </AsidePrimary>
                           <AsideSecondary>
-                            <AsideLine>&nbsp;</AsideLine>
-                            <AsideLine>Boo</AsideLine>
+                            <div>&nbsp;</div>
+                            <div>Boo</div>
                           </AsideSecondary>
                         </div>
                       </ProjectRow>
