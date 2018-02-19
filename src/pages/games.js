@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Page, PageTitle } from '../components/Page'
 import Close from '../components/Close'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
-import { Container, Row } from '../components/Container'
+import { Container, Row } from '../components/Layout'
 
 import { media } from '../utils/style'
 

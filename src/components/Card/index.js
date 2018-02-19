@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Perf from 'react-addons-perf'
+
+const Group = styled.div`
+  minHeight: 100vh;
+  position: relative;
+`
+
 const Card = styled.div`
   position: relative;
 `
@@ -14,6 +21,11 @@ class Cards extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // Only update if the order changes
+    return this.state.order.join('') !== nextState.order.join('')
+  }
+
   render() {
     const children = React.Children.map(this.props.children, (child,index) => {
       return React.cloneElement(child, {
@@ -21,16 +33,22 @@ class Cards extends React.Component {
           zIndex: this.state.order.indexOf(index),
         },
         onMouseEnter: () => {
+          Perf.start()
           let order = this.state.order.slice(0) // Clone the array
           const i = this.state.order.indexOf(index) // Get the current index
           order.splice(i, 1) // Remove from array
           order.push(index) // Add to end of array
           this.setState({ order: order })
+        },
+        componentDidUpdate: () => {
+          Perf.stop()
+          Perf.printInclusive()
+          Perf.printWasted()
         }
       })
     })
 
-    return <div style={{position: 'relative'}} {...this.props}>{children}</div>
+    return <Group {...this.props}>{children}</Group>
   }
 }
 

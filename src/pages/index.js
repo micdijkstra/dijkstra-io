@@ -9,7 +9,7 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 import Tagline from '../components/Tagline'
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
-import { Container } from '../components/Container'
+import { Container } from '../components/Layout'
 import { Page } from '../components/Page'
 import { Cards, Card } from '../components/Card'
 
@@ -87,7 +87,7 @@ class Index extends React.Component {
 
           <SparkProxy.div proxyId="parallax">
             <Container>
-              <Cards order={[0,1,2,3,4]} style={{position: 'relative', minHeight: '100vh'}}>
+              <Cards order={[0,1,2,3,4]}>
                 <IndexCard>
                   <SparkScroll.div
                     proxy="parallax"

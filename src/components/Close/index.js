@@ -27,6 +27,10 @@ const CloseLink = PageLink.extend`
 `
 
 class Close extends React.Component {
+  shouldComponentUpdate() {
+    return false
+  }
+
   render() {
     return(
       <CloseHeader>

@@ -8,6 +8,10 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
+const Section = styled.div`
+  margin-bottom: ${props => props.theme.spacing.xl};
+`
+
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -25,4 +29,4 @@ const Row = styled.div`
   `}
 `;
 
-export { Container, Row }
+export { Section, Container, Row }

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Page, PageTitle } from '../components/Page'
 import Close from '../components/Close'
-import { Container } from '../components/Container'
+import { Container } from '../components/Layout'
 
 const PageNotFound = Page.extend`
   background-color: ${props => props.theme.colors.quaternary};

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import sparkScroll from 'react-spark-scroll-gsap'
 const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
-import { Container, Row } from '../components/Container'
+import { Container, Row } from '../components/Layout'
 import Tagline from '../components/Tagline'
 import { Page, PageTitle } from '../components/Page'
 import Close from '../components/Close'

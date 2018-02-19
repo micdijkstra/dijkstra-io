@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
-import { Container } from '../../components/Container'
+import { Container } from '../../components/Layout'
 
 import { media } from '../../utils/style'
 
@@ -79,6 +79,51 @@ const WorkLink = styled(Link)`
   text-decoration: none;
 `
 
+class Backgrounds extends React.Component {
+  render() {
+    const { color, image } = this.props
+
+    return(
+      <div>
+        <Background style={{backgroundColor: color}} />
+        <BackgroundImage style={{backgroundImage: `url(${image}`}} />
+      </div>
+    )
+  }
+}
+
+class Work extends React.Component {
+  shouldComponentUpdate() {
+    return false
+  }
+
+  render() {
+    const { title, projects } = this.props
+
+    return(
+      <WorkContainer>
+        <WorkItems>
+          {projects.map((project, index) => {
+            const color = project.color
+            const src = project.image && project.image.sizes.src
+
+            return (
+              <WorkItem
+                key={index}
+                onMouseEnter={() => this.props.showProject(color, src)}
+              >
+                <WorkLink to={`/${project.slug}`}>
+                  {project.title}
+                </WorkLink>
+              </WorkItem>
+            )
+          })}
+        </WorkItems>
+      </WorkContainer>
+    )
+  }
+}
+
 class WorkList extends React.Component {
   constructor(props) {
     super(props)
@@ -91,6 +136,11 @@ class WorkList extends React.Component {
     this.showProject = this.showProject.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.color !== nextState.color
+      || this.state.image !== nextState.image
+  }
+
   showProject(color, image) {
     this.setState({ color, image })
   }
@@ -101,27 +151,12 @@ class WorkList extends React.Component {
 
     return(
       <div>
-        <Background style={{backgroundColor: color}} />
-        <BackgroundImage style={{backgroundImage: `url(${image}`}} />
-        <WorkContainer>
-          <WorkItems>
-            {projects.map((project, index) => {
-              const color = project.color
-              const src = project.image && project.image.sizes.src
-
-              return (
-                <WorkItem
-                  key={index}
-                  onMouseEnter={() => this.showProject(color, src)}
-                >
-                  <WorkLink to={`/${project.slug}`}>
-                    {project.title}
-                  </WorkLink>
-                </WorkItem>
-              )
-            })}
-          </WorkItems>
-        </WorkContainer>
+        <Backgrounds color={color} image={image} />
+        <Work
+          title={title}
+          projects={projects}
+          showProject={this.showProject}
+        />
       </div>
     )
   }

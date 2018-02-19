@@ -2,61 +2,116 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import Img from 'gatsby-image'
 import { navigateTo } from "gatsby-link"
 import sparkScroll from 'react-spark-scroll-gsap'
 const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
-import { Container, Row } from '../components/Container'
+import { Section, Container, Row } from '../components/Layout'
 import { Cards, Card } from '../components/Card'
 import { Page, PageTitle, PageLink } from '../components/Page'
 import Close from '../components/Close'
-import { ReadingText } from '../components/Text'
-import { AsidePrimary, AsideSecondary } from '../components/Aside'
+
+import { ProjectTag, ProjectImage } from '../components/Project'
+import ProjectFrames from '../components/Project/Frames'
+import ProjectInfo from '../components/Project/Info'
+import ProjectImages from '../components/Project/Images'
 
 import getTransitionStyle from "../utils/getTransitionStyle"
-import { media, fadeIn } from '../utils/style'
+import { fadeIn, media, timeout } from '../utils/style'
 
-const timeout = 250
 const transitionStyles = timeout => {
   return {
-    exiting: {
-      next: {
-        transition: `transform ${timeout}ms ease-in-out`,
-        transform: 'translateX(-100vw)',
+    wrapper: {
+      exiting: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-100vw)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(100vw)',
+        },
+        current: {
+        }
       },
-      previous: {
-        transition: `transform ${timeout}ms ease-in-out`,
-        transform: 'translateX(100vw)',
+      loaded: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-15vw)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(15vw)',
+        },
+        current: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(0)',
+        }
       },
-      current: {
-      }
     },
-    loaded: {
-      next: {
-        transition: `transform ${timeout}ms ease-in-out`,
-        transform: 'translateX(-15vw)',
+    previous: {
+      exiting: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-100vw)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(0)',
+        },
+        current: {
+        }
       },
-      previous: {
-        transition: `transform ${timeout}ms ease-in-out`,
-        transform: 'translateX(15vw)',
+      loaded: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-100vw)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-85vw)',
+        },
+        current: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(-100vw)',
+        }
       },
-      current: {
-        transition: `transform ${timeout}ms ease-in-out`,
-        transform: 'translateX(0)',
-      }
     },
+    next: {
+      exiting: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(0)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(100vw)',
+        },
+        current: {
+        }
+      },
+      loaded: {
+        next: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(85vw)',
+        },
+        previous: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(100vw)',
+        },
+        current: {
+          transition: `transform ${timeout}ms ease-in-out`,
+          transform: 'translateX(100vw)',
+        }
+      },
+    }
   }
 }
-
-const ProjectImg = styled(Img)`
-  ${fadeIn()}
-`
 
 const ProjectCloseHeader = styled.div`
   color: ${props => props.theme.colors.onDark};
   left: 0;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
@@ -84,19 +139,19 @@ const ProjectPage = Page.extend`
   padding-top: 250px;
 `
 
-const SiblingProjectPage = ProjectPage.extend`
+const SiblingPage = ProjectPage.extend`
   height: 100%;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
 `
 
-const NextProjectPage = SiblingProjectPage.extend`
+const NextPage = SiblingPage.extend`
   transform: translateX(100vw);
 `
 
-const PreviousProjectPage = SiblingProjectPage.extend`
+const PreviousPage = SiblingPage.extend`
   transform: translateX(-100vw);
 `
 
@@ -119,10 +174,6 @@ const ProjectContainer = Container.extend`
   overflow: visible;
 `
 
-const Section = styled.div`
-  margin-bottom: ${props => props.theme.spacing.xl};
-`
-
 const ProjectLink = styled.a`
   color: ${props => props.theme.colors.onDark};
   left: 0;
@@ -131,66 +182,6 @@ const ProjectLink = styled.a`
   text-decoration: none;
   top: 0;
   width: 100%;
-`
-
-const ProjectTag = styled.div`
-  font-size: ${props => props.theme.text.lg};
-  margin-left: 25%;
-  margin-top: ${props => props.theme.spacing.md};
-`
-
-const ProjectInfoTag = PageLink.extend`
-  position: relative;
-  z-index: 3;
-
-  &:before {
-    width: 100%;
-  }
-`
-
-const ProjectFrame = styled.div`
-  ${fadeIn()}
-  height: 0;
-  position: relative;
-  width: 100%;
-
-  iframe {
-    border: 0;
-    height: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    volume: silent;
-    width: 100%;
-  }
-`
-
-const DesktopFrame = ProjectFrame.extend`
-  padding-bottom: 70%;
-`
-
-const MobileFrame = ProjectFrame.extend`
-  padding-bottom: 65%;
-  margin-left: 12%;
-  width: 365px;
-`
-
-const VimeoFrame = ProjectFrame.extend`
-  padding-bottom: 51%;
-`
-
-const InfoSection = Section.extend`
-  margin-top: ${props => props.theme.spacing.xl};
-`
-
-const ProjectRow = Row.extend`
-  padding-top: ${props => props.theme.spacing.md};
-  overflow: hidden;
-  left: 0;
-  position: absolute;
-  right: 0;
-  transition: opacity 0.15s ease-in-out;
-  z-index: 2;
 `
 
 class Project extends React.Component {
@@ -207,8 +198,6 @@ class Project extends React.Component {
     this.showPrevious = this.showPrevious.bind(this)
     this.showCurrent = this.showCurrent.bind(this)
     this.goTo = this.goTo.bind(this)
-    this.showInfo = this.showInfo.bind(this)
-    this.hideInfo = this.hideInfo.bind(this)
   }
 
   componentDidMount() {
@@ -230,18 +219,6 @@ class Project extends React.Component {
     window.setTimeout(() => {
       navigateTo(slug)
     }, timeout)
-  }
-
-  showInfo() {
-    this.setState({
-      showInfo: true
-    })
-  }
-
-  hideInfo() {
-    this.setState({
-      showInfo: false
-    })
   }
 
   showNext() {
@@ -280,16 +257,18 @@ class Project extends React.Component {
     } = this.props.data.contentfulProject
     const featuredImage = images && images[0]
     const otherImages = images && images.slice(1) || []
+
     const { transition, data } = this.props
     const { next, previous } = this.props.pathContext
-    const { exiting, showNext, showPrevious, showInfo } = this.state
+    const { exiting, showNext, showPrevious } = this.state
+
     const status = exiting && 'exiting' || 'loaded'
     const direction = (showNext && 'next') || (showPrevious && 'previous') || 'current'
-    const transitionStyle = transitionStyles(timeout)[status][direction]
+    const wrapperStyle = transitionStyles(timeout)['wrapper'][status][direction]
+    const nextStyle = Object.assign({ backgroundColor: next.color}, transitionStyles(timeout)['next'][status][direction])
+    const previousStyle = Object.assign({ backgroundColor: previous.color},transitionStyles(timeout)['previous'][status][direction])
 
-    const showLiveUrl = liveUrl && liveUrl !== ""
-    const showVimeo = !showLiveUrl && vimeoUrl
-    const showFeaturedImage = !showLiveUrl && !showVimeo && featuredImage
+    const projectPageStyle = { backgroundColor: color }
 
     function createMarkup(text) {
       return {__html: text};
@@ -306,12 +285,8 @@ class Project extends React.Component {
           <Close />
         </ProjectCloseHeader>
 
-        <Wrapper style={transitionStyle}>
-          <ProjectPage 
-            style={{
-              backgroundColor: color,
-            }}
-          >
+        <Wrapper style={wrapperStyle}>
+          <ProjectPage style={projectPageStyle}>
             <SparkProxy.div proxyId="parallax">
               <ProjectContainer>
                 <Cards order={[0,1]} style={{position: 'relative'}}>
@@ -329,96 +304,32 @@ class Project extends React.Component {
                     </SparkScroll.div>
                   </Card>
                   <Card>
-                    { showLiveUrl &&
-                        <div>
-                          <Section>
-                            <DesktopFrame>
-                              <iframe src={liveUrl} />
-                            </DesktopFrame>
-                            <ProjectTag>a.&emsp;desktop</ProjectTag>
-                          </Section>
+                    <ProjectFrames liveUrl={liveUrl} vimeoUrl={vimeoUrl} image={featuredImage} />
 
-                          <Section>
-                            <MobileFrame style={{animationDelay: `${timeout}ms`}}>
-                              <iframe src={liveUrl} />
-                            </MobileFrame>
-                            <ProjectTag>b.&emsp;mobile</ProjectTag>
-                          </Section>
-                        </div>
-                    }
+                    <Section>
+                      <ProjectInfo body={body} tags={tags} color={color} titleKey={liveUrl? 'c' : 'a'} />
+                    </Section>
 
-                    { showVimeo &&
-                      <VimeoFrame>
-                        <iframe
-                          src={`${vimeoUrl}?autoplay=1`}
-                          allowFullScreen
-                        />
-                      </VimeoFrame>
-                    }
-
-                    { showFeaturedImage &&
-                      <Section>
-                        <ProjectImg sizes={featuredImage.sizes} alt={featuredImage.description} />
-                      </Section>
-                    }
-
-                    <InfoSection onMouseLeave={this.hideInfo}>
-                      <ProjectTag onMouseEnter={this.showInfo}>
-                        {showLiveUrl ? 'c' : 'a'}.&emsp;<ProjectInfoTag to="#info">Info</ProjectInfoTag>
-                      </ProjectTag>
-                      <ProjectRow
-                        onMouseEnter={this.showInfo}
-                        style={{ 
-                          backgroundColor: color,
-                          opacity: (showInfo ? 1 : 0),
-                          visibility: (showInfo ? 'visible' : 'hidden'),
-                        }}
-                      >
-                        <ReadingText
-                          dangerouslySetInnerHTML={createMarkup(body && body.childMarkdownRemark.html)}
-                        />
-                        <div>
-                          <AsidePrimary>
-                            <div>Technologies</div>
-                            <div>used</div>
-                          </AsidePrimary>
-                          <AsideSecondary>
-                            <div>&nbsp;</div>
-                            {tags && tags.map((tag, index) => {
-                              return(
-                                <div key={index}><PageLink to={`/work/${tag.slug}`}>{tag.title}</PageLink></div>
-                              )
-                            })}
-                          </AsideSecondary>
-                        </div>
-                      </ProjectRow>
-                    </InfoSection>
-
-                    {otherImages.map((image, index) => {
-                      return(
-                        <Section key={index}>
-                          <ProjectImg sizes={image.sizes} alt={image.description} style={{animationDelay: `${(index + 1) * timeout}ms`}} />
-                        </Section>
-                      )
-                    })}
+                    <ProjectImages images={otherImages} />
                   </Card>
                 </Cards>
               </ProjectContainer>
             </SparkProxy.div>
           </ProjectPage>
-
-          <NextProjectPage style={{backgroundColor: next.color}}>
-            <ProjectContainer>
-              <ProjectTitle dangerouslySetInnerHTML={createMarkup(next.linkText)} />
-            </ProjectContainer>
-          </NextProjectPage>
-
-          <PreviousProjectPage style={{backgroundColor: previous.color}}>
-            <ProjectContainer>
-              <ProjectTitle dangerouslySetInnerHTML={createMarkup(previous.linkText)} />
-            </ProjectContainer>
-          </PreviousProjectPage>
         </Wrapper>
+
+        <NextPage style={nextStyle}>
+          <ProjectContainer>
+            <ProjectTitle dangerouslySetInnerHTML={createMarkup(next.linkText)} />
+          </ProjectContainer>
+        </NextPage>
+
+        <PreviousPage style={previousStyle}>
+          <ProjectContainer>
+            <ProjectTitle dangerouslySetInnerHTML={createMarkup(previous.linkText)} />
+          </ProjectContainer>
+        </PreviousPage>
+
         <NextPagination href={next.slug} onClick={(e) => this.goTo(e, next.slug) } onMouseEnter={this.showNext} onMouseLeave={this.showCurrent} />
         <PreviousPagination href={previous.slug} onClick={(e) => this.goTo(e, previous.slug) } onMouseEnter={this.showPrevious} onMouseLeave={this.showCurrent} />
       </div>

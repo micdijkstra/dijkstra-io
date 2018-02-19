@@ -1,5 +1,16 @@
 import styled, { css, keyframes } from 'styled-components'
 
+const fadeSequence = keyframes`
+  100% { opacity: 1; }
+`;
+
+const fadeIn = () => {
+  return `
+    animation: ${fadeSequence} .5s forwards;
+    opacity: 0;
+  `
+}
+
 const media = {
   sm: (...args) => css`
     @media (min-width: ${props => props.theme.screen.sm}) {
@@ -23,15 +34,6 @@ const media = {
   `
 }
 
-const fadeSequence = keyframes`
-  100% { opacity: 1; }
-`;
+const timeout = 250
 
-const fadeIn = () => {
-  return `
-    animation: ${fadeSequence} .5s forwards;
-    opacity: 0;
-  `
-}
-
-export { fadeIn, media }
+export { fadeIn, media, timeout }
