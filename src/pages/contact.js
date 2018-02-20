@@ -13,7 +13,8 @@ import { Cards, Card } from '../components/Card'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
 import { ReadingText } from '../components/Text'
 
-import getRandom from '../utils/getRandom'
+import { fadeTimeline } from '../utils/style'
+import getPageImages from '../utils/getPageImages'
 
 const ContactPage = Page.extend`
   background-color: ${props => props.theme.colors.tertiary};
@@ -22,15 +23,16 @@ const ContactPage = Page.extend`
 
 const ContactCard = Card.extend`
   &:nth-of-type(2) {
-    margin-left: auto;
-    margin-top: -50%;
+    margin-left: -5%;
+    margin-top: -80%;
     margin-bottom: -45%;
     max-width: 60%;
   }
 
   &:nth-of-type(3) {
     margin-bottom: -25%;
-    margin-top: -75%;
+    margin-left: auto;
+    margin-top: -60%;
     max-width: 80%;
   }
 
@@ -44,6 +46,8 @@ const ContactCard = Card.extend`
 class Contact extends React.Component {
   render() {
     const { transition, data } = this.props
+    const pageImages = getPageImages(data.allFile.edges, 1, 2)
+    const images = [pageImages['portrait'][0], pageImages['landscape'][0], pageImages['landscape'][1]]
 
     return(
       <div style={transition && transition.style}>
@@ -67,17 +71,18 @@ class Contact extends React.Component {
                     <PageTitle>hello<br />from<br />yeg</PageTitle>
                   </SparkScroll.div>
                 </ContactCard>
-                {getRandom(data.allFile.edges, 3).map((img, index) => {
+                {images.map((img, index) => {
+                  const translateX = `${(index % 2 == 0 ? ' ' : '-') + index+1 * 15}vw`
                   return (
                     <ContactCard key={index}>
                       <SparkScroll.div
                         proxy="parallax"
                         timeline={{
                           topBottom: { transform: 'translate3d(0px,0px,0px)' },
-                          bottomTop: { transform: 'translate3d(' + (index % 2 == 0 ? ' ' : '-') + index+1 * 15 + 'vw,-120px,0px)' }
+                          bottomTop: { transform: `translate3d(${translateX},-120px,0px)` }
                         }}
                       >
-                        <Img sizes={img.node.childImageSharp.sizes} />
+                        <Img sizes={img.sizes} />
                       </SparkScroll.div>
                     </ContactCard>
                   )
@@ -86,12 +91,7 @@ class Contact extends React.Component {
             </Container>
 
             <Container>
-              <SparkScroll.div
-                timeline={{
-                  topBottom: { opacity: 0 },
-                  bottomBottom: { opacity: 1 }
-                }}
-              >
+              <SparkScroll.div timeline={fadeTimeline}>
                 <Row>
                   <ReadingText>
                     <p>Michael Dijkstra is available for hire for web and mobile software development.</p>

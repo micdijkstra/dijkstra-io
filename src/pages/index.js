@@ -13,12 +13,12 @@ import { Container } from '../components/Layout'
 import { Page } from '../components/Page'
 import { Cards, Card } from '../components/Card'
 
-import getRandom from '../utils/getRandom'
+import { fadeTimeline } from '../utils/style'
+import getPageImages from '../utils/getPageImages'
 
 const IndexPage = Page.extend`
   background-color: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.onDark};
-  padding-bottom: 0;
 `
 
 const IndexCard = Card.extend`
@@ -29,8 +29,8 @@ const IndexCard = Card.extend`
   }
 
   &:nth-of-type(3) {
-    margin-bottom: -25%;
     margin-left: auto;
+    margin-bottom: -25%;
     max-width: 80%;
   }
 
@@ -73,6 +73,8 @@ class Index extends React.Component {
 
   render() {
     const { transition, data } = this.props
+    const pageImages = getPageImages(data.allFile.edges, 1, 2)
+    const images = [pageImages['landscape'][0], pageImages['portrait'][0], pageImages['landscape'][1]]
 
     return(
       <div style={transition && transition.style}>
@@ -99,28 +101,25 @@ class Index extends React.Component {
                     <Logo />
                   </SparkScroll.div>
                 </IndexCard>
-                {getRandom(data.allFile.edges, 3).map((img, index) => {
+                {images.map((img, index) => {
+                  const translateY = (index+1) * 500;
+                  console.log(`translate3d(0px,-${translateY}px,0px)`)
                   return (
                     <IndexCard key={index}>
                       <SparkScroll.div
                         proxy="parallax"
                         timeline={{
                           topBottom: { transform: 'translate3d(0px,0px,0px)' },
-                          bottomTop: { transform: 'translate3d(0px,-' + index+1 * 240 + 'px,0px)' }
+                          bottomTop: { transform: `translate3d(0px,-${translateY}px,0px)` }
                         }}
                       >
-                        <Img sizes={img.node.childImageSharp.sizes} />
+                        <Img sizes={img.sizes} />
                       </SparkScroll.div>
                     </IndexCard>
                   )
                 })}
                 <IndexCard>
-                  <SparkScroll.div
-                    timeline={{
-                      topBottom: { opacity: 0 },
-                      bottomBottom: { opacity: 1 }
-                    }}
-                  >
+                  <SparkScroll.div timeline={fadeTimeline}>
                     <Nav />
                   </SparkScroll.div>
                 </IndexCard>

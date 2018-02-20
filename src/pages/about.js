@@ -12,8 +12,8 @@ import Close from '../components/Close'
 import { Cards, Card } from '../components/Card'
 import { ReadingText } from '../components/Text'
 
-import getRandom from '../utils/getRandom'
-import { media } from '../utils/style'
+import getPageImages from '../utils/getPageImages'
+import { fadeTimeline, media } from '../utils/style'
 
 const AboutPage = Page.extend`
   background-color: ${props => props.theme.colors.secondary};
@@ -50,6 +50,8 @@ const AboutRow = Row.extend`
 class About extends React.Component {
   render() {
     const { transition, data } = this.props
+    const pageImages = getPageImages(data.allFile.edges, 1, 2)
+    const images = [pageImages['landscape'][0], pageImages['portrait'][0], pageImages['landscape'][1]]
 
     return(
       <div style={transition && transition.style}>
@@ -72,17 +74,18 @@ class About extends React.Component {
                     <PageTitle>love<br />to<br />code</PageTitle>
                   </SparkScroll.div>
                 </AboutCard>
-                {getRandom(data.allFile.edges, 3).map((img, index) => {
+                {images.map((img, index) => {
+                  const translateX = `${(index % 2 == 0 ? '-' : '') + index+1 * 15}vw`
                   return (
                     <AboutCard key={index}>
                       <SparkScroll.div
                         proxy="parallax"
                         timeline={{
                           topBottom: { transform: 'translate3d(0px,0px,0px)' },
-                          bottomTop: { transform: 'translate3d(' + (index % 2 == 0 ? '-' : '') + index+1 * 15 + 'vw,-120px,0px)' }
+                          bottomTop: { transform: `translate3d(${translateX},-120px,0px)` }
                         }}
                       >
-                        <Img sizes={img.node.childImageSharp.sizes} />
+                        <Img sizes={img.sizes} />
                       </SparkScroll.div>
                     </AboutCard>
                   )
@@ -91,12 +94,7 @@ class About extends React.Component {
             </Container>
 
             <Container>
-              <SparkScroll.div
-                timeline={{
-                  topBottom: { opacity: 0 },
-                  bottomBottom: { opacity: 1 }
-                }}
-              >
+              <SparkScroll.div timeline={fadeTimeline}>
                 <AboutRow>
                   <Tagline />
                   <ReadingText>

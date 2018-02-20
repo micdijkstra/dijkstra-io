@@ -11,6 +11,12 @@ const fadeIn = () => {
   `
 }
 
+const fadeTimeline = {
+  topBottom: { opacity: 0 },
+  bottomBottom: { opacity: 1 }
+}
+
+
 const media = {
   sm: (...args) => css`
     @media (min-width: ${props => props.theme.screen.sm}) {
@@ -36,4 +42,4 @@ const media = {
 
 const timeout = 250
 
-export { fadeIn, media, timeout }
+export { fadeIn, fadeTimeline, media, timeout }
