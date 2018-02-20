@@ -51,17 +51,10 @@ const PageLink = styled(Link)`
     width: 0;
   }
 
-  &.hover,
-  &:hover {
-    &:before {
-      width: 100%;
-    }
-  }
-
-  body.user-touch & {
+  body.no-touch & {
     &:hover {
       &:before {
-        width: 0;
+        width: 100%;
       }
     }
   }

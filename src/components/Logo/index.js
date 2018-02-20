@@ -12,9 +12,13 @@ const Wrapper = styled.div`
     width: 100%;
   }
 
-  .dot:hover {
-    fill: transparent;
-    stroke: white;
+  body.no-touch & {
+    .dot {
+      &:hover {
+        fill: transparent;
+        stroke: white;
+      }
+    }
   }
 `;
 

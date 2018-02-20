@@ -28,6 +28,14 @@ const ProjectInfoTag = PageLink.extend`
   &:before {
     width: 100%;
   }
+
+  body.no-touch & {
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
 `
 
 
@@ -55,6 +63,16 @@ class ProjectInfo extends React.Component {
     })
   }
 
+  toggleInfo(event) {
+    event.preventDefault()
+    if (document.body.classList.contains('no-touch')) return
+
+    const { show } = this.state
+    this.setState({
+      show: !show
+    })
+  }
+
   render() {
     const { show } = this.state
     const { body, color, titleKey, tags } = this.props
@@ -66,7 +84,7 @@ class ProjectInfo extends React.Component {
     return(
       <InfoSection  onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo}>
         <ProjectTag>
-          {titleKey}.&emsp;<ProjectInfoTag to="#info">Info</ProjectInfoTag>
+          {titleKey}.&emsp;<ProjectInfoTag to="#info" onClick={ (e) => this.toggleInfo(e) }>Info</ProjectInfoTag>
         </ProjectTag>
         <ProjectRow style={projectRowStyle}>
           <ReadingText

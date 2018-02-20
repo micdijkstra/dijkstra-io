@@ -33,8 +33,9 @@ class DefaultLayout extends React.Component {
       this.bodyElement.style.overflow = `hidden`
     }
 
+    document.body.classList.add('no-touch');
     window.addEventListener('touchstart', function onFirstTouch() {
-      document.body.classList.add('user-touch');
+      document.body.classList.remove('no-touch');
       window.removeEventListener('touchstart', onFirstTouch, false);
     }, false);
   }

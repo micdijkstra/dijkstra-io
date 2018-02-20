@@ -69,8 +69,10 @@ const WorkItem = styled.li`
     content: '0'counter(count);
   }
 
-  &:hover {
-    opacity: 0.9;
+  body.no-touch & {
+    &:hover {
+      opacity: 0.9;
+    }
   }
 `
 
@@ -137,7 +139,7 @@ class WorkList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return !document.body.classList.contains('user-touch') &&
+    return document.body.classList.contains('no-touch') &&
       (this.state.color !== nextState.color
       || this.state.image !== nextState.image)
   }
