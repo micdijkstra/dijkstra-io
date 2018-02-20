@@ -20,7 +20,7 @@ const theme = {
     sm: '20px',
     md: '20px',
     lg: '30px',
-    xl: '100px',
+    xl: '90px',
 
     md: {
       sm: '20px',

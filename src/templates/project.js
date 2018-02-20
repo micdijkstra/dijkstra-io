@@ -119,12 +119,10 @@ const ProjectCloseHeader = styled.div`
 
 const ProjectTitle = PageTitle.extend`
   margin-top: -150px;
-  padding-bottom: 0;
-  padding-top: 0;
+  padding: 0 0 15px;
 
   ${media.sm`
-    padding-bottom: 0;
-    padding-top: 0;
+    padding: 0 0 15px;
   `}
 `
 
