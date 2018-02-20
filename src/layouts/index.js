@@ -32,6 +32,11 @@ class DefaultLayout extends React.Component {
     if (location.pathname == "/work") {
       this.bodyElement.style.overflow = `hidden`
     }
+
+    window.addEventListener('touchstart', function onFirstTouch() {
+      document.body.classList.add('user-touch');
+      window.removeEventListener('touchstart', onFirstTouch, false);
+    }, false);
   }
 
   componentWillReceiveProps(nextProps) {

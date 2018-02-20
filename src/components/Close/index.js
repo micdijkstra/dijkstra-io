@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link, { navigateTo } from 'gatsby-link'
 import styled from 'styled-components'
 
 import { PageLink} from '../Page'
@@ -29,6 +29,21 @@ const CloseLink = PageLink.extend`
 class Close extends React.Component {
   shouldComponentUpdate() {
     return false
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.keyDown, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keyDown, false);
+  }
+
+  keyDown(event){
+    // esc
+    if(event.keyCode === 27) {
+      navigateTo("/")
+    }
   }
 
   render() {

@@ -137,8 +137,9 @@ class WorkList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.color !== nextState.color
-      || this.state.image !== nextState.image
+    return !document.body.classList.contains('user-touch') &&
+      (this.state.color !== nextState.color
+      || this.state.image !== nextState.image)
   }
 
   showProject(color, image) {

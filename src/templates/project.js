@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
+import Swipeable from 'react-swipeable'
 import { navigateTo } from "gatsby-link"
 import sparkScroll from 'react-spark-scroll-gsap'
 const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
@@ -196,6 +197,7 @@ class Project extends React.Component {
     this.showPrevious = this.showPrevious.bind(this)
     this.showCurrent = this.showCurrent.bind(this)
     this.goTo = this.goTo.bind(this)
+    this.keyDown = this.keyDown.bind(this)
   }
 
   componentDidMount() {
@@ -205,10 +207,31 @@ class Project extends React.Component {
         exiting: false,
       })
     }, timeout)
+    document.addEventListener("keydown", this.keyDown, false);
   }
 
-  goTo(e, slug) {
-    e.preventDefault()
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keyDown, false);
+  }
+
+  keyDown(event){
+    // up or left
+    if(event.keyCode === 38 || event.keyCode == 37) {
+      const { next } = this.props.pathContext
+      this.showNext()
+      this.goTo(event, next.slug)
+    }
+
+    // down or right
+    if(event.keyCode === 40 || event.keyCode == 39) {
+      const { previous } = this.props.pathContext
+      this.showPrevious()
+      this.goTo(event, previous.slug)
+    }
+  }
+
+  goTo(event, slug) {
+    event.preventDefault()
 
     this.setState({
       exiting: true
@@ -284,36 +307,43 @@ class Project extends React.Component {
         </ProjectCloseHeader>
 
         <Wrapper style={wrapperStyle}>
-          <ProjectPage style={projectPageStyle}>
-            <SparkProxy.div proxyId="parallax">
-              <ProjectContainer>
-                <Cards order={[0,1]} style={{position: 'relative'}}>
-                  <Card>
-                    <SparkScroll.div
-                      proxy="parallax"
-                      timeline={{
-                        topBottom: {transform: 'translate3d(0px,0px,0px)'},
-                        bottomTop: {transform: 'translate3d(0px,-120px,0px)'}
-                      }}
-                    >
-                      <ProjectLink href={link} target="_blank">
-                        <ProjectTitle dangerouslySetInnerHTML={createMarkup(linkText)} />
-                      </ProjectLink>
-                    </SparkScroll.div>
-                  </Card>
-                  <Card>
-                    <ProjectFrames liveUrl={liveUrl} vimeoUrl={vimeoUrl} image={featuredImage} />
+          <Swipeable
+            onSwipingLeft={this.showNext}
+            onSwipedLeft={ (e) => this.goTo(e, next.slug) }
+            onSwipingRight={this.showPrevious}
+            onSwipedRight={ (e) => this.goTo(e, previous.slug) }
+          >
+            <ProjectPage style={projectPageStyle}>
+              <SparkProxy.div proxyId="parallax">
+                <ProjectContainer>
+                  <Cards order={[0,1]} style={{position: 'relative'}}>
+                    <Card>
+                      <SparkScroll.div
+                        proxy="parallax"
+                        timeline={{
+                          topBottom: {transform: 'translate3d(0px,0px,0px)'},
+                          bottomTop: {transform: 'translate3d(0px,-120px,0px)'}
+                        }}
+                      >
+                        <ProjectLink href={link} target="_blank">
+                          <ProjectTitle dangerouslySetInnerHTML={createMarkup(linkText)} />
+                        </ProjectLink>
+                      </SparkScroll.div>
+                    </Card>
+                    <Card>
+                      <ProjectFrames liveUrl={liveUrl} vimeoUrl={vimeoUrl} image={featuredImage} />
 
-                    <Section>
-                      <ProjectInfo body={body} tags={tags} color={color} titleKey={liveUrl? 'c' : 'a'} />
-                    </Section>
+                      <Section>
+                        <ProjectInfo body={body} tags={tags} color={color} titleKey={liveUrl? 'c' : 'a'} />
+                      </Section>
 
-                    <ProjectImages images={otherImages} />
-                  </Card>
-                </Cards>
-              </ProjectContainer>
-            </SparkProxy.div>
-          </ProjectPage>
+                      <ProjectImages images={otherImages} />
+                    </Card>
+                  </Cards>
+                </ProjectContainer>
+              </SparkProxy.div>
+            </ProjectPage>
+          </Swipeable>
         </Wrapper>
 
         <NextPage style={nextStyle}>

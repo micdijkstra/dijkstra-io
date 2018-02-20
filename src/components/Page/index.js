@@ -57,6 +57,14 @@ const PageLink = styled(Link)`
       width: 100%;
     }
   }
+
+  body.user-touch & {
+    &:hover {
+      &:before {
+        width: 0;
+      }
+    }
+  }
 `
 
 export { Page, PageTitle, PageLink }

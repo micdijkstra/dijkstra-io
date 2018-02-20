@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Section } from '../../Layout'
 import { ProjectTag, ProjectImage } from '../../Project'
 
-import { fadeIn, timeout } from '../../../utils/style'
+import { fadeIn, media, timeout } from '../../../utils/style'
 
 const ProjectFrame = styled.div`
   ${fadeIn()}
@@ -28,9 +28,16 @@ const DesktopFrame = ProjectFrame.extend`
 `
 
 const MobileFrame = ProjectFrame.extend`
-  padding-bottom: 65%;
-  margin-left: 12%;
-  width: 365px;
+  height: 480px;
+  margin-left: 8%;
+  width: 300px;
+
+  ${media.sm`
+    height: 0;
+    margin-left: 12%;
+    padding-bottom: 65%;
+    width: 365px;
+  `}
 `
 
 const VimeoFrame = ProjectFrame.extend`
