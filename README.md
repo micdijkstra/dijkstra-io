@@ -10,6 +10,7 @@
 + Page Transitions: https://github.com/gatsbyjs/gatsby/tree/master/examples/using-page-transitions
 + This line "Always try out queries in graphiql and rely on their
   autocomplete/type information": https://spectrum.chat/thread/a9182df6-0204-4377-95c7-36a21c5c0976
++ https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/
 
 ### Netlify
 

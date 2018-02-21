@@ -7,11 +7,12 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
 import { Container, Row } from '../components/Layout'
 import Tagline from '../components/Tagline'
-import { Page, PageTitle } from '../components/Page'
+import { Page, PageTitle, PageLink } from '../components/Page'
 import Close from '../components/Close'
 import { Cards, Card } from '../components/Card'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
 import { ReadingText } from '../components/Text'
+import ContactForm from '../components/ContactForm'
 
 import { fadeTimeline } from '../utils/style'
 import getPageImages from '../utils/getPageImages'
@@ -95,16 +96,18 @@ class Contact extends React.Component {
                 <Row>
                   <ReadingText>
                     <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
+                    <p>He currently lives and works in Edmonton, Alberta Canada, and is available to lead development projects or join an existing team.</p>
                     <p>Please use the form below to get in touch.</p>
+                    <ContactForm />
                   </ReadingText>
                   <div>
                     <AsidePrimary>
                       <div>Socials</div>
                     </AsidePrimary>
                     <AsideSecondary>
-                      <div>GitHub</div>
-                      <div>Instagram</div>
-                      <div>Twitter</div>
+                      <div><PageLink to="https://github.com/micdijkstra" target="_blank">GitHub</PageLink></div>
+                      <div><PageLink to="https://twitter.com/micdijkstra" target="_blank">Twitter</PageLink></div>
+                      <div><PageLink to="https://instagram.com/dijkstra.io" target="_blank">Instagram</PageLink></div>
                     </AsideSecondary>
                   </div>
                 </Row>

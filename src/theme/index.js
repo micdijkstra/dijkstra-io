@@ -13,7 +13,8 @@ const theme = {
     quaternary: 'rgb(252, 12, 27)',
     modal: 'rgba(194, 255, 0, 0.97)',
     onDark: 'white',
-    onLight: 'black'
+    onLight: 'black',
+    errorOnDark: 'red',
   },
 
   text: {
