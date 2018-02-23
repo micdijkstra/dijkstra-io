@@ -12,7 +12,7 @@ const InfoSection = styled.div`
 `
 
 const ProjectRow = Row.extend`
-  padding-top: ${props => props.theme.spacing.md};
+  padding: ${props => props.theme.spacing.md} 0;
   overflow: hidden;
   left: 0;
   position: absolute;
@@ -82,9 +82,9 @@ class ProjectInfo extends React.Component {
     }
 
     return(
-      <InfoSection  onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo}>
+      <InfoSection  onMouseLeave={this.hideInfo}>
         <ProjectTag>
-          {titleKey}.&emsp;<ProjectInfoTag to="#info" onClick={ (e) => this.toggleInfo(e) }>Info</ProjectInfoTag>
+          {titleKey}.&emsp;<ProjectInfoTag to="#info" onClick={ (e) => this.toggleInfo(e) } onMouseEnter={this.showInfo}>Info</ProjectInfoTag>
         </ProjectTag>
         <ProjectRow style={projectRowStyle}>
           <ReadingText

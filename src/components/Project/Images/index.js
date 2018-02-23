@@ -19,7 +19,7 @@ class ProjectFrames extends React.Component {
         {images.map((image, index) => {
           return(
             <Section key={index}>
-              <ProjectImage sizes={image.sizes} alt={image.description} style={{animationDelay: `${(index + 1) * timeout}ms`}} />
+              <ProjectImage sizes={image.sizes} aspectRatio={image.sizes.aspectRatio} alt={image.description} style={{animationDelay: `${(index + 1) * timeout}ms`}} />
             </Section>
           )
         })}

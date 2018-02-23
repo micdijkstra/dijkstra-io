@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { media } from '../../utils/style'
 
@@ -32,7 +32,8 @@ const PageTitle = styled.div`
     overflow: visible;
   `}
 `
-const PageLink = styled(Link)`
+
+const LinkStyles = () => css`
   color: white;
   display: inline-block;
   line-height: ${props => props.theme.line.sm};
@@ -60,4 +61,12 @@ const PageLink = styled(Link)`
   }
 `
 
-export { Page, PageTitle, PageLink }
+const PageLink = styled(Link)`
+  ${LinkStyles()}
+`
+
+const PageExternalLink = styled.a`
+  ${LinkStyles()}
+`
+
+export { Page, PageTitle, PageLink, PageExternalLink }

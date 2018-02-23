@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-import { fadeIn } from '../../utils/style'
+import { fadeIn, media } from '../../utils/style'
 
 const ProjectTag = styled.div`
   font-size: ${props => props.theme.text.lg};
@@ -12,6 +12,10 @@ const ProjectTag = styled.div`
 
 const ProjectImage = styled(Img)`
   ${fadeIn()}
+
+  ${media.sm`
+    max-width: ${props => props.aspectRatio < 1 ? '375px' : '100%'};
+  `}
 `
 
 export { ProjectTag, ProjectImage }

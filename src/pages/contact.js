@@ -7,7 +7,7 @@ const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true})
 
 import { Container, Row } from '../components/Layout'
 import Tagline from '../components/Tagline'
-import { Page, PageTitle, PageLink } from '../components/Page'
+import { Page, PageTitle, PageExternalLink } from '../components/Page'
 import Close from '../components/Close'
 import { Cards, Card } from '../components/Card'
 import { AsidePrimary, AsideSecondary } from '../components/Aside'
@@ -105,9 +105,9 @@ class Contact extends React.Component {
                       <div>Socials</div>
                     </AsidePrimary>
                     <AsideSecondary>
-                      <div><PageLink to="https://github.com/micdijkstra" target="_blank">GitHub</PageLink></div>
-                      <div><PageLink to="https://twitter.com/micdijkstra" target="_blank">Twitter</PageLink></div>
-                      <div><PageLink to="https://instagram.com/dijkstra.io" target="_blank">Instagram</PageLink></div>
+                      <div><PageExternalLink href="https://github.com/micdijkstra" target="_blank">GitHub</PageExternalLink></div>
+                      <div><PageExternalLink href="https://twitter.com/micdijkstra" target="_blank">Twitter</PageExternalLink></div>
+                      <div><PageExternalLink href="https://instagram.com/dijkstra.io" target="_blank">Instagram</PageExternalLink></div>
                     </AsideSecondary>
                   </div>
                 </Row>

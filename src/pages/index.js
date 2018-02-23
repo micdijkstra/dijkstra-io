@@ -103,7 +103,6 @@ class Index extends React.Component {
                 </IndexCard>
                 {images.map((img, index) => {
                   const translateY = (index+1) * 500;
-                  console.log(`translate3d(0px,-${translateY}px,0px)`)
                   return (
                     <IndexCard key={index}>
                       <SparkScroll.div
