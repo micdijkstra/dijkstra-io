@@ -105,7 +105,7 @@ class Work extends React.Component {
     return(
       <WorkContainer>
         <WorkItems>
-          {projects.map((project, index) => {
+          {projects && projects.map((project, index) => {
             const color = project.color
             const src = project.image && project.image.sizes.src
 
