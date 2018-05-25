@@ -11,7 +11,7 @@ const theme = {
     secondary: 'rgb(35, 31, 22)',
     tertiary: 'rgb(126, 15, 26)',
     quaternary: 'rgb(252, 12, 27)',
-    modal: 'rgba(194, 255, 0, 0.97)',
+    quinary: 'rgba(194, 255, 0, 0.97)',
     onDark: 'white',
     onLight: 'black',
     errorOnDark: 'red',
@@ -27,8 +27,8 @@ const theme = {
       sm: '20px',
       md: '30px',
       lg: '60px',
-      xl: '220px'
-    }
+      xl: '220px',
+    },
   },
 
   line: {
@@ -44,7 +44,7 @@ const theme = {
     md: '30px',
     lg: '60px',
     xl: '120px',
-  }
-}
+  },
+};
 
-export default theme
+export default theme;

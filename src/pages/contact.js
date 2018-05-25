@@ -1,21 +1,21 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import Img from "gatsby-image"
-import styled from 'styled-components'
+import React from 'react';
+import Helmet from 'react-helmet';
+import Img from 'gatsby-image';
+import styled from 'styled-components';
 import sparkScroll from 'react-spark-scroll-gsap';
-const { SparkScroll, SparkProxy } = sparkScroll({invalidateAutomatically: true});
+const {SparkScroll, SparkProxy} = sparkScroll({invalidateAutomatically: true});
 
-import { Container, Row } from '../components/Layout'
-import Tagline from '../components/Tagline'
-import { Page, PageTitle, PageExternalLink } from '../components/Page'
-import Close from '../components/Close'
-import { Cards, Card } from '../components/Card'
-import { AsidePrimary, AsideSecondary } from '../components/Aside'
-import { ReadingText } from '../components/Text'
-import ContactForm from '../components/ContactForm'
+import {Container, Row} from '../components/Layout';
+import Tagline from '../components/Tagline';
+import {Page, PageTitle, PageExternalLink} from '../components/Page';
+import Close from '../components/Close';
+import {Cards, Card} from '../components/Card';
+import {AsidePrimary, AsideSecondary} from '../components/Aside';
+import {ReadingText} from '../components/Text';
+import ContactForm from '../components/ContactForm';
 
-import { fadeTimeline } from '../utils/style'
-import getPageImages from '../utils/getPageImages'
+import {fadeTimeline} from '../utils/style';
+import getPageImages from '../utils/getPageImages';
 
 const ContactPage = Page.extend`
   background-color: ${props => props.theme.colors.tertiary};
@@ -42,15 +42,19 @@ const ContactCard = Card.extend`
     margin-right: 5%;
     max-width: 70%;
   }
-`
+`;
 
 class Contact extends React.Component {
   render() {
-    const { transition, data } = this.props
-    const pageImages = getPageImages(data.allFile.edges, 1, 2)
-    const images = [pageImages['portrait'][0], pageImages['landscape'][0], pageImages['landscape'][1]]
+    const {transition, data} = this.props;
+    const pageImages = getPageImages(data.allFile.edges, 1, 2);
+    const images = [
+      pageImages['portrait'][0],
+      pageImages['landscape'][0],
+      pageImages['landscape'][1],
+    ];
 
-    return(
+    return (
       <div style={transition && transition.style}>
         <Helmet>
           <title>Contact :: Michael Dijkstra</title>
@@ -60,33 +64,37 @@ class Contact extends React.Component {
 
           <SparkProxy.div proxyId="parallax">
             <Container>
-              <Cards order={[3,0,2,1]}>
+              <Cards order={[3, 0, 2, 1]}>
                 <ContactCard>
                   <SparkScroll.div
                     proxy="parallax"
                     timeline={{
                       topBottom: {transform: 'translate3d(0px,0px,0px)'},
-                      bottomTop: {transform: 'translate3d(0px,-120px,0px)'}
-                    }}
-                  >
-                    <PageTitle>hello<br />from<br />yeg</PageTitle>
+                      bottomTop: {transform: 'translate3d(0px,-120px,0px)'},
+                    }}>
+                    <PageTitle>
+                      hello<br />from<br />syd
+                    </PageTitle>
                   </SparkScroll.div>
                 </ContactCard>
                 {images.map((img, index) => {
-                  const translateX = `${(index % 2 == 0 ? ' ' : '-') + index+1 * 15}vw`
+                  const translateX = `${(index % 2 == 0 ? ' ' : '-') +
+                    index +
+                    1 * 15}vw`;
                   return (
                     <ContactCard key={index}>
                       <SparkScroll.div
                         proxy="parallax"
                         timeline={{
-                          topBottom: { transform: 'translate3d(0px,0px,0px)' },
-                          bottomTop: { transform: `translate3d(${translateX},-120px,0px)` }
-                        }}
-                      >
+                          topBottom: {transform: 'translate3d(0px,0px,0px)'},
+                          bottomTop: {
+                            transform: `translate3d(${translateX},-120px,0px)`,
+                          },
+                        }}>
                         <Img sizes={img.sizes} />
                       </SparkScroll.div>
                     </ContactCard>
-                  )
+                  );
                 })}
               </Cards>
             </Container>
@@ -95,8 +103,11 @@ class Contact extends React.Component {
               <SparkScroll.div timeline={fadeTimeline}>
                 <Row>
                   <ReadingText>
-                    <p>Michael Dijkstra is available for hire for web and mobile software development.</p>
-                    <p>He currently lives and works in Edmonton, Alberta Canada, and is available to lead development projects or join an existing team.</p>
+                    <p>
+                      Michael Dijkstra currently lives and works in Sydney,
+                      Australia. He is Head of Product for quantum control
+                      startup <a href="http://www.q-ctrl.com">Q-CTRL</a>
+                    </p>
                     <p>Please use the form below to get in touch.</p>
                     <ContactForm />
                   </ReadingText>
@@ -105,9 +116,27 @@ class Contact extends React.Component {
                       <div>Socials</div>
                     </AsidePrimary>
                     <AsideSecondary>
-                      <div><PageExternalLink href="https://github.com/micdijkstra" target="_blank">GitHub</PageExternalLink></div>
-                      <div><PageExternalLink href="https://twitter.com/micdijkstra" target="_blank">Twitter</PageExternalLink></div>
-                      <div><PageExternalLink href="https://instagram.com/dijkstra.io" target="_blank">Instagram</PageExternalLink></div>
+                      <div>
+                        <PageExternalLink
+                          href="https://github.com/micdijkstra"
+                          target="_blank">
+                          GitHub
+                        </PageExternalLink>
+                      </div>
+                      <div>
+                        <PageExternalLink
+                          href="https://twitter.com/micdijkstra"
+                          target="_blank">
+                          Twitter
+                        </PageExternalLink>
+                      </div>
+                      <div>
+                        <PageExternalLink
+                          href="https://instagram.com/dijkstra.io"
+                          target="_blank">
+                          Instagram
+                        </PageExternalLink>
+                      </div>
                     </AsideSecondary>
                   </div>
                 </Row>
@@ -116,17 +145,17 @@ class Contact extends React.Component {
           </SparkProxy.div>
         </ContactPage>
       </div>
-    )
+    );
   }
 }
 
 export const query = graphql`
   query ContactImagesQuery {
-   allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    allFile(filter: {sourceInstanceName: {eq: "images"}}) {
       edges {
         node {
           childImageSharp {
-          sizes(maxWidth: 900) {
+            sizes(maxWidth: 900) {
               ...GatsbyImageSharpSizes
             }
           }
@@ -134,6 +163,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Contact
+export default Contact;

@@ -1,21 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
+import React from 'react';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
 
-import { fadeIn, media } from '../../utils/style'
+import {fadeIn, media} from '../../utils/style';
 
 const ProjectTag = styled.div`
+  color: ${props => props.color || 'inherit'};
   font-size: ${props => props.theme.text.lg};
   margin-left: 25%;
   margin-top: ${props => props.theme.spacing.md};
-`
+`;
 
 const ProjectImage = styled(Img)`
-  ${fadeIn()}
+  ${fadeIn()} ${media.sm`
+    max-width: ${props => (props.aspectRatio < 1 ? '375px' : '100%')};
+  `};
+`;
 
-  ${media.sm`
-    max-width: ${props => props.aspectRatio < 1 ? '375px' : '100%'};
-  `}
-`
-
-export { ProjectTag, ProjectImage }
+export {ProjectTag, ProjectImage};

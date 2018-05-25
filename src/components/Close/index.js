@@ -1,15 +1,15 @@
-import React from 'react'
-import Link, { navigateTo } from 'gatsby-link'
-import styled from 'styled-components'
+import React from 'react';
+import Link, {navigateTo} from 'gatsby-link';
+import styled from 'styled-components';
 
-import { PageLink} from '../Page'
+import {PageLink} from '../Page';
 
-import { media } from '../../utils/style'
+import {media} from '../../utils/style';
 
 const CloseHeader = styled.div`
   text-align: center;
   padding: ${props => props.theme.spacing.md};
-`
+`;
 
 const CloseLink = PageLink.extend`
   color: inherit;
@@ -23,36 +23,40 @@ const CloseLink = PageLink.extend`
 
   ${media.sm`
     font-size: ${props => props.theme.text.md.md};
-  `}
-`
+  `};
+`;
 
 class Close extends React.Component {
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.keyDown, false);
+    document.addEventListener('keydown', this.keyDown, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.keyDown, false);
+    document.removeEventListener('keydown', this.keyDown, false);
   }
 
-  keyDown(event){
+  keyDown(event) {
     // esc
-    if(event.keyCode === 27) {
-      navigateTo("/")
+    if (event.keyCode === 27) {
+      navigateTo('/');
     }
   }
 
   render() {
-    return(
+    const {to} = this.props;
+
+    return (
       <CloseHeader>
-        <CloseLink to="/" {...this.props}>close</CloseLink>
+        <CloseLink to={`/${to ? to : ''}`} {...this.props}>
+          close
+        </CloseLink>
       </CloseHeader>
-    )
+    );
   }
 }
 
-export default Close
+export default Close;
