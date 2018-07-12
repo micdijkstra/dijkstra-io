@@ -109,26 +109,33 @@ class About extends React.Component {
                     <p>
                       Michael Dijkstra is a software developer and product
                       manager with more than 10 years experience working across
-                      the entire product development development cycle -
-                      back-end development, front-end development, wire framing,
-                      copy writing and design.
+                      the entire full product stack including back-end server
+                      development, front-end client side development, product
+                      management, wire framing, copy writing and (a little bit
+                      of) design.
                     </p>
 
                     <p>
-                      He is currently Head of Product at Q-CTRL. Previously he
-                      was Head of Product at PWC Digital Ventures and most
-                      recently lived in North America working with XXIX and
-                      companies like Rough Trade, AIGA, BuzzFeed and Dropbox.
+                      He has worked for and with companies like Q-CTRL, AYR,
+                      Rough Trade, AIGA, BuzzFeed and Dropbox.
                     </p>
 
                     <p>
-                      He is the co-founder of Front Row Ventures, Wise and Small
-                      Victories.
+                      He has collaborated with designers like Jacob and Jake
+                      from XXIX, Wade and Leta from Ikko Ikko and David
+                      McGillivray.
                     </p>
 
                     <p>
-                      Currentently his preferred technologies are Ruby on Rails,
-                      React and Go.
+                      He has started many businesses including Front Row
+                      Ventures, Wise and Small Victories.
+                    </p>
+
+                    <p>
+                      While Michael has worked with a range of technologies such
+                      asHTML, CSS/Sass/Less, JavaScript/JQuery/CoffeeScript,
+                      Python and Swift, his preferred technologies are Ruby on
+                      Rails, React and Go.
                     </p>
                   </ReadingText>
                 </AboutRow>

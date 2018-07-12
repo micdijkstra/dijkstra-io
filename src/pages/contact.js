@@ -105,8 +105,7 @@ class Contact extends React.Component {
                   <ReadingText>
                     <p>
                       Michael Dijkstra currently lives and works in Sydney,
-                      Australia. He is Head of Product for quantum control
-                      startup <a href="http://www.q-ctrl.com">Q-CTRL</a>
+                      Australia.
                     </p>
                     <p>Please use the form below to get in touch.</p>
                     <ContactForm />

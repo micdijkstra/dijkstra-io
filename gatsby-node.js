@@ -1,14 +1,14 @@
-const path = require('path')
+const path = require('path');
 
 exports.createPages = ({graphql, boundActionCreators}) => {
-  const {createPage} = boundActionCreators
+  const {createPage} = boundActionCreators;
   return new Promise((resolve, reject) => {
-    const projectTemplate = path.resolve('src/templates/project.js')
-    const tagTemplate = path.resolve('src/templates/tag.js')
+    const projectTemplate = path.resolve('src/templates/project.js');
+    const tagTemplate = path.resolve('src/templates/tag.js');
     resolve(
       graphql(`
         {
-          allContentfulProject (limit:1000) {
+          allContentfulProject(limit: 1000) {
             edges {
               node {
                 slug
@@ -19,60 +19,64 @@ exports.createPages = ({graphql, boundActionCreators}) => {
             }
           }
         }
-      `).then((result) => {
-        if (result.errors) {
-          reject(result.errors)
-        }
+      `)
+        .then(result => {
+          if (result.errors) {
+            reject(result.errors);
+          }
 
-        const projects = result.data.allContentfulProject.edges
-        index = 0
-        projects.forEach((edge) => {
-          const next = (index === projects.length - 1) ? projects[0] : projects[index + 1]
-          const previous = (index === 0) ? projects[projects.length - 1] : projects[index - 1]
+          const projects = result.data.allContentfulProject.edges;
+          index = 0;
+          projects.forEach(edge => {
+            const next =
+              index === projects.length - 1 ? projects[0] : projects[index + 1];
+            const previous =
+              index === 0 ? projects[projects.length - 1] : projects[index - 1];
 
-          createPage ({
-            path: edge.node.slug,
-            component: projectTemplate,
-            context: {
-              slug: edge.node.slug,
-              previous: previous.node,
-              next: next.node,
-            }
-          })
+            createPage({
+              path: edge.node.slug,
+              component: projectTemplate,
+              context: {
+                slug: edge.node.slug,
+                previous: previous.node,
+                next: next.node,
+              },
+            });
 
-          index++
+            index++;
+          });
+
+          return;
         })
-
-        return
-      }).then(() => {
-        graphql(`
-          {
-            allContentfulTag (limit:1000) {
-              edges {
-                node {
-                  slug
+        .then(() => {
+          graphql(`
+            {
+              allContentfulTag(limit: 1000) {
+                edges {
+                  node {
+                    slug
+                  }
                 }
               }
             }
-          }
-        `).then((result) => {
-          if (result.errors) {
-            reject(result.errors)
-          }
+          `).then(result => {
+            if (result.errors) {
+              reject(result.errors);
+            }
 
-          const tags = result.data.allContentfulTag.edges
-          tags.forEach((edge) => {
-            createPage ({
-              path: `work/${edge.node.slug}`,
-              component: tagTemplate,
-              context: {
-                slug: edge.node.slug,
-              }
-            })
-          })
-        })
-        return
-      })
-    )
-  })
-}
+            const tags = result.data.allContentfulTag.edges;
+            tags.forEach(edge => {
+              createPage({
+                path: `work/${edge.node.slug}`,
+                component: tagTemplate,
+                context: {
+                  slug: edge.node.slug,
+                },
+              });
+            });
+          });
+          return;
+        }),
+    );
+  });
+};

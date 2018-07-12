@@ -63,30 +63,20 @@ class Tagline extends React.Component {
             <span>a</span>
           </div>
           <Line>
-            <span style={{opacity: alt ? 0 : 1}}>software</span>
-            <AltItem style={{opacity: alt ? 1 : 0}}>product</AltItem>
+            <span style={{opacity: alt ? 0 : 1}}>small</span>
+            <AltItem style={{opacity: alt ? 1 : 0}}>good</AltItem>
           </Line>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>developer</span>
-            <AltItem style={{opacity: alt ? 1 : 0}}>manager</AltItem>
-          </Line>
+          <Line>but</Line>
         </AsidePrimary>
         <TaglineContent>
-          <div>
-            <span>and</span>
-          </div>
           <Line>
-            <span style={{opacity: alt ? 0 : 1}}>product</span>
+            <span style={{opacity: alt ? 0 : 1}}>good</span>
             <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
-              software
+              small
             </SecondaryAltItem>
           </Line>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>manager</span>
-            <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
-              developer
-            </SecondaryAltItem>
-          </Line>
+          <Line>software</Line>
+          <Line>developer</Line>
         </TaglineContent>
       </Wrapper>
     );
