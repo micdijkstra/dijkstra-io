@@ -233,7 +233,7 @@ class Project extends React.Component {
     });
 
     window.setTimeout(() => {
-      navigateTo(slug);
+      navigateTo(`/${slug}`);
     }, timeout);
   }
 
