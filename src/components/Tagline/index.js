@@ -64,18 +64,26 @@ class Tagline extends React.Component {
           </div>
           <Line>
             <span style={{opacity: alt ? 0 : 1}}>sarcastic</span>
-            <AltItem style={{opacity: alt ? 1 : 0}}>good</AltItem>
+            <AltItem style={{opacity: alt ? 1 : 0}}>hard</AltItem>
           </Line>
-          <Line>but</Line>
+          <Line>
+            <span style={{opacity: alt ? 0 : 1}}>but</span>
+            <AltItem style={{opacity: alt ? 1 : 0}}>working</AltItem>
+          </Line>
         </AsidePrimary>
         <TaglineContent>
           <Line>
-            <span style={{opacity: alt ? 0 : 1}}>good</span>
+            <span style={{opacity: alt ? 0 : 1}}>hard</span>
+            <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
+              but
+            </SecondaryAltItem>
+          </Line>
+          <Line>
+            <span style={{opacity: alt ? 0 : 1}}>working</span>
             <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
               sarcastic
             </SecondaryAltItem>
           </Line>
-          <Line>software</Line>
           <Line>developer</Line>
         </TaglineContent>
       </Wrapper>
