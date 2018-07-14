@@ -63,7 +63,7 @@ class Tagline extends React.Component {
             <span>a</span>
           </div>
           <Line>
-            <span style={{opacity: alt ? 0 : 1}}>small</span>
+            <span style={{opacity: alt ? 0 : 1}}>sarcastic</span>
             <AltItem style={{opacity: alt ? 1 : 0}}>good</AltItem>
           </Line>
           <Line>but</Line>
@@ -72,7 +72,7 @@ class Tagline extends React.Component {
           <Line>
             <span style={{opacity: alt ? 0 : 1}}>good</span>
             <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
-              small
+              sarcastic
             </SecondaryAltItem>
           </Line>
           <Line>software</Line>
