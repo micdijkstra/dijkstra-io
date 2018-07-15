@@ -178,7 +178,6 @@ export const query = graphql`
           linkText
           link
           position
-          backgroundPosition
         }
       }
     }

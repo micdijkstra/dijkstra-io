@@ -80,24 +80,6 @@ const WorkLink = styled(PageLink)`
   color: ${props => props.theme.colors.primary};
 `;
 
-class Backgrounds extends React.Component {
-  render() {
-    const {color, image, backgroundPosition} = this.props;
-
-    return (
-      <div>
-        <Background style={{backgroundColor: color}} />
-        <BackgroundImage
-          style={{
-            backgroundImage: `url(${image}`,
-            backgroundPosition: backgroundPosition,
-          }}
-        />
-      </div>
-    );
-  }
-}
-
 class Work extends React.Component {
   shouldComponentUpdate() {
     return false;
@@ -111,15 +93,10 @@ class Work extends React.Component {
         <WorkItems>
           {projects &&
             projects.map((project, index) => {
-              const {color, backgroundPosition} = project;
               const src = project.image && project.image.sizes.src;
 
               return (
-                <WorkItem
-                  key={index}
-                  onMouseEnter={() =>
-                    this.props.showProject(color, src, backgroundPosition)
-                  }>
+                <WorkItem key={index}>
                   <WorkLink to={`/${project.slug}`}>{project.title}</WorkLink>
                 </WorkItem>
               );
@@ -131,17 +108,6 @@ class Work extends React.Component {
 }
 
 class WorkList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      color: '',
-      image: '',
-    };
-
-    this.showProject = this.showProject.bind(this);
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     return (
       document.body.classList.contains('no-touch') &&
@@ -150,21 +116,12 @@ class WorkList extends React.Component {
     );
   }
 
-  showProject(color, image, backgroundPosition) {
-    this.setState({color, image, backgroundPosition});
-  }
-
   render() {
     const {title, projects} = this.props;
-    const {color, image, backgroundPosition} = this.state;
 
     return (
       <div>
-        <Work
-          title={title}
-          projects={projects}
-          showProject={this.showProject}
-        />
+        <Work title={title} projects={projects} />
       </div>
     );
   }
