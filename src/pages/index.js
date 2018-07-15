@@ -55,17 +55,6 @@ const HeaderContainer = Container.extend`
   z-index: 5;
 `;
 
-const Attribution = styled.div`
-  padding-bottom: ${props => props.theme.spacing.sm};
-  padding-right: ${props => props.theme.spacing.sm};
-  padding-top: ${props => props.theme.spacing.xl};
-  text-align: right;
-
-  img {
-    width: 100px;
-  }
-`;
-
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -134,15 +123,6 @@ class Index extends React.Component {
                 </IndexCard>
               </Cards>
             </Container>
-
-            <Attribution>
-              <a href="https://www.contentful.com/" target="_blank">
-                <img
-                  src="https://images.contentful.com/fo9twyrwpveg/7Htleo27dKYua8gio8UEUy/0797152a2d2f8e41db49ecbf1ccffdaa/PoweredByContentful_DarkBackground_MonochromeLogo.svg"
-                  alt="Powered by Contentful"
-                />
-              </a>
-            </Attribution>
           </SparkProxy.div>
         </IndexPage>
       </div>
