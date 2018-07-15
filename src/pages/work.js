@@ -23,6 +23,8 @@ const WorkPage = styled.div`
 
 const WorkCloseHeader = styled.div`
   color: ${props => props.theme.colors.primary};
+  position: relative;
+  z-index: 10;
 `;
 
 const TagLink = styled(PageLink)`
@@ -164,7 +166,7 @@ export default Work;
 
 export const query = graphql`
   query projectsQuery {
-    projects: allContentfulProject(sort: {fields: [position], order: ASC}) {
+    projects: allContentfulProject(sort: {fields: [slug], order: ASC}) {
       edges {
         node {
           color
