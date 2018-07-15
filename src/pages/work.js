@@ -150,7 +150,7 @@ class Work extends React.Component {
                       tags.map((tag, index) => {
                         return (
                           <div key={index}>
-                            <TagLink to={`/work/${tag.slug}`}>
+                            <TagLink to={`/work/${tag.slug}/`}>
                               {tag.title}
                             </TagLink>
                           </div>
