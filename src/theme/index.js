@@ -11,14 +11,15 @@ const theme = {
     secondary: 'rgb(35, 31, 22)',
     tertiary: 'rgb(126, 15, 26)',
     quaternary: 'rgb(252, 12, 27)',
-    quinary: 'rgba(194, 255, 0, 0.97)',
+    quinary: 'rgb(194, 255, 0)',
+    senary: 'rgb(255,80,232)',
     onDark: 'white',
     onLight: 'black',
     errorOnDark: 'red',
   },
 
   text: {
-    sm: '20px',
+    sm: '14px',
     md: '20px',
     lg: '30px',
     xl: '90px',

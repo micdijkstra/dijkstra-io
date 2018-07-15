@@ -3,6 +3,7 @@ import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 import {Container} from '../../components/Layout';
+import {PageLink} from '../../components/Page';
 
 import {media} from '../../utils/style';
 
@@ -65,7 +66,7 @@ const WorkItem = styled.li`
   }
 
   :nth-child(-n + 9):before {
-    content: '0'counter(count);
+    content: '0' counter(count);
   }
 
   body.no-touch & {
@@ -75,9 +76,8 @@ const WorkItem = styled.li`
   }
 `;
 
-const WorkLink = styled(Link)`
+const WorkLink = styled(PageLink)`
   color: ${props => props.theme.colors.primary};
-  text-decoration: none;
 `;
 
 class Backgrounds extends React.Component {
@@ -160,11 +160,6 @@ class WorkList extends React.Component {
 
     return (
       <div>
-        <Backgrounds
-          color={color}
-          image={image}
-          backgroundPosition={backgroundPosition}
-        />
         <Work
           title={title}
           projects={projects}

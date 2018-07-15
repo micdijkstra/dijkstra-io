@@ -10,11 +10,12 @@ const Wrapper = styled.div`
 `;
 
 const TaglineContent = AsideSecondary.extend`
-  margin-top: 80px;
+  margin-top: 57px;
   margin-left: ${props => props.theme.spacing.sm};
 
   ${media.sm`
     margin-left: ${props => props.theme.spacing.md};
+    margin-top: 80px;
   `};
 `;
 
@@ -62,29 +63,12 @@ class Tagline extends React.Component {
           <div>
             <span>a</span>
           </div>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>sarcastic</span>
-            <AltItem style={{opacity: alt ? 1 : 0}}>hard</AltItem>
-          </Line>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>but</span>
-            <AltItem style={{opacity: alt ? 1 : 0}}>working</AltItem>
-          </Line>
+          <Line>young</Line>
+          <Line>Australian</Line>
         </AsidePrimary>
         <TaglineContent>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>hard</span>
-            <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
-              but
-            </SecondaryAltItem>
-          </Line>
-          <Line>
-            <span style={{opacity: alt ? 0 : 1}}>working</span>
-            <SecondaryAltItem style={{opacity: alt ? 1 : 0}}>
-              sarcastic
-            </SecondaryAltItem>
-          </Line>
-          <Line>developer</Line>
+          <Line>Software</Line>
+          <Line>Developer</Line>
         </TaglineContent>
       </Wrapper>
     );

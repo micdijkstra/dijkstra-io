@@ -7,7 +7,7 @@ const {SparkScroll, SparkProxy} = sparkScroll({invalidateAutomatically: true});
 
 import {Container, Row} from '../components/Layout';
 import Tagline from '../components/Tagline';
-import {Page, PageTitle} from '../components/Page';
+import {Page, PageTitle, a} from '../components/Page';
 import Close from '../components/Close';
 import {Cards, Card} from '../components/Card';
 import {ReadingText} from '../components/Text';
@@ -116,26 +116,76 @@ class About extends React.Component {
                     </p>
 
                     <p>
-                      He has worked for and with companies like Q-CTRL, AYR,
-                      Rough Trade, AIGA, BuzzFeed and Dropbox.
+                      He has worked for and with companies like
+                      <a href="https://www.q-ctrl.com" target="_blank">
+                        Q-CTRL
+                      </a>,{' '}
+                      <a href="https://ayr.com" target="_blank">
+                        AYR
+                      </a>,{' '}
+                      <a href="https://www.roughtrade.com" target="_blank">
+                        Rough Trade
+                      </a>,{' '}
+                      <a href="https://eyeondesign.aiga.org" target="_blank">
+                        AIGA
+                      </a>,{' '}
+                      <a href="https://www.buzzfeed.com" target="_blank">
+                        BuzzFeed
+                      </a>{' '}
+                      and{' '}
+                      <a href="https://www.dropbox.com" target="_blank">
+                        Dropbox
+                      </a>.
                     </p>
 
                     <p>
-                      He has collaborated with designers like Jacob and Jake
-                      from XXIX, Wade and Leta from Ikko Ikko and David
-                      McGillivray.
+                      He has collaborated with designers like
+                      <a href="http://jacobheftmann.com/" target="_blank">
+                        Jacob{' '}
+                      </a>
+                      and{' '}
+                      <a href="http://www.thankseverybody.com/" target="_blank">
+                        Jake{' '}
+                      </a>
+                      from{' '}
+                      <a href="https://xxix.co" target="_blank">
+                        XXIX{' '}
+                      </a>,{' '}
+                      <a href="https://www.wadejeffree.com" target="_blank">
+                        Wade
+                      </a>{' '}
+                      and{' '}
+                      <a href="http://www.thankseverybody.com/" target="_blank">
+                        Leta
+                      </a>{' '}
+                      from{' '}
+                      <a href="http://ikkoikko.com/" target="_blank">
+                        Ikko Ikko
+                      </a>{' '}
+                      and{' '}
+                      <a href="http://dmcg.co/" target="_blank">
+                        David McGillivray
+                      </a>.
                     </p>
 
                     <p>
-                      He has started many businesses including Front Row
-                      Ventures, Wise and Small Victories.
+                      He has started many businesses including{' '}
+                      <a href="http://frontrowhq.com" target="_blank">
+                        Front Row Ventures
+                      </a>,{' '}
+                      <a href="http://www.wiseapp.com" target="_blank">
+                        Wise
+                      </a>{' '}
+                      and{' '}
+                      <a href="https://www.smallvictori.es" target="_blank">
+                        Small Victories
+                      </a>.
                     </p>
 
                     <p>
                       While Michael has worked with a range of technologies such
-                      asHTML, CSS/Sass/Less, JavaScript/JQuery/CoffeeScript,
-                      Python and Swift, his preferred technologies are Ruby on
-                      Rails, React and Go.
+                      as HTML, CSS, JavaScript, Python and Swift, his preferred
+                      technologies are Ruby (on Rails), React and Go.
                     </p>
                   </ReadingText>
                 </AboutRow>
