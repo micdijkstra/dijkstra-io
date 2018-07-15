@@ -57,7 +57,7 @@ class Contact extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>Contact :: Michael Dijkstra</title>
+          <title>How do you contact Michael Dijkstra?</title>
         </Helmet>
         <ContactPage>
           <Close />

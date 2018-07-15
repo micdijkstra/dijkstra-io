@@ -60,7 +60,7 @@ class About extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>About :: Michael Dijkstra</title>
+          <title>Who is Michael Dijkstra?</title>
         </Helmet>
         <AboutPage>
           <Close />
@@ -186,6 +186,23 @@ class About extends React.Component {
                       While Michael has worked with a range of technologies such
                       as HTML, CSS, JavaScript, Python and Swift, his preferred
                       technologies are Ruby (on Rails), React and Go.
+                    </p>
+
+                    <p>
+                      This website was designed by{' '}
+                      <a href="http://www.wadejeffree.com" target="_blank">
+                        Wade Jeffree
+                      </a>, built with{' '}
+                      <a href="https://www.gatsbyjs.com/" target="_blank">
+                        Gatsby.js
+                      </a>, managed with{' '}
+                      <a href="https://www.contentful.com/" target="_blank">
+                        Contentful
+                      </a>{' '}
+                      and hosted on{' '}
+                      <a href="https://www.netlify.com/" target="_blank">
+                        Netlify
+                      </a>.
                     </p>
                   </ReadingText>
                 </AboutRow>

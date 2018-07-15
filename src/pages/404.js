@@ -15,7 +15,7 @@ const NotFoundPage = ({ transition }) => (
   <div style={transition && transition.style}>
     <PageNotFound>
       <Helmet>
-        <title>Page Not Found :: Michael Dijkstra</title>
+        <title>Where is Michael Dijkstra?</title>
       </Helmet>
       <Close />
       <Container>

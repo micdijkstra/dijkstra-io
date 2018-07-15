@@ -1,13 +1,13 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import React from 'react';
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
-import { Page, PageTitle } from '../components/Page'
-import Close from '../components/Close'
-import { AsidePrimary, AsideSecondary } from '../components/Aside'
-import { Container, Row } from '../components/Layout'
+import {Page, PageTitle} from '../components/Page';
+import Close from '../components/Close';
+import {AsidePrimary, AsideSecondary} from '../components/Aside';
+import {Container, Row} from '../components/Layout';
 
-import { media } from '../utils/style'
+import {media} from '../utils/style';
 
 const PageGames = Page.extend`
   background-color: ${props => props.theme.colors.quaternary};
@@ -16,7 +16,7 @@ const PageGames = Page.extend`
 
 const GameContainer = Container.extend`
   position: relative;
-`
+`;
 
 const Game = styled.iframe`
   border: none;
@@ -31,8 +31,8 @@ const Game = styled.iframe`
 
   ${media.sm`
     display: block;
-  `}
-`
+  `};
+`;
 
 const NoGame = styled.div`
   background: ${props => props.theme.colors.secondary};
@@ -45,20 +45,22 @@ const NoGame = styled.div`
 
   ${media.sm`
     display: none;
-  `}
-`
+  `};
+`;
 
-const GamesPage = ({ transition }) => (
+const GamesPage = ({transition}) => (
   <div style={transition && transition.style}>
     <PageGames>
       <Helmet>
-        <title>Games :: Michael Dijkstra</title>
+        <title>What is this Michael Dijkstra?</title>
       </Helmet>
       <Close />
       <GameContainer>
         <NoGame>Load this page on your computer to play games!</NoGame>
-        <Game src="https://wolf3d.dijkstra.io"></Game>
-        <PageTitle>games<br />games<br />games</PageTitle>
+        <Game src="https://wolf3d.dijkstra.io" />
+        <PageTitle>
+          games<br />games<br />games
+        </PageTitle>
       </GameContainer>
       <Container>
         <Row>
@@ -84,6 +86,6 @@ const GamesPage = ({ transition }) => (
       </Container>
     </PageGames>
   </div>
-)
+);
 
-export default GamesPage
+export default GamesPage;

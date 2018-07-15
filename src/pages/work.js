@@ -85,7 +85,7 @@ class Work extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>Work :: Michael Dijkstra</title>
+          <title>What did Michael Dijkstra build?</title>
         </Helmet>
         <WorkPage>
           <WorkCloseHeader>
