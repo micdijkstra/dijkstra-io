@@ -24,7 +24,12 @@ const WorkPage = styled.div`
 const WorkCloseHeader = styled.div`
   color: ${props => props.theme.colors.primary};
   position: relative;
-  z-index: 10;
+  z-index: 5;
+`;
+
+const WorkContainer = Container.extend`
+  position: relative;
+  z-index: 5;
 `;
 
 const TagLink = styled(PageLink)`
@@ -34,15 +39,15 @@ const TagLink = styled(PageLink)`
 const WorkCard = Card.extend`
   &:nth-of-type(2) {
     margin-left: -5%;
-    margin-top: -80%;
+    margin-top: -70%;
     margin-bottom: -45%;
     max-width: 60%;
   }
 
   &:nth-of-type(3) {
-    margin-bottom: -25%;
+    margin-bottom: -15%;
     margin-left: auto;
-    margin-top: -60%;
+    margin-top: -50%;
     max-width: 80%;
   }
 
@@ -130,7 +135,7 @@ class Work extends React.Component {
             </Cards>
           </Container>
 
-          <Container>
+          <WorkContainer>
             <SparkScroll.div timeline={fadeTimeline}>
               <Row>
                 <WorkList projects={projects} />
@@ -155,7 +160,7 @@ class Work extends React.Component {
                 </div>
               </Row>
             </SparkScroll.div>
-          </Container>
+          </WorkContainer>
         </WorkPage>
       </div>
     );
