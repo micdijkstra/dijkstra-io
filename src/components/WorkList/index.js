@@ -97,7 +97,7 @@ class Work extends React.Component {
 
               return (
                 <WorkItem key={index}>
-                  <WorkLink to={`/${project.slug}`}>{project.title}</WorkLink>
+                  <WorkLink to={`/${project.slug}/`}>{project.title}</WorkLink>
                 </WorkItem>
               );
             })}

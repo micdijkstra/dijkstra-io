@@ -78,7 +78,7 @@ class Tag extends React.Component {
                 <AsideSecondary>
                   <div>&nbsp;</div>
                   <div>
-                    <TagLink to={`/work/${slug}`}>{title}</TagLink>
+                    <TagLink to={`/work/${slug}/`}>{title}</TagLink>
                   </div>
                 </AsideSecondary>
               </div>

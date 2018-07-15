@@ -305,7 +305,7 @@ class Project extends React.Component {
         </Helmet>
 
         <ProjectCloseHeader color={onColor}>
-          <Close to="/work" />
+          <Close to="/work/" />
         </ProjectCloseHeader>
 
         <Wrapper style={wrapperStyle}>

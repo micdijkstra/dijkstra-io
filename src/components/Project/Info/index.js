@@ -113,7 +113,7 @@ class ProjectInfo extends React.Component {
                 tags.map((tag, index) => {
                   return (
                     <div key={index}>
-                      <PageLink to={`/work/${tag.slug}`}>{tag.title}</PageLink>
+                      <PageLink to={`/work/${tag.slug}/`}>{tag.title}</PageLink>
                     </div>
                   );
                 })}
