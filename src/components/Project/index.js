@@ -6,9 +6,13 @@ import {fadeIn, media} from '../../utils/style';
 
 const ProjectTag = styled.div`
   color: ${props => props.color || 'inherit'};
-  font-size: ${props => props.theme.text.lg};
+  font-size: ${props => props.theme.text.md};
   margin-left: 25%;
   margin-top: ${props => props.theme.spacing.md};
+
+  ${media.sm`
+    font-size: ${props => props.theme.text.md.md};
+  `};
 `;
 
 const ProjectImage = styled(Img)`
