@@ -109,7 +109,7 @@ class About extends React.Component {
                     <p>
                       Michael Dijkstra is a software developer and product
                       manager with more than 10 years experience working across
-                      the entire full product stack including back-end server
+                      the entire product stack including back-end server
                       development, front-end client side development, product
                       management, wire framing, copy writing and (a little bit
                       of) design.
