@@ -52,12 +52,7 @@ const ProjectInfo = props => {
   return (
     <InfoSection>
       <ProjectTag>
-        {alphabet[index]}.&emsp;<ProjectInfoTag
-          to="#info"
-          onClick={e => this.toggleInfo(e)}
-          onMouseEnter={this.showInfo}>
-          Info
-        </ProjectInfoTag>
+        {alphabet[index]}.&emsp;<ProjectInfoTag to="#info">Info</ProjectInfoTag>
       </ProjectTag>
       <ProjectRow style={projectRowStyle}>
         <ReadingText
@@ -88,7 +83,7 @@ const ProjectInfo = props => {
 };
 
 ProjectInfo.propTypes = {
-  body: PropTypes.string,
+  body: PropTypes.object,
   color: PropTypes.string,
   index: PropTypes.number,
   tags: PropTypes.array,
