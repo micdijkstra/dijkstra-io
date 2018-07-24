@@ -1,31 +1,11 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {Container} from '../../components/Layout';
 import {PageLink} from '../../components/Page';
 
 import {media} from '../../utils/style';
-
-const Background = styled.div`
-  left: 0;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 0;
-`;
-
-const BackgroundImage = Background.extend`
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 80%;
-  left: 10%;
-  opacity: 0.97;
-  top 10%;
-  width: 80%;
-`;
 
 const WorkContainer = Container.extend`
   color: ${props => props.theme.colors.primary};
@@ -41,7 +21,7 @@ const WorkContainer = Container.extend`
 
 const WorkItems = styled.ol`
   color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.text.md};
+  font-size: ${props => props.theme.text.xs.md};
   line-height: ${props => props.theme.line.sm};
   list-style: none;
 
@@ -86,26 +66,26 @@ class Work extends React.Component {
   }
 
   render() {
-    const {title, projects} = this.props;
+    const {projects} = this.props;
 
     return (
       <WorkContainer>
         <WorkItems>
           {projects &&
-            projects.map((project, index) => {
-              const src = project.image && project.image.sizes.src;
-
-              return (
-                <WorkItem key={index}>
-                  <WorkLink to={`/${project.slug}/`}>{project.title}</WorkLink>
-                </WorkItem>
-              );
-            })}
+            projects.map((project, index) => (
+              <WorkItem key={index}>
+                <WorkLink to={`/${project.slug}/`}>{project.title}</WorkLink>
+              </WorkItem>
+            ))}
         </WorkItems>
       </WorkContainer>
     );
   }
 }
+
+Work.propTypes = {
+  projects: PropTypes.array,
+};
 
 class WorkList extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -126,5 +106,10 @@ class WorkList extends React.Component {
     );
   }
 }
+
+WorkList.propTypes = {
+  title: PropTypes.string,
+  projects: PropTypes.array,
+};
 
 export default WorkList;

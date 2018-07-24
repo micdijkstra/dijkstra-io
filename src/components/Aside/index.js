@@ -1,10 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import {media} from '../../utils/style';
 
 const Aside = styled.div`
-  font-size: ${props => props.theme.text.sm};
+  font-size: ${props => props.theme.text.xs.sm};
   line-height: ${props => props.theme.line.md};
   float: left;
   padding-left: ${props => props.theme.spacing.sm};

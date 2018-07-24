@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
 import sparkScroll from 'react-spark-scroll-gsap';
 const {SparkScroll, SparkProxy} = sparkScroll({invalidateAutomatically: true});
 
@@ -13,8 +12,7 @@ import {Container} from '../components/Layout';
 import {Page} from '../components/Page';
 import {Cards, Card} from '../components/Card';
 
-import {fadeTimeline} from '../utils/style';
-import getPageImages from '../utils/getPageImages';
+import {getRandom} from '../utils/getPageImages';
 
 const IndexPage = Page.extend`
   background-color: ${props => props.theme.colors.primary};
@@ -35,16 +33,10 @@ const IndexCard = Card.extend`
   }
 
   &:nth-of-type(4) {
+    margin-bottom: -25%;
     margin-left: auto;
     margin-right: 5%;
     max-width: 70%;
-  }
-
-  &:nth-of-type(5) {
-    bottom: 0;
-    left: 25%;
-    position: absolute;
-    z-index: 10 !important;
   }
 `;
 
@@ -55,6 +47,12 @@ const HeaderContainer = Container.extend`
   z-index: 5;
 `;
 
+const NavContainer = Container.extend`
+  margin-left: 25%;
+  position: relative;
+  z-index: 10 !important;
+`;
+
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -63,22 +61,18 @@ class Index extends React.Component {
 
   render() {
     const {transition, data} = this.props;
-    const pageImages = getPageImages(data.allFile.edges, 1, 2);
-    const images = [
-      pageImages['landscape'][0],
-      pageImages['portrait'][0],
-      pageImages['landscape'][1],
-    ];
+    let images = data.allContentfulProject.edges.map(project => {
+      return project.node.image;
+    });
+    images = getRandom(images.filter(i => i), 3);
 
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>
-            Michael Dijkstra is a young Australian Software Developer
-          </title>
+          <title>Michael Dijkstra is a product minded software developer</title>
           <meta
             name="description"
-            content="Michael Dijkstra is a young Australian Software Developer."
+            content="Michael Dijkstra is a product minded software developer."
           />
         </Helmet>
         <IndexPage>
@@ -116,13 +110,11 @@ class Index extends React.Component {
                     </IndexCard>
                   );
                 })}
-                <IndexCard>
-                  <SparkScroll.div timeline={fadeTimeline}>
-                    <Nav />
-                  </SparkScroll.div>
-                </IndexCard>
               </Cards>
             </Container>
+            <NavContainer>
+              <Nav />
+            </NavContainer>
           </SparkProxy.div>
         </IndexPage>
       </div>
@@ -130,14 +122,19 @@ class Index extends React.Component {
   }
 }
 
+Index.propTypes = {
+  transition: PropTypes.object,
+  data: PropTypes.object,
+};
+
 export const query = graphql`
   query IndexImagesQuery {
-    allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    allContentfulProject(sort: {fields: [slug], order: ASC}) {
       edges {
         node {
-          childImageSharp {
-            sizes(maxWidth: 900) {
-              ...GatsbyImageSharpSizes
+          image {
+            sizes(maxWidth: 1800, cropFocus: TOP) {
+              ...GatsbyContentfulSizes
             }
           }
         }

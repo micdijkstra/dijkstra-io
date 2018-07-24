@@ -8,7 +8,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
     resolve(
       graphql(`
         {
-          allContentfulProject(limit: 1000) {
+          allContentfulProject(sort: {fields: [slug], order: ASC}) {
             edges {
               node {
                 slug
@@ -51,7 +51,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
         .then(() => {
           graphql(`
             {
-              allContentfulTag(limit: 1000) {
+              allContentfulTag(sort: {fields: [slug], order: ASC}) {
                 edges {
                   node {
                     slug

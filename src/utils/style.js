@@ -1,11 +1,11 @@
-import styled, { css, keyframes } from 'styled-components'
+import {css, keyframes} from 'styled-components';
 
-const collapse = (collapse) => css`
+const collapse = collapse => css`
   height: auto;
   max-height: ${collapse ? '0' : '100000px'};
   overflow: hidden;
   transition: max-height ${timeout}ms ease-in-out;
-`
+`;
 
 const fadeSequence = keyframes`
   100% { opacity: 1; }
@@ -15,51 +15,54 @@ const fadeIn = () => {
   return `
     animation: ${fadeSequence} .5s forwards;
     opacity: 0;
-  `
-}
+  `;
+};
 
 const fadeTimeline = {
-  topBottom: { opacity: 0 },
-  topCenter: { opacity: 1 }
-}
+  topBottom: {opacity: 0},
+  topCenter: {opacity: 1},
+};
 
 const media = {
   sm: (...args) => css`
     @media (min-width: ${props => props.theme.screen.sm}) {
-      ${ css(...args) }
+      ${css(...args)};
     }
   `,
   md: (...args) => css`
     @media (min-width: ${props => props.theme.screen.md}) {
-      ${ css(...args) }
+      ${css(...args)};
     }
   `,
   lg: (...args) => css`
     @media (min-width: ${props => props.theme.screen.lg}) {
-      ${ css(...args) }
+      ${css(...args)};
     }
   `,
   xl: (...args) => css`
     @media (min-width: ${props => props.theme.screen.xl}) {
-      ${ css(...args) }
+      ${css(...args)};
     }
-  `
-}
+  `,
+};
 
-const placeholder = (color) => css`
+const placeholder = color => css`
   input,
   select,
   textarea {
-    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${color};
       opacity: 1; /* Firefox */
     }
 
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
       color: ${color};
     }
 
-    &::-ms-input-placeholder { /* Microsoft Edge */
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
       color: ${color};
     }
   }
@@ -67,7 +70,7 @@ const placeholder = (color) => css`
   select {
     color: ${color};
   }
-`
+`;
 
 const shakeSequence = keyframes`
   8%, 41% {
@@ -90,9 +93,9 @@ const shakeSequence = keyframes`
 const shake = () => {
   return `
     animation: ${shakeSequence} .5s forwards;
-  `
-}
+  `;
+};
 
-const timeout = 250
+const timeout = 250;
 
-export { collapse, fadeIn, fadeTimeline, media, placeholder, shake, timeout }
+export {collapse, fadeIn, fadeTimeline, media, placeholder, shake, timeout};

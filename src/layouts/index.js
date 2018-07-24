@@ -19,7 +19,6 @@ class DefaultLayout extends React.Component {
   };
 
   componentDidMount() {
-    const {location} = this.props;
     this.htmlElement = document.querySelector(`html`);
     this.bodyElement = document.querySelector(`body`);
     this.scrollPosition = 0;
@@ -36,8 +35,6 @@ class DefaultLayout extends React.Component {
   }
 
   render() {
-    const {location} = this.props;
-
     return (
       <ThemeProvider theme={theme}>
         <Wrapper>

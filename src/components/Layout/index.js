@@ -1,7 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { media } from '../../utils/style'
+import {media} from '../../utils/style';
 
 const Container = styled.div`
   max-width: 900px;
@@ -10,7 +9,7 @@ const Container = styled.div`
 
 const Section = styled.div`
   margin-bottom: ${props => props.theme.spacing.xl};
-`
+`;
 
 const Row = styled.div`
   display: flex;
@@ -26,7 +25,7 @@ const Row = styled.div`
     > div {
       width: 50%;
     }
-  `}
+  `};
 `;
 
-export { Section, Container, Row }
+export {Section, Container, Row};

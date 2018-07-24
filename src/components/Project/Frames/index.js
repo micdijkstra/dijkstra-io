@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {Section} from '../../Layout';
@@ -14,6 +15,7 @@ const ProjectFrame = styled.div`
 
   iframe {
     border: 0;
+    background: white;
     height: 100%;
     left: 0;
     top: 0;
@@ -84,5 +86,11 @@ class ProjectFrames extends React.Component {
     );
   }
 }
+
+ProjectFrames.propTypes = {
+  images: PropTypes.array,
+  liveUrl: PropTypes.string,
+  vimeoUrl: PropTypes.string,
+};
 
 export default ProjectFrames;

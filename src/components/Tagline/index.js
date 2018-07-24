@@ -23,56 +23,20 @@ const Line = styled.div`
   position: relative;
 `;
 
-const AltItem = styled.span`
-  position: absolute;
-  width: 200%;
-  right: 0;
-`;
-
-const SecondaryAltItem = AltItem.extend`
-  left: 0;
-  right: auto;
-`;
-
-class Tagline extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      alt: false,
-    };
-
-    this.showAlt = this.showAlt.bind(this);
-    this.showDefault = this.showDefault.bind(this);
-  }
-
-  showAlt() {
-    this.setState({alt: true});
-  }
-
-  showDefault() {
-    this.setState({alt: false});
-  }
-
-  render() {
-    const {alt} = this.state;
-
-    return (
-      <Wrapper onMouseEnter={this.showAlt} onMouseLeave={this.showDefault}>
-        <AsidePrimary>
-          <div>
-            <span>a</span>
-          </div>
-          <Line>young</Line>
-          <Line>Australian</Line>
-        </AsidePrimary>
-        <TaglineContent>
-          <Line>Software</Line>
-          <Line>Developer</Line>
-        </TaglineContent>
-      </Wrapper>
-    );
-  }
-}
+const Tagline = () => (
+  <Wrapper>
+    <AsidePrimary>
+      <div>
+        <span>a</span>
+      </div>
+      <Line>product</Line>
+      <Line>minded</Line>
+    </AsidePrimary>
+    <TaglineContent>
+      <Line>software</Line>
+      <Line>developer</Line>
+    </TaglineContent>
+  </Wrapper>
+);
 
 export default Tagline;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import {Section} from '../../Layout';
 import {ProjectImage, ProjectTag} from '../../Project';
@@ -36,5 +36,10 @@ class ProjectFrames extends React.Component {
     );
   }
 }
+
+ProjectFrames.propTypes = {
+  images: PropTypes.array,
+  offset: PropTypes.number,
+};
 
 export default ProjectFrames;

@@ -1,8 +1,7 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import styled, { css } from 'styled-components'
+import Link from 'gatsby-link';
+import styled, {css} from 'styled-components';
 
-import { media } from '../../utils/style'
+import {media} from '../../utils/style';
 
 const Page = styled.div`
   min-height: 100vh;
@@ -12,11 +11,11 @@ const Page = styled.div`
 
   ${media.sm`
     padding-bottom: ${props => props.theme.spacing.md};
-  `}
+  `};
 `;
 
 const PageTitle = styled.div`
-  font-size: ${props => props.theme.text.xl};
+  font-size: ${props => props.theme.text.xs.xl};
   line-height: ${props => props.theme.line.xs};
   padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.xs};
   text-align: center;
@@ -30,8 +29,8 @@ const PageTitle = styled.div`
     font-size: ${props => props.theme.text.md.xl};
     padding: ${props => props.theme.spacing.lg};
     overflow: visible;
-  `}
-`
+  `};
+`;
 
 const LinkStyles = () => css`
   color: white;
@@ -43,7 +42,7 @@ const LinkStyles = () => css`
   &:before {
     background-color: currentColor;
     bottom: -2px;
-    content: "";
+    content: '';
     display: block;
     height: 2px;
     left: 0;
@@ -59,14 +58,14 @@ const LinkStyles = () => css`
       }
     }
   }
-`
+`;
 
 const PageLink = styled(Link)`
-  ${LinkStyles()}
-`
+  ${LinkStyles()};
+`;
 
 const PageExternalLink = styled.a`
-  ${LinkStyles()}
-`
+  ${LinkStyles()};
+`;
 
-export { Page, PageTitle, PageLink, PageExternalLink }
+export {Page, PageTitle, PageLink, PageExternalLink};

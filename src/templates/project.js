@@ -1,22 +1,21 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import Swipeable from 'react-swipeable';
 import {navigateTo} from 'gatsby-link';
 import sparkScroll from 'react-spark-scroll-gsap';
 const {SparkScroll, SparkProxy} = sparkScroll({invalidateAutomatically: true});
 
-import {Section, Container, Row} from '../components/Layout';
+import {Section, Container} from '../components/Layout';
 import {Cards, Card} from '../components/Card';
-import {Page, PageTitle, PageLink} from '../components/Page';
+import {Page, PageTitle} from '../components/Page';
 import Close from '../components/Close';
 
 import ProjectFrames from '../components/Project/Frames';
 import ProjectInfo from '../components/Project/Info';
 
-import getTransitionStyle from '../utils/getTransitionStyle';
-import {fadeIn, media, timeout} from '../utils/style';
+import {media, timeout} from '../utils/style';
 
 const transitionStyles = timeout => {
   return {
@@ -196,9 +195,9 @@ class Project extends React.Component {
   }
 
   componentDidMount() {
-    self = this;
+    const that = this;
     window.setTimeout(() => {
-      self.setState({
+      that.setState({
         exiting: false,
       });
     }, timeout);
@@ -212,14 +211,16 @@ class Project extends React.Component {
   keyDown(event) {
     // up or left
     if (event.keyCode === 38 || event.keyCode == 37) {
-      const {next} = this.props.pathContext;
+      const {pathContext} = this.props;
+      const {next} = pathContext;
       this.showNext();
       this.goTo(event, next.slug);
     }
 
     // down or right
     if (event.keyCode === 40 || event.keyCode == 39) {
-      const {previous} = this.props.pathContext;
+      const {pathContext} = this.props;
+      const {previous} = pathContext;
       this.showPrevious();
       this.goTo(event, previous.slug);
     }
@@ -259,6 +260,7 @@ class Project extends React.Component {
   }
 
   render() {
+    const {data, pathContext} = this.props;
     const {
       title,
       linkText,
@@ -271,9 +273,8 @@ class Project extends React.Component {
       body,
       metaDescription,
       tags,
-    } = this.props.data.contentfulProject;
-    const {transition, data} = this.props;
-    const {next, previous} = this.props.pathContext;
+    } = data.contentfulProject;
+    const {next, previous} = pathContext;
     const {exiting, showNext, showPrevious} = this.state;
 
     const status = (exiting && 'exiting') || 'loaded';
@@ -396,8 +397,9 @@ class Project extends React.Component {
   }
 }
 
-Project.PropTypes = {
-  data: PropTypes.object.isRequired,
+Project.propTypes = {
+  data: PropTypes.object,
+  pathContext: PropTypes.object,
 };
 
 export default Project;

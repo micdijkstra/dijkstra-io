@@ -1,17 +1,17 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
-import { Page, PageTitle } from '../components/Page'
-import Close from '../components/Close'
-import { Container } from '../components/Layout'
+import {Page, PageTitle} from '../components/Page';
+import Close from '../components/Close';
+import {Container} from '../components/Layout';
 
 const PageNotFound = Page.extend`
   background-color: ${props => props.theme.colors.quaternary};
   color: ${props => props.theme.colors.onDark};
 `;
 
-const NotFoundPage = ({ transition }) => (
+const NotFoundPage = ({transition}) => (
   <div style={transition && transition.style}>
     <PageNotFound>
       <Helmet>
@@ -19,10 +19,16 @@ const NotFoundPage = ({ transition }) => (
       </Helmet>
       <Close />
       <Container>
-        <PageTitle>page<br />not<br />found</PageTitle>
+        <PageTitle>
+          page<br />not<br />found
+        </PageTitle>
       </Container>
     </PageNotFound>
   </div>
-)
+);
 
-export default NotFoundPage
+NotFoundPage.propTypes = {
+  transition: PropTypes.object,
+};
+
+export default NotFoundPage;

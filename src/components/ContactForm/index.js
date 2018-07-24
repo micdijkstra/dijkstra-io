@@ -39,39 +39,11 @@ const Field = styled.div`
     )};
 `;
 
-const Label = styled.label`
-  position: absolute;
-`;
-
 const Input = styled.input`
   background: none;
   border: 0;
   color: ${props => props.theme.colors.onDark};
   line-height: ${props => props.theme.line.md};
-  padding: 0 ${props => props.theme.spacing.sm};
-  width: 100%;
-`;
-
-const SelectField = Field.extend`
-  height: 64px;
-
-  &:after {
-    content: '↓';
-    display: block;
-    position: absolute;
-    line-height: 100%;
-    right: 10px;
-    top: 15px;
-  }
-`;
-
-const Select = styled.select`
-  appearance: none;
-  background: transparent;
-  border: 0;
-  color: ${props => props.theme.colors.onDark};
-  line-height: ${props => props.theme.line.md};
-  height: 100%;
   padding: 0 ${props => props.theme.spacing.sm};
   width: 100%;
 `;
@@ -139,7 +111,6 @@ class ContactForm extends React.Component {
   };
 
   handleChange = e => {
-    const {fieldsWithErrors} = this.state;
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -205,15 +176,6 @@ class ContactForm extends React.Component {
                 placeholder="Your email"
               />
             </Field>
-            {/*<SelectField error={fieldsWithErrors['budget']}>
-              <Select name="budget" onChange={(e) => { this.handleChange(e); this.clearValidation(e) }}>
-                <option value="">Budget</option>
-                <option>$5k-10k</option>
-                <option>$10k-20k</option>
-                <option>$20k-50k</option>
-                <option>$50k+</option>
-              </Select>
-            </SelectField>*/}
             <Field error={fieldsWithErrors['message']}>
               <TextArea
                 name="message"

@@ -19,10 +19,12 @@ const theme = {
   },
 
   text: {
-    sm: '14px',
-    md: '20px',
-    lg: '30px',
-    xl: '90px',
+    xs: {
+      sm: '14px',
+      md: '20px',
+      lg: '30px',
+      xl: '90px',
+    },
 
     md: {
       sm: '20px',

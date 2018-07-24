@@ -1,5 +1,6 @@
 import React from 'react';
-import Link, {navigateTo} from 'gatsby-link';
+import PropTypes from 'prop-types';
+import {navigateTo} from 'gatsby-link';
 import styled from 'styled-components';
 
 import {PageLink} from '../Page';
@@ -13,7 +14,7 @@ const CloseHeader = styled.div`
 
 const CloseLink = PageLink.extend`
   color: inherit;
-  font-size: ${props => props.theme.text.md};
+  font-size: ${props => props.theme.text.xs.md};
   position: relative;
   z-index: 1;
 
@@ -58,5 +59,9 @@ class Close extends React.Component {
     );
   }
 }
+
+Close.propTypes = {
+  to: PropTypes.string,
+};
 
 export default Close;

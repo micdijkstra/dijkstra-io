@@ -1,7 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { media } from '../../utils/style'
+import {media} from '../../utils/style';
 
 const Text = styled.div`
   a {
@@ -16,10 +15,10 @@ const Text = styled.div`
       text-decoration: none;
     }
   }
-`
+`;
 
 const ReadingText = Text.extend`
-  font-size: ${props => props.theme.text.md};
+  font-size: ${props => props.theme.text.xs.md};
   line-height: ${props => props.theme.line.sm};
 
   > p {
@@ -28,7 +27,7 @@ const ReadingText = Text.extend`
 
   ${media.sm`
     font-size: ${props => props.theme.text.md.md};
-  `}
+  `};
 `;
 
-export { Text, ReadingText }
+export {Text, ReadingText};

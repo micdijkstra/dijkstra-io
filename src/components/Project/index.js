@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
@@ -6,7 +5,7 @@ import {fadeIn, media} from '../../utils/style';
 
 const ProjectTag = styled.div`
   color: ${props => props.color || 'inherit'};
-  font-size: ${props => props.theme.text.md};
+  font-size: ${props => props.theme.text.xs.md};
   margin-left: 25%;
   margin-top: ${props => props.theme.spacing.md};
 
