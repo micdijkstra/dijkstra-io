@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {Row} from '../../Layout';
@@ -40,8 +41,8 @@ const ProjectInfoTag = PageLink.extend`
   }
 `;
 
-const ProjectInfo = () => {
-  const {body, color, index, tags} = this.props;
+const ProjectInfo = props => {
+  const {body, color, index, tags} = props;
   let projectRowStyle = {
     backgroundColor: color,
     opacity: 1,
@@ -49,7 +50,7 @@ const ProjectInfo = () => {
   };
 
   return (
-    <InfoSection onMouseLeave={this.hideInfo}>
+    <InfoSection>
       <ProjectTag>
         {alphabet[index]}.&emsp;<ProjectInfoTag
           to="#info"
@@ -84,6 +85,13 @@ const ProjectInfo = () => {
       </ProjectRow>
     </InfoSection>
   );
+};
+
+ProjectInfo.propTypes = {
+  body: PropTypes.string,
+  color: PropTypes.string,
+  index: PropTypes.number,
+  tags: PropTypes.array,
 };
 
 export default ProjectInfo;
