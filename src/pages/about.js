@@ -153,7 +153,7 @@ class About extends React.Component {
                 </p>
 
                 <p>
-                  Michael&rquo;s current preferred technologies are are Ruby on
+                  Michael&rsquo;s current preferred technologies are are Ruby on
                   Rails, React and Go.
                 </p>
 
