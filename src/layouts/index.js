@@ -15,8 +15,11 @@ const Wrapper = styled.div`
 `;
 
 const Stage = styled.div`
-  background-color: ${props => props.theme.stages[props.path].background};
-  color: ${props => props.theme.stages[props.path].color};
+  background-color: ${props =>
+    props.theme.stages[props.path] &&
+    props.theme.stages[props.path].background};
+  color: ${props =>
+    props.theme.stages[props.path] && props.theme.stages[props.path].color};
   min-height: 100vh;
 `;
 
