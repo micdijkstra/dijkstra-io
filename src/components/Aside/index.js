@@ -21,6 +21,7 @@ const AsidePrimary = Aside.extend`
 
 const AsideSecondary = Aside.extend`
   margin-left: ${props => props.theme.spacing.md};
+  max-width: 200px;
   text-align: left;
 `;
 

@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 
-import {media} from '../../utils/style';
+import {media, link} from '../../utils/style';
 
 const Text = styled.div`
   a {
-    text-decoration: underline;
+    ${link()} text-decoration: none;
+
+    &:before {
+      width: 100%;
+    }
+
+    body.no-touch & {
+      &:hover {
+        &:after {
+          width: 100%;
+        }
+      }
+    }
 
     &,
     &:visited {
@@ -17,17 +29,36 @@ const Text = styled.div`
   }
 `;
 
+const LeadText = Text.extend`
+  font-size: ${props => props.theme.text.xs.lg};
+  line-height: ${props => props.theme.line.sm};
+
+  > p {
+    margin-bottom: ${props => props.theme.spacing.xl};
+  }
+
+  ${media.sm`
+    font-size: ${props => props.theme.text.md.lg};
+  `};
+`;
+
 const ReadingText = Text.extend`
-  font-size: ${props => props.theme.text.xs.md};
+  font-size: ${props => props.theme.text.xs.sm};
   line-height: ${props => props.theme.line.sm};
 
   > p {
     margin-bottom: ${props => props.theme.spacing.md};
   }
 
+  ul,
+  ol,
+  li {
+    padding-left: 0;
+  }
+
   ${media.sm`
-    font-size: ${props => props.theme.text.md.md};
+    font-size: ${props => props.theme.text.md.sm};
   `};
 `;
 
-export {Text, ReadingText};
+export {LeadText, Text, ReadingText};

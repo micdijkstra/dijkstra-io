@@ -98,4 +98,52 @@ const shake = () => {
 
 const timeout = 250;
 
-export {collapse, fadeIn, fadeTimeline, media, placeholder, shake, timeout};
+const link = () => css`
+  color: inherit;
+  display: inline-block;
+  line-height: ${props => props.theme.line.sm};
+  position: relative;
+  text-decoration: none;
+
+  &:after,
+  &:before {
+    background-color: currentColor;
+    bottom: -2px;
+    content: '';
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition: 0.15s ease-in-out;
+    width: 0;
+  }
+
+  &:after {
+    background-color: ${props => props.theme.colors.primary};
+  }
+
+  body.no-touch & {
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+
+  &.active {
+    &:before {
+      width: 100%;
+    }
+  }
+`;
+
+export {
+  collapse,
+  fadeIn,
+  fadeTimeline,
+  media,
+  placeholder,
+  shake,
+  timeout,
+  link,
+};

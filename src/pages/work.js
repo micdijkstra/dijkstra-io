@@ -4,26 +4,21 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import {AsidePrimary, AsideSecondary} from '../components/Aside';
-import Close from '../components/Close';
 import {Container, Row} from '../components/Layout';
 import {PageLink} from '../components/Page';
 import WorkList from '../components/WorkList';
+import {LeadText} from '../components/Text';
 
 const WorkPage = styled.div`
   background-color: ${props => props.theme.colors.quinary};
   color: ${props => props.theme.colors.primary};
   min-height: 100vh;
-`;
 
-const WorkCloseHeader = styled.div`
-  color: ${props => props.theme.colors.primary};
-  position: relative;
-  z-index: 5;
-`;
-
-const WorkContainer = Container.extend`
-  position: relative;
-  z-index: 5;
+  a {
+    &:after {
+      background-color: ${props => props.theme.colors.quinary};
+    }
+  }
 `;
 
 const TagLink = styled(PageLink)`
@@ -45,14 +40,17 @@ class Work extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>What did Michael Dijkstra build?</title>
+          <title>Work | Michael Dijkstra</title>
         </Helmet>
         <WorkPage>
-          <WorkCloseHeader>
-            <Close />
-          </WorkCloseHeader>
-
-          <WorkContainer>
+          <Container>
+            <LeadText>
+              <p>
+                <a href="/">Michael Dijkstra</a> has designed, developed and
+                managed web and mobile applications for clients all over the
+                world.
+              </p>
+            </LeadText>
             <Row>
               <WorkList projects={projects} />
               <div>
@@ -75,7 +73,7 @@ class Work extends React.Component {
                 </AsideSecondary>
               </div>
             </Row>
-          </WorkContainer>
+          </Container>
         </WorkPage>
       </div>
     );

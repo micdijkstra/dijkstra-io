@@ -30,7 +30,7 @@ const theme = {
       sm: '20px',
       md: '30px',
       lg: '60px',
-      xl: '220px',
+      xl: '160px',
     },
   },
 
@@ -46,7 +46,30 @@ const theme = {
     sm: '15px',
     md: '30px',
     lg: '60px',
-    xl: '120px',
+    xl: '100px',
+  },
+
+  stages: {
+    '': {
+      background: 'rgb(3, 17, 91)',
+      color: 'white',
+    },
+    about: {
+      background: 'rgb(35, 31, 22)',
+      color: 'white',
+    },
+    work: {
+      background: 'rgb(194, 255, 0)',
+      color: 'rgb(3, 17, 91)',
+    },
+    contact: {
+      background: 'rgb(126, 15, 26)',
+      color: 'white',
+    },
+    games: {
+      background: 'rgb(126, 15, 26)',
+      color: 'white',
+    },
   },
 };
 

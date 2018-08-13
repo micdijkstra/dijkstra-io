@@ -9,14 +9,6 @@ import {media} from '../../utils/style';
 
 const WorkContainer = Container.extend`
   color: ${props => props.theme.colors.primary};
-  float: right;
-  min-width: 80%;
-  padding-right: ${props => props.theme.spacing.md};
-
-  ${media.sm`
-    min-width: 60%;
-    padding-right: ${props => props.theme.spacing.xl};
-  `};
 `;
 
 const WorkItems = styled.ol`
@@ -74,7 +66,9 @@ class Work extends React.Component {
           {projects &&
             projects.map((project, index) => (
               <WorkItem key={index}>
-                <WorkLink to={`/${project.slug}/`}>{project.title}</WorkLink>
+                <WorkLink to={`/work/${project.slug}/`}>
+                  {project.title}
+                </WorkLink>
               </WorkItem>
             ))}
         </WorkItems>

@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {PageLink} from '../Page';
-
 import {media} from '../../utils/style';
 
 const Wrapper = styled.div`
   font-size: ${props => props.theme.text.xs.lg};
+  margin-left: 25%;
+  position: relative;
+  z-index: 10 !important;
 
   ${media.sm`
     font-size: ${props => props.theme.text.md.lg};

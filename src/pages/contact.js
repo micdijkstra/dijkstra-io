@@ -4,14 +4,19 @@ import Helmet from 'react-helmet';
 
 import {Container, Row} from '../components/Layout';
 import {Page, PageExternalLink} from '../components/Page';
-import Close from '../components/Close';
 import {AsidePrimary, AsideSecondary} from '../components/Aside';
-import {ReadingText} from '../components/Text';
+import {LeadText, ReadingText} from '../components/Text';
 import ContactForm from '../components/ContactForm';
 
 const ContactPage = Page.extend`
   background-color: ${props => props.theme.colors.tertiary};
   color: ${props => props.theme.colors.onDark};
+
+  a {
+    &:after {
+      background-color: ${props => props.theme.colors.tertiary};
+    }
+  }
 `;
 
 class Contact extends React.Component {
@@ -21,12 +26,16 @@ class Contact extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>How do you contact Michael Dijkstra?</title>
+          <title>Contact | Michael Dijkstra</title>
         </Helmet>
         <ContactPage>
-          <Close />
-
           <Container>
+            <LeadText>
+              <p>
+                <a href="/">Michael Dijkstra</a> is currently living and working
+                in Sydney, Australia.
+              </p>
+            </LeadText>
             <Row>
               <ReadingText>
                 <p>Please use the form below to get in touch.</p>

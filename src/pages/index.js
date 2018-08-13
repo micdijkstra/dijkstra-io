@@ -47,12 +47,6 @@ const HeaderContainer = Container.extend`
   z-index: 5;
 `;
 
-const NavContainer = Container.extend`
-  margin-left: 25%;
-  position: relative;
-  z-index: 10 !important;
-`;
-
 class Index extends React.Component {
   shouldComponentUpdate() {
     // Prevent update on page transition
@@ -69,7 +63,7 @@ class Index extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>Michael Dijkstra is a product minded software developer</title>
+          <title>A product minded software developer | Michael Dijkstra</title>
           <meta
             name="description"
             content="Michael Dijkstra is a product minded software developer."
@@ -112,9 +106,7 @@ class Index extends React.Component {
                 })}
               </Cards>
             </Container>
-            <NavContainer>
-              <Nav />
-            </NavContainer>
+            <Nav />
           </SparkProxy.div>
         </IndexPage>
       </div>

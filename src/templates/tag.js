@@ -35,7 +35,7 @@ class Tag extends React.Component {
         </Helmet>
         <TagPage>
           <TagCloseHeader>
-            <Close />
+            <Close to="/work/" />
           </TagCloseHeader>
 
           <Container>

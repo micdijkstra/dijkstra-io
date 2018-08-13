@@ -34,7 +34,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
               index === 0 ? projects[projects.length - 1] : projects[index - 1];
 
             createPage({
-              path: edge.node.slug,
+              path: `work/${edge.node.slug}`,
               component: projectTemplate,
               context: {
                 slug: edge.node.slug,

@@ -183,7 +183,7 @@ class ContactForm extends React.Component {
                 onChange={this.handleChange}
                 onBlur={this.validateField}
                 onKeyUp={this.validateField}
-                placeholder="Project description"
+                placeholder="Your message"
                 rows="5"
               />
             </Field>

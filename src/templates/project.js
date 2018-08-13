@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Swipeable from 'react-swipeable';
 import {navigateTo} from 'gatsby-link';
-import sparkScroll from 'react-spark-scroll-gsap';
-const {SparkScroll, SparkProxy} = sparkScroll({invalidateAutomatically: true});
 
 import {Section, Container} from '../components/Layout';
 import {Cards, Card} from '../components/Card';
@@ -15,7 +13,7 @@ import Close from '../components/Close';
 import ProjectFrames from '../components/Project/Frames';
 import ProjectInfo from '../components/Project/Info';
 
-import {media, timeout} from '../utils/style';
+import {timeout} from '../utils/style';
 
 const transitionStyles = timeout => {
   return {
@@ -112,15 +110,6 @@ const ProjectCloseHeader = styled.div`
   z-index: 2;
 `;
 
-const ProjectTitle = PageTitle.extend`
-  margin-top: -150px;
-  padding: 0 0 15px;
-
-  ${media.sm`
-    padding: 0 0 15px;
-  `};
-`;
-
 const Wrapper = styled.div`
   position: relative;
   overflow: visible;
@@ -129,7 +118,7 @@ const Wrapper = styled.div`
 
 const ProjectPage = Page.extend`
   color: ${props => props.color || props.theme.colors.onDark};
-  padding-top: 250px;
+  padding-top: 50px;
 `;
 
 const SiblingPage = ProjectPage.extend`
@@ -169,11 +158,8 @@ const ProjectContainer = Container.extend`
 
 const ProjectLink = styled.a`
   color: ${props => props.color || props.theme.colors.onDark};
-  left: 0;
-  position: absolute;
   text-align: center;
   text-decoration: none;
-  top: 0;
   width: 100%;
 `;
 
@@ -234,7 +220,7 @@ class Project extends React.Component {
     });
 
     window.setTimeout(() => {
-      navigateTo(`/${slug}`);
+      navigateTo(`/work/${slug}/`);
     }, timeout);
   }
 
@@ -263,7 +249,6 @@ class Project extends React.Component {
     const {data, pathContext} = this.props;
     const {
       title,
-      linkText,
       link,
       color,
       onColor,
@@ -316,67 +301,47 @@ class Project extends React.Component {
             onSwipingRight={this.showPrevious}
             onSwipedRight={e => this.goTo(e, previous.slug)}>
             <ProjectPage style={projectPageStyle}>
-              <SparkProxy.div proxyId="parallax">
-                <ProjectContainer>
-                  <Cards order={[0, 1]} style={{position: 'relative'}}>
-                    <Card>
-                      <SparkScroll.div
-                        proxy="parallax"
-                        timeline={{
-                          topBottom: {transform: 'translate3d(0px,0px,0px)'},
-                          bottomTop: {transform: 'translate3d(0px,-120px,0px)'},
-                        }}>
-                        <ProjectLink
-                          href={link}
-                          target="_blank"
-                          color={onColor}>
-                          <ProjectTitle
-                            dangerouslySetInnerHTML={createMarkup(linkText)}
-                          />
-                        </ProjectLink>
-                      </SparkScroll.div>
-                    </Card>
-                    <Card>
-                      <ProjectFrames
-                        liveUrl={liveUrl}
-                        vimeoUrl={vimeoUrl}
-                        images={images}
-                      />
+              <ProjectContainer>
+                <ProjectLink href={link} target="_blank" color={onColor}>
+                  <PageTitle dangerouslySetInnerHTML={createMarkup(title)} />
+                </ProjectLink>
+                <Cards order={[0, 1]} style={{position: 'relative'}}>
+                  <Card>
+                    <ProjectFrames
+                      liveUrl={liveUrl}
+                      vimeoUrl={vimeoUrl}
+                      images={images}
+                    />
 
-                      <Section>
-                        <ProjectInfo
-                          body={body}
-                          tags={tags}
-                          color={color}
-                          onColor={onColor}
-                          index={
-                            vimeoUrl
-                              ? 1 + images.length
-                              : liveUrl ? 2 : images.length
-                          }
-                        />
-                      </Section>
-                    </Card>
-                  </Cards>
-                </ProjectContainer>
-              </SparkProxy.div>
+                    <Section>
+                      <ProjectInfo
+                        body={body}
+                        tags={tags}
+                        color={color}
+                        onColor={onColor}
+                        index={
+                          vimeoUrl
+                            ? 1 + images.length
+                            : liveUrl ? 2 : images.length
+                        }
+                      />
+                    </Section>
+                  </Card>
+                </Cards>
+              </ProjectContainer>
             </ProjectPage>
           </Swipeable>
         </Wrapper>
 
         <NextPage style={nextStyle}>
           <ProjectContainer>
-            <ProjectTitle
-              dangerouslySetInnerHTML={createMarkup(next.linkText)}
-            />
+            <PageTitle dangerouslySetInnerHTML={createMarkup(next.title)} />
           </ProjectContainer>
         </NextPage>
 
         <PreviousPage style={previousStyle}>
           <ProjectContainer>
-            <ProjectTitle
-              dangerouslySetInnerHTML={createMarkup(previous.linkText)}
-            />
+            <PageTitle dangerouslySetInnerHTML={createMarkup(previous.title)} />
           </ProjectContainer>
         </PreviousPage>
 
