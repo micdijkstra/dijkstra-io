@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {AsideSecondary} from '../Aside';
-import {PageLink} from '../Page';
+import {PageLink, PageExternalLink} from '../Page';
 import {Container} from '../Layout';
 
 import {media} from '../../utils/style';
@@ -16,12 +16,13 @@ const Wrapper = Container.extend`
 `;
 
 const Nav = AsideSecondary.extend`
-  margin-top: ${props => props.theme.spacing.xl};
+  margin-top: ${props => props.theme.spacing.lg};
   margin-right: ${props => props.theme.spacing.sm};
   float: right;
 
   ${media.sm`
     margin-right: ${props => props.theme.spacing.md};
+    margin-top: ${props => props.theme.spacing.xl};
   `};
 
   ${media.md`
@@ -47,6 +48,9 @@ const Header = () => (
       <PageLink to="/contact/" activeClassName="active">
         Contact
       </PageLink>
+      <br />
+      d.{' '}
+      <PageExternalLink href="https://blog.dijkstra.io">Blog</PageExternalLink>
     </Nav>
   </Wrapper>
 );

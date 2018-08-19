@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {PageLink} from '../Page';
+import {PageLink, PageExternalLink} from '../Page';
 import {media} from '../../utils/style';
 
 const Wrapper = styled.div`
@@ -31,6 +31,9 @@ const Nav = () => (
       </li>
       <li>
         <PageLink to="/contact/">Contact</PageLink>
+      </li>
+      <li>
+        <PageExternalLink href="https://blog.dijkstra.io">Blog</PageExternalLink>
       </li>
     </NavList>
   </Wrapper>
