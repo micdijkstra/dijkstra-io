@@ -57,36 +57,6 @@ class About extends React.Component {
                 entire product stack.
               </p>
             </LeadText>
-            <AboutRow>
-              <SectionTitle>
-                <SectionTitlePrimary>Currently</SectionTitlePrimary>
-                <SectionTitleSecondary>
-                  Lead Front-end Engineer at Q-CTRL
-                </SectionTitleSecondary>
-              </SectionTitle>
-              <ReadingText>
-                <p>
-                  As Lead Front-Engineer it is my responsibility to oversee all
-                  front-end implementation, development and operations for Black
-                  Opal, the Software as a Service product offered by Q-CTRL.
-                </p>
-                <p>
-                  Unlike a banking or ecommerce app, there was no path to follow
-                  for a digital quantum Control product, so modelling how users
-                  interact and what information is returned has been unique and
-                  challenging. I oversee a team of three front-end developers
-                  and worked closely with back-end and quantum engineers to
-                  prioritise and scope features.
-                </p>
-
-                <p>
-                  The product is built in ReactJS, hosted on Firebase and
-                  integrates with the Firebase Realtime Database and Google
-                  Cloud Functions. Front-end integration tests are written using
-                  Jest and Enzyme.
-                </p>
-              </ReadingText>
-            </AboutRow>
 
             <AboutRow>
               <SectionTitle>
@@ -157,6 +127,33 @@ class About extends React.Component {
                   technologies such as HTML, JavaScript, ReactJS, EmberJS,
                   CSS/Sass, Ruby, Python, Swift and Go.
                 </p>
+              </ReadingText>
+            </AboutRow>
+
+            <AboutRow>
+              <SectionTitle>
+                <SectionTitlePrimary>2018</SectionTitlePrimary>
+                <SectionTitleSecondary>
+                  Lead Front-end Engineer at Q-CTRL
+                </SectionTitleSecondary>
+              </SectionTitle>
+              <ReadingText>
+                <p>
+                As Head of Product and Lead Front-end Engineer at Q-CTRL I was involved in the conception and build of BLACK OPAL for Alpha, Beta and public release. I started at Q-CTRL in a joint Product and Lead Front-end Engineer role before any application had been built. It was my responsibility to take the ideas from the CEO and bring them together into an application called BLACK OPAL. By the time I left I was managing two other developers and helping direct the overall development of the platform with Lead Back-end Engineer Kevin Nguyen.
+                </p>
+                <p>
+                  BLACK OPAL is a React application which allows users to analyse the performance of single and multi-qubit gates, download quantum controls, download and run experiments to analyse noise sources disrupting their quantum hardware and generate optimised controls.
+                </p>
+
+                <p>
+                  The Front-end application was bootstrapped with Create React App, packages were managed with yarn, made use of Redux for state management, React Router for routing, Reselect to compute derived data allowing Redux to store the minimal possible state, React Redux Form to create forms, react-intl for internationalisation, Enzyme and Jest for unit and integration tests, Styled Components for css-in-js components, grid-styled for a flex box grid system and styled-system to provide design system utilities for styled-components. Code was formatted with Prettier and Storybook was used for UI development.
+                </p>
+
+                <p>
+                  The product leveraged the Google stack for a server-less architecture, using Firebase for hosting, data and authentication and event-driven processing with Cloud Functions. We integrated with Stripe for Payments and Segment for analytics.
+                </p>
+
+                <p>The Front-end application would listen for updates in the Firebase realtime database and use this data to populate the state via Redux. When a user would make a change it would be updated in the realtime database where Cloud Functions would then make the appropriate API calls.</p>
               </ReadingText>
             </AboutRow>
 
