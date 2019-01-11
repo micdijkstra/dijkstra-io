@@ -139,21 +139,54 @@ class About extends React.Component {
               </SectionTitle>
               <ReadingText>
                 <p>
-                As Head of Product and Lead Front-end Engineer at Q-CTRL I was involved in the conception and build of BLACK OPAL for Alpha, Beta and public release. I started at Q-CTRL in a joint Product and Lead Front-end Engineer role before any application had been built. It was my responsibility to take the ideas from the CEO and bring them together into an application called BLACK OPAL. By the time I left I was managing two other developers and helping direct the overall development of the platform with Lead Back-end Engineer Kevin Nguyen.
+                  As Head of Product and Lead Front-end Engineer at Q-CTRL I was
+                  involved in the conception and build of BLACK OPAL for Alpha,
+                  Beta and public release. I started at Q-CTRL in a joint
+                  Product and Lead Front-end Engineer role before any
+                  application had been built. It was my responsibility to take
+                  the ideas from the CEO and bring them together into an
+                  application called BLACK OPAL. By the time I left I was
+                  managing two other developers and helping direct the overall
+                  development of the platform with Lead Back-end Engineer Kevin
+                  Nguyen.
                 </p>
                 <p>
-                  BLACK OPAL is a React application which allows users to analyse the performance of single and multi-qubit gates, download quantum controls, download and run experiments to analyse noise sources disrupting their quantum hardware and generate optimised controls.
+                  BLACK OPAL is a React application which allows users to
+                  analyse the performance of single and multi-qubit gates,
+                  download quantum controls, download and run experiments to
+                  analyse noise sources disrupting their quantum hardware and
+                  generate optimised controls.
                 </p>
 
                 <p>
-                  The Front-end application was bootstrapped with Create React App, packages were managed with yarn, made use of Redux for state management, React Router for routing, Reselect to compute derived data allowing Redux to store the minimal possible state, React Redux Form to create forms, react-intl for internationalisation, Enzyme and Jest for unit and integration tests, Styled Components for css-in-js components, grid-styled for a flex box grid system and styled-system to provide design system utilities for styled-components. Code was formatted with Prettier and Storybook was used for UI development.
+                  The Front-end application was bootstrapped with Create React
+                  App, packages were managed with yarn, made use of Redux for
+                  state management, React Router for routing, Reselect to
+                  compute derived data allowing Redux to store the minimal
+                  possible state, React Redux Form to create forms, react-intl
+                  for internationalisation, Enzyme and Jest for unit and
+                  integration tests, Styled Components for css-in-js components,
+                  grid-styled for a flex box grid system and styled-system to
+                  provide design system utilities for styled-components. Code
+                  was formatted with Prettier and Storybook was used for UI
+                  development.
                 </p>
 
                 <p>
-                  The product leveraged the Google stack for a server-less architecture, using Firebase for hosting, data and authentication and event-driven processing with Cloud Functions. We integrated with Stripe for Payments and Segment for analytics.
+                  The product leveraged the Google stack for a server-less
+                  architecture, using Firebase for hosting, data and
+                  authentication and event-driven processing with Cloud
+                  Functions. We integrated with Stripe for Payments and Segment
+                  for analytics.
                 </p>
 
-                <p>The Front-end application would listen for updates in the Firebase realtime database and use this data to populate the state via Redux. When a user would make a change it would be updated in the realtime database where Cloud Functions would then make the appropriate API calls.</p>
+                <p>
+                  The Front-end application would listen for updates in the
+                  Firebase realtime database and use this data to populate the
+                  state via Redux. When a user would make a change it would be
+                  updated in the realtime database where Cloud Functions would
+                  then make the appropriate API calls.
+                </p>
               </ReadingText>
             </AboutRow>
 
@@ -171,7 +204,8 @@ class About extends React.Component {
                 </p>
                 <p>
                   During my time at PwC I oversaw a team of 6 and developed
-                  digital products for charity, mining and internal teams.
+                  digital products for charity, transport, mining and internal
+                  teams.
                 </p>
               </ReadingText>
             </AboutRow>
