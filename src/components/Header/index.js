@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {AsideSecondary} from '../Aside';
-import {PageLink, PageExternalLink} from '../Page';
+import {PageLink} from '../Page';
 import {Container} from '../Layout';
 
 import {media} from '../../utils/style';
@@ -48,9 +48,6 @@ const Header = () => (
       <PageLink to="/contact/" activeClassName="active">
         Contact
       </PageLink>
-      <br />
-      d.{' '}
-      <PageExternalLink href="https://blog.dijkstra.io">Blog</PageExternalLink>
     </Nav>
   </Wrapper>
 );
