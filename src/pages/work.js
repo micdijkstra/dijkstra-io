@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
-import {AsidePrimary, AsideSecondary} from '../components/Aside';
-import {Container, Row} from '../components/Layout';
-import {PageLink} from '../components/Page';
-import WorkList from '../components/WorkList';
-import {LeadText} from '../components/Text';
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
+import { Container, Row } from '../components/Layout'
+import { Page, PageLink } from '../components/Page'
+import WorkList from '../components/WorkList'
+import { LeadText } from '../components/Text'
 
-const WorkPage = styled.div`
+const WorkPage = Page.extend`
   background-color: ${props => props.theme.colors.quinary};
   color: ${props => props.theme.colors.primary};
   min-height: 100vh;
@@ -19,23 +19,23 @@ const WorkPage = styled.div`
       background-color: ${props => props.theme.colors.quinary};
     }
   }
-`;
+`
 
 const TagLink = styled(PageLink)`
   color: ${props => props.theme.colors.primary};
-`;
+`
 
 class Work extends React.Component {
   render() {
-    const {transition, data} = this.props;
+    const { transition, data } = this.props
 
     const projects = data.projects.edges.map(project => {
-      return project.node;
-    });
+      return project.node
+    })
 
     const tags = data.tags.edges.map(tag => {
-      return tag.node;
-    });
+      return tag.node
+    })
 
     return (
       <div style={transition && transition.style}>
@@ -68,7 +68,7 @@ class Work extends React.Component {
                             {tag.title}
                           </TagLink>
                         </div>
-                      );
+                      )
                     })}
                 </AsideSecondary>
               </div>
@@ -76,20 +76,20 @@ class Work extends React.Component {
           </Container>
         </WorkPage>
       </div>
-    );
+    )
   }
 }
 
 Work.propTypes = {
   transition: PropTypes.object,
-  data: PropTypes.object,
-};
+  data: PropTypes.object
+}
 
-export default Work;
+export default Work
 
 export const query = graphql`
   query projectsQuery {
-    projects: allContentfulProject(sort: {fields: [slug], order: ASC}) {
+    projects: allContentfulProject(sort: { fields: [slug], order: ASC }) {
       edges {
         node {
           color
@@ -106,7 +106,7 @@ export const query = graphql`
         }
       }
     }
-    tags: allContentfulTag(sort: {fields: [slug], order: ASC}) {
+    tags: allContentfulTag(sort: { fields: [slug], order: ASC }) {
       edges {
         node {
           id
@@ -116,4 +116,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

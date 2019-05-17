@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
-import {Container, Row} from '../components/Layout';
-import {Page} from '../components/Page';
-import {AsidePrimary, AsideSecondary} from '../components/Aside';
-import {LeadText, ReadingText} from '../components/Text';
+import { Container, Row } from '../components/Layout'
+import { Page } from '../components/Page'
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
+import { LeadText, ReadingText } from '../components/Text'
 
-import {media} from '../utils/style';
+import { media } from '../utils/style'
 
 const AboutPage = Page.extend`
   background-color: ${props => props.theme.colors.secondary};
@@ -19,7 +19,7 @@ const AboutPage = Page.extend`
       background-color: ${props => props.theme.colors.secondary};
     }
   }
-`;
+`
 
 const AboutRow = Row.extend`
   margin-bottom: ${props => props.theme.spacing.lg};
@@ -27,21 +27,25 @@ const AboutRow = Row.extend`
   ${media.sm`
     flex-direction: row;
   `};
-`;
+`
 
 const SectionTitle = styled.div`
   display: flex;
   margin-top: 5px;
-`;
+
+  a:visited {
+    color: white;
+  }
+`
 
 const SectionTitlePrimary = AsidePrimary.extend`
   width: 100px;
-`;
-const SectionTitleSecondary = AsideSecondary.extend``;
+`
+const SectionTitleSecondary = AsideSecondary.extend``
 
 class About extends React.Component {
   render() {
-    const {transition} = this.props;
+    const { transition } = this.props
 
     return (
       <div style={transition && transition.style}>
@@ -57,6 +61,23 @@ class About extends React.Component {
                 entire product stack.
               </p>
             </LeadText>
+
+            <AboutRow>
+              <SectionTitle>
+                <SectionTitlePrimary>Since 2019</SectionTitlePrimary>
+                <SectionTitleSecondary>
+                  Platform Developer at{' '}
+                  <a href="https://calibreapp.com">Calibre</a>.
+                </SectionTitleSecondary>
+              </SectionTitle>
+              <ReadingText>
+                <p>
+                  Building tools to help customers build better, faster websites
+                  and applications. On a mission to educate and empower anyone
+                  to build a fast, accessible web.
+                </p>
+              </ReadingText>
+            </AboutRow>
 
             <AboutRow>
               <SectionTitle>
@@ -287,26 +308,30 @@ class About extends React.Component {
                   <a
                     href="http://www.wadejeffree.com"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     Wade Jeffree
                   </a>, built with{' '}
                   <a
                     href="https://www.gatsbyjs.com/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     Gatsby.js
                   </a>, managed with{' '}
                   <a
                     href="https://www.contentful.com/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     Contentful
                   </a>{' '}
                   and hosted on{' '}
                   <a
                     href="https://www.netlify.com/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     Netlify
                   </a>.
                 </p>
@@ -315,12 +340,12 @@ class About extends React.Component {
           </Container>
         </AboutPage>
       </div>
-    );
+    )
   }
 }
 
 About.propTypes = {
-  transition: PropTypes.object,
-};
+  transition: PropTypes.object
+}
 
-export default About;
+export default About
