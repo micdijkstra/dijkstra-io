@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import Link from 'gatsby-link'
+import styled from 'styled-components'
 
-import {media, link} from '../../utils/style';
+import { media, link } from '../../utils/style'
 
 const Page = styled.div`
   min-height: 100vh;
@@ -12,7 +12,7 @@ const Page = styled.div`
   ${media.sm`
     padding-bottom: ${props => props.theme.spacing.md};
   `};
-`;
+`
 
 const PageTitle = styled.div`
   font-size: ${props => props.theme.text.xs.xl};
@@ -24,14 +24,14 @@ const PageTitle = styled.div`
     font-size: ${props => props.theme.text.md.xl};
     padding: ${props => props.theme.spacing.lg};
   `};
-`;
+`
 
 const PageLink = styled(Link)`
   ${link()};
-`;
+`
 
 const PageExternalLink = styled.a`
   ${link()};
-`;
+`
 
-export {Page, PageTitle, PageLink, PageExternalLink};
+export { Page, PageTitle, PageLink, PageExternalLink }

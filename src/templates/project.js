@@ -1,19 +1,19 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Swipeable from 'react-swipeable';
-import {navigateTo} from 'gatsby-link';
+import React from 'react'
+import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import Swipeable from 'react-swipeable'
+import { navigateTo } from 'gatsby-link'
 
-import {Section, Container} from '../components/Layout';
-import {Cards, Card} from '../components/Card';
-import {Page, PageTitle} from '../components/Page';
-import Close from '../components/Close';
+import { Section, Container } from '../components/Layout'
+import { Cards, Card } from '../components/Card'
+import { Page, PageTitle } from '../components/Page'
+import Close from '../components/Close'
 
-import ProjectFrames from '../components/Project/Frames';
-import ProjectInfo from '../components/Project/Info';
+import ProjectFrames from '../components/Project/Frames'
+import ProjectInfo from '../components/Project/Info'
 
-import {timeout} from '../utils/style';
+import { media, timeout } from '../utils/style'
 
 const transitionStyles = timeout => {
   return {
@@ -21,85 +21,85 @@ const transitionStyles = timeout => {
       exiting: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-100vw)',
+          transform: 'translateX(-100vw)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(100vw)',
+          transform: 'translateX(100vw)'
         },
-        current: {},
+        current: {}
       },
       loaded: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-15vw)',
+          transform: 'translateX(-15vw)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(15vw)',
+          transform: 'translateX(15vw)'
         },
         current: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(0)',
-        },
-      },
+          transform: 'translateX(0)'
+        }
+      }
     },
     previous: {
       exiting: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-100vw)',
+          transform: 'translateX(-100vw)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(0)',
+          transform: 'translateX(0)'
         },
-        current: {},
+        current: {}
       },
       loaded: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-100vw)',
+          transform: 'translateX(-100vw)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-85vw)',
+          transform: 'translateX(-85vw)'
         },
         current: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(-100vw)',
-        },
-      },
+          transform: 'translateX(-100vw)'
+        }
+      }
     },
     next: {
       exiting: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(0)',
+          transform: 'translateX(0)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(100vw)',
+          transform: 'translateX(100vw)'
         },
-        current: {},
+        current: {}
       },
       loaded: {
         next: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(85vw)',
+          transform: 'translateX(85vw)'
         },
         previous: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(100vw)',
+          transform: 'translateX(100vw)'
         },
         current: {
           transition: `transform ${timeout}ms ease-in-out`,
-          transform: 'translateX(100vw)',
-        },
-      },
-    },
-  };
-};
+          transform: 'translateX(100vw)'
+        }
+      }
+    }
+  }
+}
 
 const ProjectCloseHeader = styled.div`
   color: ${props => props.color || props.theme.colors.onDark};
@@ -108,18 +108,18 @@ const ProjectCloseHeader = styled.div`
   top: 0;
   right: 0;
   z-index: 2;
-`;
+`
 
 const Wrapper = styled.div`
   position: relative;
   overflow: visible;
   width: 100vw;
-`;
+`
 
 const ProjectPage = Page.extend`
   color: ${props => props.color || props.theme.colors.onDark};
   padding-top: 50px;
-`;
+`
 
 const SiblingPage = ProjectPage.extend`
   height: 100%;
@@ -127,126 +127,133 @@ const SiblingPage = ProjectPage.extend`
   position: fixed;
   top: 0;
   width: 100%;
-`;
+`
 
 const NextPage = SiblingPage.extend`
   transform: translateX(100vw);
-`;
+`
 
 const PreviousPage = SiblingPage.extend`
   transform: translateX(-100vw);
-`;
+`
 
 const Pagintation = styled.a`
   bottom: 0;
   position: fixed;
   top: 0;
   width: 8vw;
-`;
+`
 
 const NextPagination = Pagintation.extend`
   right: 0;
-`;
+`
 
 const PreviousPagination = Pagintation.extend`
   left: 0;
-`;
+`
 
 const ProjectContainer = Container.extend`
   overflow: visible;
-`;
+`
 
 const ProjectLink = styled.a`
   color: ${props => props.color || props.theme.colors.onDark};
   text-align: center;
   text-decoration: none;
   width: 100%;
-`;
+`
+
+const WorkPageTitle = PageTitle.extend`
+  font-size: ${props => props.theme.text.md.lg};
+  ${media.sm`
+    font-size: ${props => props.theme.text.md.xl};
+  `};
+`
 
 class Project extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       exiting: true,
       showNext: false,
-      showPrevious: false,
-    };
+      showPrevious: false
+    }
 
-    this.showNext = this.showNext.bind(this);
-    this.showPrevious = this.showPrevious.bind(this);
-    this.showCurrent = this.showCurrent.bind(this);
-    this.goTo = this.goTo.bind(this);
-    this.keyDown = this.keyDown.bind(this);
+    this.showNext = this.showNext.bind(this)
+    this.showPrevious = this.showPrevious.bind(this)
+    this.showCurrent = this.showCurrent.bind(this)
+    this.goTo = this.goTo.bind(this)
+    this.keyDown = this.keyDown.bind(this)
   }
 
   componentDidMount() {
-    const that = this;
+    const that = this
     window.setTimeout(() => {
       that.setState({
-        exiting: false,
-      });
-    }, timeout);
-    document.addEventListener('keydown', this.keyDown, false);
+        exiting: false
+      })
+    }, timeout)
+    document.addEventListener('keydown', this.keyDown, false)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyDown, false);
+    document.removeEventListener('keydown', this.keyDown, false)
   }
 
   keyDown(event) {
     // up or left
     if (event.keyCode === 38 || event.keyCode == 37) {
-      const {pathContext} = this.props;
-      const {next} = pathContext;
-      this.showNext();
-      this.goTo(event, next.slug);
+      const { pathContext } = this.props
+      const { next } = pathContext
+      this.showNext()
+      this.goTo(event, next.slug)
     }
 
     // down or right
     if (event.keyCode === 40 || event.keyCode == 39) {
-      const {pathContext} = this.props;
-      const {previous} = pathContext;
-      this.showPrevious();
-      this.goTo(event, previous.slug);
+      const { pathContext } = this.props
+      const { previous } = pathContext
+      this.showPrevious()
+      this.goTo(event, previous.slug)
     }
   }
 
   goTo(event, slug) {
-    event.preventDefault();
+    event.preventDefault()
 
     this.setState({
-      exiting: true,
-    });
+      exiting: true
+    })
 
     window.setTimeout(() => {
-      navigateTo(`/work/${slug}/`);
-    }, timeout);
+      navigateTo(`/work/${slug}/`)
+    }, timeout)
   }
 
   showNext() {
-    if (this.state.exiting) return;
+    if (this.state.exiting) return
     this.setState({
-      showNext: true,
-    });
+      showNext: true
+    })
   }
 
   showPrevious() {
-    if (this.state.exiting) return;
+    if (this.state.exiting) return
     this.setState({
-      showPrevious: true,
-    });
+      showPrevious: true
+    })
   }
 
   showCurrent() {
     this.setState({
       showNext: false,
-      showPrevious: false,
-    });
+      showPrevious: false
+    })
   }
 
   render() {
-    const {data, pathContext} = this.props;
+    const { data, pathContext } = this.props
     const {
       title,
       link,
@@ -257,30 +264,28 @@ class Project extends React.Component {
       vimeoUrl,
       body,
       metaDescription,
-      tags,
-    } = data.contentfulProject;
-    const {next, previous} = pathContext;
-    const {exiting, showNext, showPrevious} = this.state;
+      tags
+    } = data.contentfulProject
+    const { next, previous } = pathContext
+    const { exiting, showNext, showPrevious } = this.state
 
-    const status = (exiting && 'exiting') || 'loaded';
+    const status = (exiting && 'exiting') || 'loaded'
     const direction =
-      (showNext && 'next') || (showPrevious && 'previous') || 'current';
-    const wrapperStyle = transitionStyles(timeout)['wrapper'][status][
-      direction
-    ];
+      (showNext && 'next') || (showPrevious && 'previous') || 'current'
+    const wrapperStyle = transitionStyles(timeout)['wrapper'][status][direction]
     const nextStyle = Object.assign(
-      {backgroundColor: next.color},
-      transitionStyles(timeout)['next'][status][direction],
-    );
+      { backgroundColor: next.color },
+      transitionStyles(timeout)['next'][status][direction]
+    )
     const previousStyle = Object.assign(
-      {backgroundColor: previous.color},
-      transitionStyles(timeout)['previous'][status][direction],
-    );
+      { backgroundColor: previous.color },
+      transitionStyles(timeout)['previous'][status][direction]
+    )
 
-    const projectPageStyle = {backgroundColor: color, color: onColor};
+    const projectPageStyle = { backgroundColor: color, color: onColor }
 
     function createMarkup(text) {
-      return {__html: text};
+      return { __html: text }
     }
 
     return (
@@ -299,13 +304,16 @@ class Project extends React.Component {
             onSwipingLeft={this.showNext}
             onSwipedLeft={e => this.goTo(e, next.slug)}
             onSwipingRight={this.showPrevious}
-            onSwipedRight={e => this.goTo(e, previous.slug)}>
+            onSwipedRight={e => this.goTo(e, previous.slug)}
+          >
             <ProjectPage style={projectPageStyle}>
               <ProjectContainer>
                 <ProjectLink href={link} target="_blank" color={onColor}>
-                  <PageTitle dangerouslySetInnerHTML={createMarkup(title)} />
+                  <WorkPageTitle
+                    dangerouslySetInnerHTML={createMarkup(title)}
+                  />
                 </ProjectLink>
-                <Cards order={[0, 1]} style={{position: 'relative'}}>
+                <Cards order={[0, 1]} style={{ position: 'relative' }}>
                   <Card>
                     <ProjectFrames
                       liveUrl={liveUrl}
@@ -335,13 +343,15 @@ class Project extends React.Component {
 
         <NextPage style={nextStyle}>
           <ProjectContainer>
-            <PageTitle dangerouslySetInnerHTML={createMarkup(next.title)} />
+            <WorkPageTitle dangerouslySetInnerHTML={createMarkup(next.title)} />
           </ProjectContainer>
         </NextPage>
 
         <PreviousPage style={previousStyle}>
           <ProjectContainer>
-            <PageTitle dangerouslySetInnerHTML={createMarkup(previous.title)} />
+            <WorkPageTitle
+              dangerouslySetInnerHTML={createMarkup(previous.title)}
+            />
           </ProjectContainer>
         </PreviousPage>
 
@@ -358,20 +368,20 @@ class Project extends React.Component {
           onMouseLeave={this.showCurrent}
         />
       </div>
-    );
+    )
   }
 }
 
 Project.propTypes = {
   data: PropTypes.object,
-  pathContext: PropTypes.object,
-};
+  pathContext: PropTypes.object
+}
 
-export default Project;
+export default Project
 
 export const pageQuery = graphql`
   query projectQuery($slug: String!) {
-    contentfulProject(slug: {eq: $slug}) {
+    contentfulProject(slug: { eq: $slug }) {
       id
       title
       slug
@@ -400,4 +410,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
