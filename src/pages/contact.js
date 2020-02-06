@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 
-import {Container, Row} from '../components/Layout';
-import {Page, PageExternalLink} from '../components/Page';
-import {AsidePrimary, AsideSecondary} from '../components/Aside';
-import {LeadText, ReadingText} from '../components/Text';
-import ContactForm from '../components/ContactForm';
+import { Container, Row } from '../components/Layout'
+import { Page, PageExternalLink } from '../components/Page'
+import { AsidePrimary, AsideSecondary } from '../components/Aside'
+import { LeadText, ReadingText } from '../components/Text'
+import ContactForm from '../components/ContactForm'
 
 const ContactPage = Page.extend`
   background-color: ${props => props.theme.colors.tertiary};
@@ -17,11 +17,11 @@ const ContactPage = Page.extend`
       background-color: ${props => props.theme.colors.tertiary};
     }
   }
-`;
+`
 
 class Contact extends React.Component {
   render() {
-    const {transition} = this.props;
+    const { transition } = this.props
 
     return (
       <div style={transition && transition.style}>
@@ -48,23 +48,18 @@ class Contact extends React.Component {
                 <AsideSecondary>
                   <div>
                     <PageExternalLink
-                      href="https://github.com/micdijkstra"
-                      target="_blank">
+                      href="https://github.com/diiijkstra"
+                      target="_blank"
+                    >
                       GitHub
                     </PageExternalLink>
                   </div>
                   <div>
                     <PageExternalLink
-                      href="https://twitter.com/micdijkstra"
-                      target="_blank">
+                      href="https://twitter.com/diiijkstra"
+                      target="_blank"
+                    >
                       Twitter
-                    </PageExternalLink>
-                  </div>
-                  <div>
-                    <PageExternalLink
-                      href="https://instagram.com/dijkstra.io"
-                      target="_blank">
-                      Instagram
                     </PageExternalLink>
                   </div>
                 </AsideSecondary>
@@ -73,17 +68,17 @@ class Contact extends React.Component {
           </Container>
         </ContactPage>
       </div>
-    );
+    )
   }
 }
 
 Contact.propTypes = {
-  transition: PropTypes.object,
-};
+  transition: PropTypes.object
+}
 
 export const query = graphql`
   query ContactImagesQuery {
-    allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    allFile(filter: { sourceInstanceName: { eq: "images" } }) {
       edges {
         node {
           childImageSharp {
@@ -95,6 +90,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default Contact;
+export default Contact
