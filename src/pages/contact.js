@@ -48,7 +48,7 @@ class Contact extends React.Component {
                 <AsideSecondary>
                   <div>
                     <PageExternalLink
-                      href="https://github.com/diiijkstra"
+                      href="https://github.com/michaeldijkstra"
                       target="_blank"
                     >
                       GitHub
@@ -60,6 +60,14 @@ class Contact extends React.Component {
                       target="_blank"
                     >
                       Twitter
+                    </PageExternalLink>
+                  </div>
+                  <div>
+                    <PageExternalLink
+                      href="https://www.linkedin.com/in/diiijkstra"
+                      target="_blank"
+                    >
+                      LinkedIn
                     </PageExternalLink>
                   </div>
                 </AsideSecondary>
