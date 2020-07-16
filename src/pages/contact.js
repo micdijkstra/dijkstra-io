@@ -33,7 +33,7 @@ class Contact extends React.Component {
             <LeadText>
               <p>
                 <a href="/">Michael Dijkstra</a> is currently living and working
-                in Sydney, Australia.
+                from Sydney's Northern Beaches, Australia.
               </p>
             </LeadText>
             <Row>
