@@ -100,22 +100,6 @@ class About extends React.Component {
             <AboutRow>
               <SectionTitle>
                 <SectionTitlePrimary>&nbsp;</SectionTitlePrimary>
-                <SectionTitleSecondary>Wise</SectionTitleSecondary>
-              </SectionTitle>
-              <ReadingText>
-                <p>
-                  <a href="http://www.wiseapp.com">Wise</a> is a shared reading
-                  list for teams built in Ruby on Rails making use of Turbolinks
-                  for fast page loads and transitions. The app authenticates and
-                  integrates with Slack. Unit and integration tests are written
-                  in Rspec.
-                </p>
-              </ReadingText>
-            </AboutRow>
-
-            <AboutRow>
-              <SectionTitle>
-                <SectionTitlePrimary>&nbsp;</SectionTitlePrimary>
                 <SectionTitleSecondary>Small Victories</SectionTitleSecondary>
               </SectionTitle>
               <ReadingText>
@@ -124,6 +108,22 @@ class About extends React.Component {
                   turns a Dropbox folder into a website. The application is
                   built in Ruby on Rails and authenticates and integrates with
                   Dropbox. Unit and integration tests are written in Rspec.
+                </p>
+              </ReadingText>
+            </AboutRow>
+      
+            <AboutRow>
+              <SectionTitle>
+                <SectionTitlePrimary>&nbsp;</SectionTitlePrimary>
+                <SectionTitleSecondary>Wise</SectionTitleSecondary>
+              </SectionTitle>
+              <ReadingText>
+                <p>
+                  <a href="http://www.wiseapp.com">Wise</a> was a shared reading
+                  list for teams built in Ruby on Rails making use of Turbolinks
+                  for fast page loads and transitions. The app authenticates and
+                  integrates with Slack. Unit and integration tests are written
+                  in Rspec.
                 </p>
               </ReadingText>
             </AboutRow>
